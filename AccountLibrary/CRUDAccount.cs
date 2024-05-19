@@ -11,6 +11,14 @@ namespace AccountLibrary
 {
     public static class CRUDAccount
     {
-        
+        private static Account findAccount(string username)
+        {
+            //mencari file json dengan username pada parameter input
+            //jika ditemukan maka return data object Account dari file tersebut
+            //jika tidak ditemukan maka return null
+            return null;
+        }
+
+
     }
 }
