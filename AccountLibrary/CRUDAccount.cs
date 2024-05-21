@@ -21,7 +21,7 @@ namespace AccountLibrary
             return null;
         }
 
-        // 
+        // Function yang berfungsi menerima input data
         public static Account getInputAccountData(AccountValidator validator)
         {
             Account newAccount = new Account();
@@ -46,7 +46,7 @@ namespace AccountLibrary
                         }
                     }
 
-                } while (!validationResult.IsValid);
+                } while (!validationResult.IsValid && findAccount(newAccount.userName).Equals(null));
 
                 // Input nama
                 do
@@ -104,9 +104,19 @@ namespace AccountLibrary
 
             } while (!validationResult.IsValid);
 
+            newAccount.state = AccountState.SignedOut;
             newAccount.listTask = null;
 
             return newAccount;
         }
+
+        // Method yang berguna untuk melakukan sign in sebuah account
+        public static void signInAccount(AccountValidator validator)
+        {
+            // di sini akan membaca username dan password
+            // jika username dan password valid maka akan merubah state dari account menjadi signedIn
+        }
+
+        //
     }
 }
