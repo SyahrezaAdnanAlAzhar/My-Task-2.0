@@ -15,7 +15,7 @@ namespace MyTaskLibrary
     public static class CRUDAccount
     {
         // Mencari file json dengan parameter input username, kemudian return object account yang tersimpan di json tersebut
-        private static Account FindAccount(string username)
+        public static Account FindAccount(string username)
         {
             //mencari file json dengan username pada parameter input
             //jika ditemukan maka return data object Account dari file tersebut
