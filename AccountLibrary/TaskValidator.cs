@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentValidation;
 
-namespace TaskLibrary
+namespace MyTaskLibrary
 {
     public class TaskValidator : AbstractValidator<Task>
     {

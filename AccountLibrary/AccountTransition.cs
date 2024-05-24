@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AccountLibrary
+namespace MyTaskLibrary
 {
     public enum AccountState { SignedIn, SignedOut }
     public enum TriggerAccountState { SignIn, SignOut }

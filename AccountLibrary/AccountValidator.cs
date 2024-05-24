@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using FluentValidation;
 using FluentValidation.Results;
 
-namespace AccountLibrary
+namespace MyTaskLibrary
 {
     public class AccountValidator : AbstractValidator<Account>
     {
@@ -21,7 +21,7 @@ namespace AccountLibrary
 
             RuleSet("Nama", () =>
             {
-                RuleFor(account => account.nama)
+                RuleFor(account => account.name)
                     .NotEmpty().WithMessage("Nama harus diisi");
             });
 

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 // penamaan file AccountMyTask_<username>.json
 // contoh AccountMyTask_reza29.json
 
-namespace AccountLibrary
+namespace MyTaskLibrary
 {
     public static class CRUDAccount
     {
