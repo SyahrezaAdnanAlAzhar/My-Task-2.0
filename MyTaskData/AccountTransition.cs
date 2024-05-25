@@ -4,31 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AccountLibrary
+namespace MyTaskData
 {
     public enum AccountState { SignedIn, SignedOut }
     public enum TriggerAccountState { SignIn, SignOut }
-    public class AccountTransitioncs
+    public class AccountTransition
     {
         public AccountState prevState;
         public AccountState nextState;
         public AccountState currentState;
         public TriggerAccountState triggerAccountState;
 
-        public AccountTransitioncs(AccountState prevState, AccountState nextState, TriggerAccountState trigger)
+        public AccountTransition(AccountState prevState, AccountState nextState, TriggerAccountState trigger)
         {
             this.prevState = prevState;
             this.nextState = nextState;
             this.triggerAccountState = trigger;
         }
 
-        private static AccountTransitioncs[] transitions =
+        private static AccountTransition[] transitions =
         {
-            new AccountTransitioncs(AccountState.SignedOut, AccountState.SignedIn, TriggerAccountState.SignIn),
-            new AccountTransitioncs(AccountState.SignedIn, AccountState.SignedOut, TriggerAccountState.SignOut)
+            new AccountTransition(AccountState.SignedOut, AccountState.SignedIn, TriggerAccountState.SignIn),
+            new AccountTransition(AccountState.SignedIn, AccountState.SignedOut, TriggerAccountState.SignOut)
         };
 
-        public AccountState getNextState(AccountState prevState, TriggerAccountState trigger)
+        public static AccountState getNextState(AccountState prevState, TriggerAccountState trigger)
         {
             AccountState nextState = prevState;
             for (int i = 0; i < transitions.Length; i++)

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskLibrary
+namespace MyTaskData
 {
     public class Task
     {
@@ -47,6 +47,10 @@ namespace TaskLibrary
             this.jenisTugas = (JenisTugas)Enum.Parse(typeof(JenisTugas), jenisTugas);
             this.namaPrioritas = (Prioritas)Enum.Parse(typeof(Prioritas), namaPrioritas);
             this.taskState = (TaskState)Enum.Parse(typeof(TaskState), taskState);
+        }
+        public void UpdateState(TriggerTaskState trigger)
+        {
+            this.taskState = TaskTransition.getNextState(this.taskState, trigger);
         }
     }
 }
