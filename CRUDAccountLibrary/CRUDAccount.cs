@@ -114,10 +114,13 @@ namespace CRUDAccountLibrary
         }
 
         // Method yang berguna untuk melakukan sign up sebuah account dan menulis file json baru untuk account tersebut
-        public static void SignUpAccount()
+        public static void SignUpAccount(DataPath dataPath)
         {
             // melakukan pemanggilan function GetInputAccountData untuk proses input data
+            // pastika username berbeda, gunakan method FindAccount
             // melakukan penulisan file json
+            // tambahkan path file json pada dataPath
+            // write kembali object dataPath nya
         }
 
         // Method yang berguna untuk melakukan sign in sebuah account
@@ -173,6 +176,13 @@ namespace CRUDAccountLibrary
         {
             // menghapus file json yang menyimpan data account dari parameter input
             // pastikan untuk melakukan validasi password terlebih dahulu
+            // penamaan file AccountMyTask_<username>.json
+            // contoh AccountMyTask_reza29.json
+        }
+
+        // melakukan penulisan ulang di suatu file json pada object yang menjadi parameter input
+        public static void ReWriteUpdatedFile(Account account)
+        {
             // penamaan file AccountMyTask_<username>.json
             // contoh AccountMyTask_reza29.json
         }

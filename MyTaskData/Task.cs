@@ -24,7 +24,6 @@ namespace MyTaskData
         }
 
         public string judul { get; set; }
-        public string username { get; set; }
         public string deskripsi { get; set; }
         public DateTime tanggalMulai { get; set; }
         public DateTime tanggalSelesai { get; set; }
@@ -37,10 +36,9 @@ namespace MyTaskData
 
         }
 
-        public Task(string judul, string username, string deskripsi, string tanggalMulai, string tanggalSelesai, string jenisTugas, string namaPrioritas, string taskState)
+        public Task(string judul, string deskripsi, string tanggalMulai, string tanggalSelesai, string jenisTugas, string namaPrioritas, string taskState)
         {
             this.judul = judul;
-            this.username = username;
             this.deskripsi = deskripsi;
             this.tanggalMulai = DateTime.Parse(tanggalMulai);
             this.tanggalSelesai = DateTime.Parse(tanggalSelesai);
