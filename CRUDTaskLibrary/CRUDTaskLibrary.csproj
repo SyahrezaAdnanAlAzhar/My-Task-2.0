@@ -58,6 +58,10 @@
       <Project>{f0500f8a-9f03-49bc-8683-d961594ec8b8}</Project>
       <Name>MyTaskData</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Tools\Tools.csproj">
+      <Project>{2af79e66-82ee-4938-b4ba-0d5eefcbd31d}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

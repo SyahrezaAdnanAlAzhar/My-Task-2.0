@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUDAccountLibrary", "..\CR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "..\Tools\Tools.csproj", "{2AF79E66-82EE-4938-B4BA-0D5EEFCBD31D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTaskAPI", "..\MyTaskAPI\MyTaskAPI.csproj", "{8CAB0C38-9490-47FD-AC48-9310845D6058}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{2AF79E66-82EE-4938-B4BA-0D5EEFCBD31D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AF79E66-82EE-4938-B4BA-0D5EEFCBD31D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AF79E66-82EE-4938-B4BA-0D5EEFCBD31D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CAB0C38-9490-47FD-AC48-9310845D6058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CAB0C38-9490-47FD-AC48-9310845D6058}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CAB0C38-9490-47FD-AC48-9310845D6058}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CAB0C38-9490-47FD-AC48-9310845D6058}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
