@@ -6,11 +6,12 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
+using MyTaskData;
 
 // penamaan file AccountMyTask_<username>.json
 // contoh AccountMyTask_reza29.json
 
-namespace MyTaskLibrary
+namespace CRUDAccountLibrary
 {
     public static class CRUDAccount
     {
@@ -106,7 +107,7 @@ namespace MyTaskLibrary
 
             } while (!validationResult.IsValid);
 
-            newAccount.state = AccountState.SignedOut;
+            newAccount.accountState = AccountState.SignedOut;
             newAccount.listTask = null;
 
             return newAccount;
@@ -131,7 +132,7 @@ namespace MyTaskLibrary
         // Function yang berguna untuk mencari file json account yang state nya signedIn
         public static Account FindActiveAccount()
         {
-            //var jsonFiles = Directory.GetFiles("AccountMyTask_*.json");
+            var jsonFiles = Directory.GetFiles("AccountMyTask_*.json");
             return null;
         }
 

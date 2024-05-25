@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ArrayTool")]
+[assembly: AssemblyTitle("CRUDTaskLibrary")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ArrayTool")]
+[assembly: AssemblyProduct("CRUDTaskLibrary")]
 [assembly: AssemblyCopyright("Copyright ©  2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d329a5bb-8ade-4cfa-b642-e32268136f23")]
+[assembly: Guid("cbf018f2-15d1-4e40-bd39-313d323ec2b9")]
 
 // Version information for an assembly consists of the following four values:
 //

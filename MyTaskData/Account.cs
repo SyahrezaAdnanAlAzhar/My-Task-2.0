@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Task = MyTaskLibrary.Task;
+using Task = MyTaskData.Task;
 
-namespace MyTaskLibrary
+namespace MyTaskData
 {
     public class Account
     {
@@ -15,7 +15,11 @@ namespace MyTaskLibrary
         public string name { get; set; }
         public string email { get; set; }
         public string password { get; set; }
-        public AccountState state { get; set; }
-        public List<Task> listTask { get; set; } 
+        public AccountState accountState { get; set; }
+        public List<Task> listTask { get; set; }
+        public void UpdateState(TriggerAccountState trigger)
+        {
+            this.accountState = AccountTransition.getNextState(this.accountState, trigger);
+        }
     }
 }

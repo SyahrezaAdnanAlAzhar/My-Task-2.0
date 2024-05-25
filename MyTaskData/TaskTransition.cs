@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskLibrary
+namespace MyTaskData
 {
     public enum TaskState { Done, InProgress, PostPone, ToDo };
     public enum TriggerTaskState { Menyelesaikan, Mengerjakan, Menunda };
@@ -29,7 +29,7 @@ namespace TaskLibrary
             new TaskTransition(TaskState.InProgress, TaskState.Done, TriggerTaskState.Menyelesaikan)
         };
 
-        public TaskState getNextState(TaskState prevState, TriggerTaskState trigger)
+        public static TaskState getNextState(TaskState prevState, TriggerTaskState trigger)
         {
             TaskState nextState = prevState;
             for (int i = 0; i < transitions.Length; i++)
@@ -41,5 +41,7 @@ namespace TaskLibrary
             }
             return nextState;
         }
+
+
     }
 }
