@@ -44,7 +44,7 @@ namespace MyTaskData
 
         public ValidationResult Validate(Account newAccount, string ruleSet)
         {
-            throw new NotImplementedException();
+            return base.Validate(new ValidationContext<Account>(newAccount, null, new FluentValidation.Internal.RulesetValidatorSelector(ruleSet.Split(','))));
         }
 
         private bool BeEndsWithDigit(string username)
