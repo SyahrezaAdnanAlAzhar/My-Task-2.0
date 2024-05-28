@@ -1,26 +1,36 @@
-﻿using FluentValidation.Results;
+using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text.Json;
 using System.Text;
 using System.Threading.Tasks;
 using MyTaskData;
-
-// penamaan file AccountMyTask_<username>.json
-// contoh AccountMyTask_reza29.json
 
 namespace CRUDAccountLibrary
 {
     public static class CRUDAccount
     {
+        private static string accountDirectory = @"C:\Users\user1\source\repos\My-Task-2.0\CRUDAccountLibrary";
+
+        static CRUDAccount()
+        {
+            if (!Directory.Exists(accountDirectory))
+            {
+                Directory.CreateDirectory(accountDirectory);
+            }
+        }
+
         // Mencari file json dengan parameter input username, kemudian return object account yang tersimpan di json tersebut
         public static Account FindAccount(string username)
         {
-            //mencari file json dengan username pada parameter input
-            //jika ditemukan maka return data object Account dari file tersebut
-            //jika tidak ditemukan maka return null
+            string filePath = Path.Combine(accountDirectory, $"AccountMyTask_{username}.json");
+            if (File.Exists(filePath))
+            {
+                string json = File.ReadAllText(filePath);
+                return JsonSerializer.Deserialize<Account>(json);
+            }
             return null;
         }
 
@@ -38,29 +48,27 @@ namespace CRUDAccountLibrary
                 {
                     Console.Write("Username: ");
                     newAccount.userName = Console.ReadLine();
-                    validationResult = validator.Validate(newAccount, ruleSet: "Username");
+                    validationResult = validator.Validate(newAccount, options => options.IncludeRuleSets("Username"));
 
                     if (!validationResult.IsValid)
                     {
-                        // Tampilkan pesan kesalahan jika validasi gagal
                         foreach (var error in validationResult.Errors)
                         {
                             Console.WriteLine(error.ErrorMessage);
                         }
                     }
 
-                } while (!validationResult.IsValid && FindAccount(newAccount.userName).Equals(null));
+                } while (!validationResult.IsValid || FindAccount(newAccount.userName) != null);
 
                 // Input nama
                 do
                 {
                     Console.Write("Nama: ");
-                    newAccount.name = Console.ReadLine();
-                    validationResult = validator.Validate(newAccount, ruleSet: "Nama");
+                    newAccount.nama = Console.ReadLine();
+                    validationResult = validator.Validate(newAccount, options => options.IncludeRuleSets("Nama"));
 
                     if (!validationResult.IsValid)
                     {
-                        // Tampilkan pesan kesalahan jika validasi gagal
                         foreach (var error in validationResult.Errors)
                         {
                             Console.WriteLine(error.ErrorMessage);
@@ -74,11 +82,10 @@ namespace CRUDAccountLibrary
                 {
                     Console.Write("Email: ");
                     newAccount.email = Console.ReadLine();
-                    validationResult = validator.Validate(newAccount, ruleSet: "Email");
+                    validationResult = validator.Validate(newAccount, options => options.IncludeRuleSets("Email"));
 
                     if (!validationResult.IsValid)
                     {
-                        // Tampilkan pesan kesalahan jika validasi gagal
                         foreach (var error in validationResult.Errors)
                         {
                             Console.WriteLine(error.ErrorMessage);
@@ -92,11 +99,10 @@ namespace CRUDAccountLibrary
                 {
                     Console.Write("Password: ");
                     newAccount.password = Console.ReadLine();
-                    validationResult = validator.Validate(newAccount, ruleSet: "Password");
+                    validationResult = validator.Validate(newAccount, options => options.IncludeRuleSets("Password"));
 
                     if (!validationResult.IsValid)
                     {
-                        // Tampilkan pesan kesalahan jika validasi gagal
                         foreach (var error in validationResult.Errors)
                         {
                             Console.WriteLine(error.ErrorMessage);
@@ -107,84 +113,194 @@ namespace CRUDAccountLibrary
 
             } while (!validationResult.IsValid);
 
-            newAccount.accountState = AccountState.SignedOut;
-            newAccount.listTask = null;
+            newAccount.state = AccountState.SignedOut;
+            newAccount.listTask = new List<MyTaskData.Task>();
 
             return newAccount;
         }
 
         // Method yang berguna untuk melakukan sign up sebuah account dan menulis file json baru untuk account tersebut
-        public static void SignUpAccount(DataPath dataPath)
+        public static void SignUpAccount(AccountValidator validator)
         {
-            // melakukan pemanggilan function GetInputAccountData untuk proses input data
-            // pastika username berbeda, gunakan method FindAccount
-            // melakukan penulisan file json
-            // tambahkan path file json pada dataPath
-            // write kembali object dataPath nya
+            Account newAccount = GetInputAccountData(validator);
+
+            string filePath = Path.Combine(accountDirectory, $"AccountMyTask_{newAccount.userName}.json");
+            string json = JsonSerializer.Serialize(newAccount);
+            File.WriteAllText(filePath, json);
         }
 
         // Method yang berguna untuk melakukan sign in sebuah account
         public static void SignInAccount(AccountValidator validator)
         {
-            // di sini akan membaca username dan password
-            // jika username dan password valid maka akan merubah state dari account menjadi signedIn
-            // tetapi sebelum merubah username tersebut menjadi signedIn, harus melakukan pengecekan terlebih dahulu
-            // mengecek apakah ada akun lain yang signedIn, jika ada maka dirubah dulu menjadi signedOut
+            Console.Write("Username: ");
+            string username = Console.ReadLine();
+
+            Console.Write("Password: ");
+            string password = Console.ReadLine();
+
+            Account account = FindAccount(username);
+            if (account == null || account.password != password)
+            {
+                Console.WriteLine("Invalid username or password.");
+                return;
+            }
+
+            Account activeAccount = FindActiveAccount();
+            if (activeAccount != null)
+            {
+                activeAccount.state = AccountState.SignedOut;
+                ReWriteUpdatedFile(activeAccount);
+            }
+
+            account.state = AccountState.SignedIn;
+            ReWriteUpdatedFile(account);
+            Console.WriteLine("Signed in successfully.");
         }
 
         // Function yang berguna untuk mencari file json account yang state nya signedIn
         public static Account FindActiveAccount()
         {
-            var jsonFiles = Directory.GetFiles("AccountMyTask_*.json");
+            var jsonFiles = Directory.GetFiles(accountDirectory, "AccountMyTask_*.json");
+            foreach (var file in jsonFiles)
+            {
+                string json = File.ReadAllText(file);
+                Account account = JsonSerializer.Deserialize<Account>(json);
+                if (account.state == AccountState.SignedIn)
+                {
+                    return account;
+                }
+            }
             return null;
         }
 
         // Procedure yang berguna untuk melakukan sign out dari suatu akun, sehingga merubah state nya menjadi signedOut
         public static void SignOutAccount(Account account, string password)
         {
+            if (account.password != password)
+            {
+                Console.WriteLine("Invalid password.");
+                return;
+            }
 
+            account.state = AccountState.SignedOut;
+            ReWriteUpdatedFile(account);
+            Console.WriteLine("Signed out successfully.");
         }
 
         // Procedure untuk melakukan update attribute name dari account yang sebagai input parameter
         public static void UpdateAccountName(Account account)
         {
-            // proses menerima input nama baru dilakukan di dalam procedure
-            // setelah meneriman input nama baru maka lakukan pemebaruan attribute name
-            // pastikan menggunakan Account validator untuk memvalidasi input nama barunya
+            Console.Write("Nama baru: ");
+            string newName = Console.ReadLine();
+            account.nama = newName;
+
+            AccountValidator validator = new AccountValidator();
+            ValidationResult result = validator.Validate(account, options => options.IncludeRuleSets("Nama"));
+            if (!result.IsValid)
+            {
+                foreach (var error in result.Errors)
+                {
+                    Console.WriteLine(error.ErrorMessage);
+                }
+                return;
+            }
+
+            ReWriteUpdatedFile(account);
+            Console.WriteLine("Nama berhasil diupdate.");
         }
 
         // Procedure untuk melakukan update attribute email dari account yang sebagai input parameter
         public static void UpdateAccountEmail(Account account)
         {
-            // sebelum melakukan proses update, user harus memasukkan password yang benar terlebih dahulu
-            // proses menerima input email baru dilakukan di dalam procedure
-            // setelah meneriman input email baru maka lakukan pemebaruan attribute email
-            // pastikan menggunakan Account validator untuk memvalidasi input email barunya
+            Console.Write("Password: ");
+            string password = Console.ReadLine();
+
+            if (account.password != password)
+            {
+                Console.WriteLine("Invalid password.");
+                return;
+            }
+
+            Console.Write("Email baru: ");
+            string newEmail = Console.ReadLine();
+            account.email = newEmail;
+
+            AccountValidator validator = new AccountValidator();
+            ValidationResult result = validator.Validate(account, options => options.IncludeRuleSets("Email"));
+            if (!result.IsValid)
+            {
+                foreach (var error in result.Errors)
+                {
+                    Console.WriteLine(error.ErrorMessage);
+                }
+                return;
+            }
+
+            ReWriteUpdatedFile(account);
+            Console.WriteLine("Email berhasil diupdate.");
         }
 
-        // Procedure untuk melakukan update attribute passwrod dari account yang sebagai input parameter
+        // Procedure untuk melakukan update attribute password dari account yang sebagai input parameter
         public static void UpdateAccountPassword(Account account)
         {
-            // sebelum melakukan proses update user, harus memasukkan password yang lama dan benar terlebih dahulu
-            // proses menerima input password baru dilakukan di dalam procedure
-            // setelah meneriman input password baru maka lakukan pemebaruan attribute password
-            // pastikan menggunakan Account validator untuk memvalidasi input password barunya
+            Console.Write("Password lama: ");
+            string oldPassword = Console.ReadLine();
+
+            if (account.password != oldPassword)
+            {
+                Console.WriteLine("Invalid password.");
+                return;
+            }
+
+            Console.Write("Password baru: ");
+            string newPassword = Console.ReadLine();
+            account.password = newPassword;
+
+            AccountValidator validator = new AccountValidator();
+            ValidationResult result = validator.Validate(account, options => options.IncludeRuleSets("Password"));
+            if (!result.IsValid)
+            {
+                foreach (var error in result.Errors)
+                {
+                    Console.WriteLine(error.ErrorMessage);
+                }
+                return;
+            }
+
+            ReWriteUpdatedFile(account);
+            Console.WriteLine("Password berhasil diupdate.");
         }
 
         // Procedure untuk melakukan delete suatu account dan akan menghapus file json nya
         public static void DeleteAccount(Account account)
         {
-            // menghapus file json yang menyimpan data account dari parameter input
-            // pastikan untuk melakukan validasi password terlebih dahulu
-            // penamaan file AccountMyTask_<username>.json
-            // contoh AccountMyTask_reza29.json
+            Console.Write("Password: ");
+            string password = Console.ReadLine();
+
+            if (account.password != password)
+            {
+                Console.WriteLine("Invalid password.");
+                return;
+            }
+
+            string filePath = Path.Combine(accountDirectory, $"AccountMyTask_{account.userName}.json");
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+                Console.WriteLine("Account berhasil dihapus.");
+            }
+            else
+            {
+                Console.WriteLine("File account tidak ditemukan.");
+            }
         }
 
         // melakukan penulisan ulang di suatu file json pada object yang menjadi parameter input
         public static void ReWriteUpdatedFile(Account account)
         {
-            // penamaan file AccountMyTask_<username>.json
-            // contoh AccountMyTask_reza29.json
+            string filePath = Path.Combine(accountDirectory, $"AccountMyTask_{account.userName}.json");
+            string json = JsonSerializer.Serialize(account);
+            File.WriteAllText(filePath, json);
         }
     }
 }
