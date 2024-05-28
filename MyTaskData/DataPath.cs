@@ -26,7 +26,7 @@ namespace MyTaskData
             }
         }
 
-        public static DataPath ReadFromFile(string filePath)
+        public DataPath ReadFromFile(string filePath)
         {
             try
             {
