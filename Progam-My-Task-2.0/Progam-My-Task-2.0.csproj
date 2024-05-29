@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CRUDAccountLibrary\CRUDAccountLibrary.csproj" />
+    <ProjectReference Include="..\CRUDTaskLibrary\CRUDTaskLibrary.csproj" />
     <ProjectReference Include="..\MyTaskData\MyTaskData.csproj" />
   </ItemGroup>
 

@@ -1,10 +1,17 @@
 ﻿using MyTaskData;
 using Task = MyTaskData.Task;
-public class main
+using CRUDTaskLibrary;
+using CRUDAccountLibrary;
+public class Program
 {
     public static void Main(string[] args)
     {
-        Task t1 = new Task();
-        t1.judul = "a";
+       /* //Buat ngetes TASK CRUD
+        Account account = new Account();
+        Task task1 = new Task();
+        Task task2 = new Task();
+
+        CRUDTask.CreateTask(account);
+        CRUDTask.PrintAllTask(account);*/
     }
 }
