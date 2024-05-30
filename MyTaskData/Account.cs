@@ -17,6 +17,10 @@ namespace MyTaskData
         public string password { get; set; }
         public AccountState accountState { get; set; }
         public List<Task> listTask { get; set; }
+        public Account()
+        {
+            listTask = new List<Task>();
+        }
         public void UpdateState(TriggerAccountState trigger)
         {
             this.accountState = AccountTransition.getNextState(this.accountState, trigger);

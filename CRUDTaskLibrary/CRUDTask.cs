@@ -42,7 +42,7 @@ namespace CRUDTaskLibrary
             {
                 do
                 {
-                    Console.WriteLine("Judul: ");
+                    Console.Write("Judul: ");
                     newTask.judul = Console.ReadLine();
                     validationResult = validator.Validate(newTask, ruleSet: "Judul");
 
@@ -53,11 +53,11 @@ namespace CRUDTaskLibrary
                             Console.WriteLine(error.ErrorMessage);
                         }
                     }
-                } while (!validationResult.IsValid && FindTask(account,newTask.judul).Equals(null));
+                } while (!validationResult.IsValid && !FindTask(account, newTask.judul).Equals(null));
 
                 do
                 {
-                    Console.WriteLine("Deskripsi: ");
+                    Console.Write("Deskripsi: ");
                     newTask.deskripsi = Console.ReadLine();
                     validationResult = validator.Validate(newTask, ruleSet: "Deskripsi");
 
@@ -72,9 +72,9 @@ namespace CRUDTaskLibrary
 
                 do
                 {
-                    Console.WriteLine("Tanggal Mulai (YYYY-MM-DD): ");
+                    Console.Write("Tanggal Mulai (YYYY-MM-DD): ");
                     newTask.tanggalMulai = DateTime.Parse(Console.ReadLine());
-                    Console.WriteLine("Tanggal Selesai (YYYY-MM-DD): ");
+                    Console.Write("Tanggal Selesai (YYYY-MM-DD): ");
                     newTask.tanggalSelesai = DateTime.Parse(Console.ReadLine());
                     validationResult = validator.Validate(newTask, ruleSet: "Tanggal");
 
@@ -200,17 +200,16 @@ namespace CRUDTaskLibrary
         public static void CreateTask(Account account)
         {
             // melakukan pemanggilan method GetInputTaskData untuk mendapatkan data dari object Task
+            // melakukan pemeriksaan apakah ada judul task yang sama atau tidak menggunakan FindTask
+            // perbarui judulnya dengan menggunakan method UpdateJudulTask
+            
             TaskValidator validator = new TaskValidator();
             Task newTask = GetInputTaskData(validator, account);
 
-            // melakukan pemeriksaan apakah ada judul task yang sama atau tidak menggunakan FindTask
-            // perbarui judulnya dengan menggunakan method UpdateJudulTask
-            Task tempTask = FindTask(account, newTask.judul);
-            do
+            while (!FindTask(account, newTask.judul).Equals(null))
             {
                 UpdateJudulTask(account, newTask);
-                tempTask = FindTask(account, newTask.judul);
-            } while (!tempTask.Equals(null));
+            }
 
             // tambahkan task terbaru menggunakan method generic tools yang append pada listTask di object account
             CollectionTools.Append(account.listTask, newTask);
@@ -222,15 +221,15 @@ namespace CRUDTaskLibrary
             int i = 1;
             foreach (var task in account.listTask)
             {
-                Console.WriteLine("==--==--==--==--==--==");
-                Console.WriteLine("       Task " + i);
-                Console.WriteLine("Judul: " + task.judul);
-                Console.WriteLine("Deskripsi: " + task.deskripsi);
-                Console.WriteLine("Tanggal Mulai: " + task.tanggalMulai);
-                Console.WriteLine("Tanggal Selesai: " + task.tanggalSelesai);
-                Console.WriteLine("Jenis Tugas: " + task.jenisTugas);
-                Console.WriteLine("Prioritas: " + task.namaPrioritas);
-                Console.WriteLine("Status: " + task.taskState);
+                Console.WriteLine("==--==--==--==--==--==--==");
+                Console.WriteLine("         Task " + i);
+                Console.WriteLine("Judul            : " + task.judul);
+                Console.WriteLine("Deskripsi        : " + task.deskripsi);
+                Console.WriteLine("Tanggal Mulai    : " + task.tanggalMulai);
+                Console.WriteLine("Tanggal Selesai  : " + task.tanggalSelesai);
+                Console.WriteLine("Jenis Tugas      : " + task.jenisTugas);
+                Console.WriteLine("Prioritas        : " + task.namaPrioritas);
+                Console.WriteLine("Status           : " + task.taskState);
                 i++;
             }
         }
@@ -242,20 +241,118 @@ namespace CRUDTaskLibrary
             int i = 1;
             foreach (var task in sortedList)
             {
-                Console.WriteLine("==--==--==--==--==--==");
-                Console.WriteLine("       Task " + i);
-                Console.WriteLine("Judul: " + task.judul);
-                Console.WriteLine("Deskripsi: " + task.deskripsi);
-                Console.WriteLine("Tanggal Mulai: " + task.tanggalMulai);
-                Console.WriteLine("Tanggal Selesai: " + task.tanggalSelesai);
-                Console.WriteLine("Jenis Tugas: " + task.jenisTugas);
-                Console.WriteLine("Prioritas: " + task.namaPrioritas);
-                Console.WriteLine("Status: " + task.taskState);
+                Console.WriteLine("==--==--==--==--==--==--==");
+                Console.WriteLine("         Task " + i);
+                Console.WriteLine("Judul            : " + task.judul);
+                Console.WriteLine("Deskripsi        : " + task.deskripsi);
+                Console.WriteLine("Tanggal Mulai    : " + task.tanggalMulai);
+                Console.WriteLine("Tanggal Selesai  : " + task.tanggalSelesai);
+                Console.WriteLine("Jenis Tugas      : " + task.jenisTugas);
+                Console.WriteLine("Prioritas        : " + task.namaPrioritas);
+                Console.WriteLine("Status           : " + task.taskState);
                 i++;
             }
         }
 
-        // lakukan hal yang serupa hingga attribute state
+        // menampilkan seluruh data task dari suatu account yang di sorting tgl mulai
+        public static void PrintAllTaskSortedTanggalMulai(Account account)
+        {
+            List<Task> sortedList = SortTanggalMulaiTask(account.listTask);
+            int i = 1;
+            foreach (var task in sortedList)
+            {
+                Console.WriteLine("==--==--==--==--==--==--==");
+                Console.WriteLine("         Task " + i);
+                Console.WriteLine("Judul            : " + task.judul);
+                Console.WriteLine("Deskripsi        : " + task.deskripsi);
+                Console.WriteLine("Tanggal Mulai    : " + task.tanggalMulai);
+                Console.WriteLine("Tanggal Selesai  : " + task.tanggalSelesai);
+                Console.WriteLine("Jenis Tugas      : " + task.jenisTugas);
+                Console.WriteLine("Prioritas        : " + task.namaPrioritas);
+                Console.WriteLine("Status           : " + task.taskState);
+                i++;
+            }
+        }
+
+        // menampilkan seluruh data task dari suatu account yang di sorting tgl selesai
+        public static void PrintAllTaskSortedTanggalSelesai(Account account)
+        {
+            List<Task> sortedList = SortTanggalSelesaiTask(account.listTask);
+            int i = 1;
+            foreach (var task in sortedList)
+            {
+                Console.WriteLine("==--==--==--==--==--==--==");
+                Console.WriteLine("         Task " + i);
+                Console.WriteLine("Judul            : " + task.judul);
+                Console.WriteLine("Deskripsi        : " + task.deskripsi);
+                Console.WriteLine("Tanggal Mulai    : " + task.tanggalMulai);
+                Console.WriteLine("Tanggal Selesai  : " + task.tanggalSelesai);
+                Console.WriteLine("Jenis Tugas      : " + task.jenisTugas);
+                Console.WriteLine("Prioritas        : " + task.namaPrioritas);
+                Console.WriteLine("Status           : " + task.taskState);
+                i++;
+            }
+        }
+
+        // menampilkan seluruh data task dari suatu account yang di sorting jenis tugas
+        public static void PrintAllTaskSortedJenisTugas(Account account)
+        {
+            List<Task> sortedList = SortJenisTugasTask(account.listTask);
+            int i = 1;
+            foreach (var task in sortedList)
+            {
+                Console.WriteLine("==--==--==--==--==--==--==");
+                Console.WriteLine("         Task " + i);
+                Console.WriteLine("Judul            : " + task.judul);
+                Console.WriteLine("Deskripsi        : " + task.deskripsi);
+                Console.WriteLine("Tanggal Mulai    : " + task.tanggalMulai);
+                Console.WriteLine("Tanggal Selesai  : " + task.tanggalSelesai);
+                Console.WriteLine("Jenis Tugas      : " + task.jenisTugas);
+                Console.WriteLine("Prioritas        : " + task.namaPrioritas);
+                Console.WriteLine("Status           : " + task.taskState);
+                i++;
+            }
+        }
+
+        // menampilkan seluruh data task dari suatu account yang di sorting prioritas
+        public static void PrintAllTaskSortedPrioritas(Account account)
+        {
+            List<Task> sortedList = SortPrioritasTask(account.listTask);
+            int i = 1;
+            foreach (var task in sortedList)
+            {
+                Console.WriteLine("==--==--==--==--==--==--==");
+                Console.WriteLine("         Task " + i);
+                Console.WriteLine("Judul            : " + task.judul);
+                Console.WriteLine("Deskripsi        : " + task.deskripsi);
+                Console.WriteLine("Tanggal Mulai    : " + task.tanggalMulai);
+                Console.WriteLine("Tanggal Selesai  : " + task.tanggalSelesai);
+                Console.WriteLine("Jenis Tugas      : " + task.jenisTugas);
+                Console.WriteLine("Prioritas        : " + task.namaPrioritas);
+                Console.WriteLine("Status           : " + task.taskState);
+                i++;
+            }
+        }
+
+        // menampilkan seluruh data task dari suatu account yang di sorting state
+        public static void PrintAllTaskSortedState(Account account)
+        {
+            List<Task> sortedList = SortStateTask(account.listTask);
+            int i = 1;
+            foreach (var task in sortedList)
+            {
+                Console.WriteLine("==--==--==--==--==--==--==");
+                Console.WriteLine("         Task " + i);
+                Console.WriteLine("Judul            : " + task.judul);
+                Console.WriteLine("Deskripsi        : " + task.deskripsi);
+                Console.WriteLine("Tanggal Mulai    : " + task.tanggalMulai);
+                Console.WriteLine("Tanggal Selesai  : " + task.tanggalSelesai);
+                Console.WriteLine("Jenis Tugas      : " + task.jenisTugas);
+                Console.WriteLine("Prioritas        : " + task.namaPrioritas);
+                Console.WriteLine("Status           : " + task.taskState);
+                i++;
+            }
+        }
 
         // function yang akan return suatu list task yang telah terurut berdasarkan judulnya
         public static List<Task> SortJudulTask(List<Task> listTasks)
@@ -275,7 +372,7 @@ namespace CRUDTaskLibrary
         }
 
         // function yang akan return suatu list task yang telah terurut berdasarkan Tanggal selesai nya
-        public static List<Task> SortTanggalTanggalSelesaiTask(List<Task> listTasks)
+        public static List<Task> SortTanggalSelesaiTask(List<Task> listTasks)
         {
             List<Task> sortedListTask = listTasks;
             CollectionTools.Sorting(sortedListTask, Task => Task.tanggalSelesai);
@@ -315,32 +412,31 @@ namespace CRUDTaskLibrary
             TaskValidator validator = new TaskValidator();
             ValidationResult validationResult;
             Task tempTask = task;
-
+           
             do
             {
-                do
+                Console.Write("Masukkan Judul Baru: ");
+                tempTask.judul = Console.ReadLine();
+                validationResult = validator.Validate(tempTask, ruleSet: "Judul");
+
+                if (!validationResult.IsValid)
                 {
-                    Console.Write("Masukkan Judul Baru: ");
-                    tempTask.judul = Console.ReadLine();
-                    validationResult = validator.Validate(tempTask, ruleSet: "Judul");
-
-                    if (!validationResult.IsValid)
+                    foreach (var error in validationResult.Errors)
                     {
-                        foreach (var error in validationResult.Errors)
-                        {
-                            Console.WriteLine(error.ErrorMessage);
-                        }
+                        Console.WriteLine(error.ErrorMessage);
                     }
+                }
+                Console.WriteLine(tempTask.judul);
+                bool tes = FindTask(account, tempTask.judul).Equals(null);
+                Console.WriteLine(tes);
 
-                } while (FindTask(account, tempTask.judul) != null);
-
-            } while (!validationResult.IsValid);
+            } while (!validationResult.IsValid && !FindTask(account, tempTask.judul).Equals(null));
 
             task.judul = tempTask.judul;
         }
 
         // memperbarui attribute deskripsi dari object task
-        public static void UpdateDeskripsiTask(Account account, Task task)
+        public static void UpdateDeskripsiTask(Task task)
         {
             TaskValidator validator = new TaskValidator();
             ValidationResult validationResult;
@@ -548,7 +644,7 @@ namespace CRUDTaskLibrary
             Console.WriteLine("2. In Progress");
             Console.WriteLine("3. Post Pone");
             Console.WriteLine("Jika batal, maka pilih 4");
-            Console.WriteLine("Pilih Update status: ");
+            Console.Write("Pilih Update status: ");
             int pilihan = int.Parse(Console.ReadLine());
             switch (pilihan)
             {

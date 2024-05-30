@@ -36,6 +36,7 @@ namespace Tools
                         var temp = list[j];
                         list[j] = list[j + 1];
                         list[j + 1] = temp;
+
                     }
                 }
             }
