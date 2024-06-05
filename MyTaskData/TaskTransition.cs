@@ -24,9 +24,11 @@ namespace MyTaskData
         private static TaskTransition[] transitions =
         {
             new TaskTransition(TaskState.ToDo, TaskState.InProgress, TriggerTaskState.Mengerjakan),
+            new TaskTransition(TaskState.ToDo, TaskState.Done, TriggerTaskState.Menyelesaikan),
+            new TaskTransition(TaskState.ToDo, TaskState.PostPone, TriggerTaskState.Menunda),
             new TaskTransition(TaskState.InProgress, TaskState.PostPone, TriggerTaskState.Menunda),
+            new TaskTransition(TaskState.InProgress, TaskState.Done, TriggerTaskState.Menyelesaikan),
             new TaskTransition(TaskState.PostPone, TaskState.InProgress, TriggerTaskState.Mengerjakan),
-            new TaskTransition(TaskState.InProgress, TaskState.Done, TriggerTaskState.Menyelesaikan)
         };
 
         public static TaskState getNextState(TaskState prevState, TriggerTaskState trigger)
