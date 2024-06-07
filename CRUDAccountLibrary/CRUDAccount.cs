@@ -2,14 +2,22 @@ using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text.Json;
-using System.Text;
-using System.Threading.Tasks;
 using MyTaskData;
 
 namespace CRUDAccountLibrary
 {
+    // Kelas Account yang digunakan untuk serialize/deserialize data JSON
+    public class Account
+    {
+        public string userName { get; set; }
+        public string nama { get; set; }
+        public string email { get; set; }
+        public string password { get; set; }
+        public CRUDAccount.AccountState state { get; set; }
+        public List<MyTaskData.Task> listTask { get; set; }
+    }
+
     public static class CRUDAccount
     {
         private static string accountDirectory = @"C:\Users\user1\source\repos\My-Task-2.0\CRUDAccountLibrary";
@@ -20,6 +28,12 @@ namespace CRUDAccountLibrary
             {
                 Directory.CreateDirectory(accountDirectory);
             }
+        }
+
+        public enum AccountState
+        {
+            SignedOut,
+            SignedIn
         }
 
         // Mencari file json dengan parameter input username, kemudian return object account yang tersimpan di json tersebut
