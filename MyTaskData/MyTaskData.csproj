@@ -63,6 +63,7 @@
     <Compile Include="TaskValidator.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="MyTaskDataPath.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
