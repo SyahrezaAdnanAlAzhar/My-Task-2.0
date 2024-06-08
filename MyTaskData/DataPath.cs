@@ -6,6 +6,15 @@ using Newtonsoft.Json;
 // penamaan MyTaskDataPath.json
 // berguna untuk menyimpan semua nama file json account
 
+// contoh jsonnya
+//{
+//    "Paths": [
+//        "path1",
+//        "path2",
+//        "path3"
+//    ]
+//}
+
 namespace MyTaskData
 {
     public class DataPath
