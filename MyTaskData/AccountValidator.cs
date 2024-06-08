@@ -42,6 +42,11 @@ namespace MyTaskData
             });
         }
 
+        public ValidationResult Validate(Account newAccount)
+        {
+            return base.Validate(new ValidationContext<Account>(newAccount));
+        }
+
         public ValidationResult Validate(Account newAccount, string ruleSet)
         {
             return base.Validate(new ValidationContext<Account>(newAccount, null, new FluentValidation.Internal.RulesetValidatorSelector(ruleSet.Split(','))));

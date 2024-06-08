@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentValidation;
 using FluentValidation.Results;
+using Task = MyTaskData.Task;
 
 namespace MyTaskData
 {
@@ -38,6 +39,11 @@ namespace MyTaskData
             {
                 RuleFor(x => x.namaPrioritas).IsInEnum().WithMessage("Invalid Urutan Prioritas.");
             });
+        }
+
+        public ValidationResult Validate(Task newTask)
+        {
+            return base.Validate(new ValidationContext<Task>(newTask));
         }
 
         public ValidationResult Validate(Task newTask, string ruleSet)

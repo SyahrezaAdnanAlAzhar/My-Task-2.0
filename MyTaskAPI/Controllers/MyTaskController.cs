@@ -84,6 +84,24 @@ namespace MyTaskAPI.Controllers
         [Route("Account/SignUp")]
         public ActionResult SignUpAccount(Account account)
         {
+            AccountValidator validator = new AccountValidator();
+            ValidationResult validationResult = validator.Validate(account);
+
+            if (!validationResult.IsValid)
+            {
+                return BadRequest("Data Account yang dimasukkan tidak valid");
+            }
+
+            _listAccount.Add(account);
+            String jsonPath = $"AccountMyTask_<username>.json";
+
+            listAccount.Add(accountInput);
+
+            string jsonContent = JsonConvert.SerializeObject(listAccount, Formatting.Indented);
+            System.IO.File.WriteAllText("Account.json", jsonContent);
+
+            return Ok($"Account dengan username {accountInput.userName} telah ditambahkan");
+
             return null;
         }
 
