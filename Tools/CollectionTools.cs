@@ -44,25 +44,80 @@ namespace Tools
         // menambahkan item pada index ter belakang
         public static void Append<T>(IEnumerable<T> collection, T item)
         {
-
+            {
+                if (collection is IList<T> list)
+                {
+                    list.Add(item);
+                }
+                else if (collection is ICollection<T> col)
+                {
+                    col.Add(item);
+                }
+                else
+                {
+                    throw new NotSupportedException("The collection type is not supported.");
+                }
+            }
         }
-
         // menambahkan item pada index tertentu
         public static void Insert<T>(IEnumerable<T> collection, T item, int index = 0)
         {
+            if (collection == null)
+            {
+                throw new ArgumentNullException(nameof(collection));
+            }
 
+            List<T> list = new List<T>(collection);
+
+            if (index < 0 || index > list.Count)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
+            }
+
+            list.Insert(index, item);
+            Console.WriteLine("List after insertion:");
+            foreach (var element in list)
+            {
+                Console.WriteLine(element);
+            }
         }
 
         // menghapus element terakhir
         public static void Pop<T>(IEnumerable<T> collection)
         {
+             if (collection == null)
+             {
+                 throw new ArgumentNullException(nameof(collection));
+             }
 
+             List<T> list = new List<T>(collection);
+
+             if (list.Count == 0)
+             {
+                 throw new InvalidOperationException("Cannot pop from an empty collection.");
+             }
+
+             list.RemoveAt(list.Count - 1);
+            Console.WriteLine("List after pop:");
+            foreach (var element in list)
+            {
+                Console.WriteLine(element);
+            }
         }
 
         // menghapus suatu element
         public static void Remove<T>(IEnumerable<T> collection, T item)
         {
+             var numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
+             for (int i = 0; i < numbers.Count; i++)
+             {
+                 if (numbers[i] == 10)
+                 {
+                     numbers.RemoveAt(i);
+                     break;
+                 }
+             }
         }
 
         // mencari suatu element berdasarkan suatu attribute nya
