@@ -206,7 +206,7 @@ namespace CRUDTaskLibrary
             TaskValidator validator = new TaskValidator();
             Task newTask = GetInputTaskData(validator, account);
 
-            while (!FindTask(account, newTask.judul).Equals(null))
+            while (FindTask(account, newTask.judul) != null)
             {
                 UpdateJudulTask(account, newTask);
             }
@@ -669,7 +669,16 @@ namespace CRUDTaskLibrary
         public static void DeleteTask(Account account, Task task)
         {
             // melakukan penghapusan Task dari listTask attribute account menggunakan method Remove dari generic
-            CollectionTools.Remove(account.listTask, task);
+            // Memeriksa apakah task yang akan dihapus ada di dalam listTask
+            if (account.listTask.Contains(task))
+            {
+                // Menghapus task dari listTask
+                account.listTask.Remove(task);
+            }
+            else
+            {
+                Console.WriteLine("Task tidak ditemukan di dalam daftar tugas.");
+            }
         }
     }
 }
