@@ -45,19 +45,17 @@ namespace Tools
         // menambahkan item pada index ter belakang
         public static void Append<T>(IEnumerable<T> collection, T item)
         {
+            if (collection is IList<T> list)
             {
-                if (collection is IList<T> list)
-                {
-                    list.Add(item);
-                }
-                else if (collection is ICollection<T> col)
-                {
-                    col.Add(item);
-                }
-                else
-                {
-                    throw new NotSupportedException("The collection type is not supported.");
-                }
+                list.Add(item);
+            }
+            else if (collection is ICollection<T> col)
+            {
+                col.Add(item);
+            }
+            else
+            {
+                throw new NotSupportedException("The collection type is not supported.");
             }
         }
         // menambahkan item pada index tertentu
@@ -109,7 +107,13 @@ namespace Tools
         // menghapus suatu element
         public static void Remove<T>(IEnumerable<T> collection, T item)
         {
-             var numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            var list = collection.ToList();
+            if (list.Contains(item))
+            {
+                list.Remove(item);
+            }
+            collection = list;
+            /* var numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
              for (int i = 0; i < numbers.Count; i++)
              {
@@ -118,7 +122,7 @@ namespace Tools
                      numbers.RemoveAt(i);
                      break;
                  }
-             }
+             }*/
         }
 
         // mencari suatu element berdasarkan suatu attribute nya

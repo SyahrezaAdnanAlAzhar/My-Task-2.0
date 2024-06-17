@@ -49,24 +49,32 @@ public class Program
 
         CRUDTask.PrintAllTask(account);
 
-        CRUDTask.UpdateJudulTask(account, task3);
+        CRUDTask.DeleteTask(account, task2);
 
         CRUDTask.PrintAllTask(account);
 
-      /*  CRUDTask.UpdateDeskripsiTask(task1);
+        /* CRUDTask.UpdateJudulTask(account, task3);
 
-        CRUDTask.UpdateTanggalMulaiTask(task1);
+         CRUDTask.PrintAllTask(account);*/
 
-        CRUDTask.UpdateTanggalSelesaiTask(task1);
+        /*  CRUDTask.UpdateDeskripsiTask(task1);
 
-        CRUDTask.UpdateJenisTugasTask(task1);
+          CRUDTask.UpdateTanggalMulaiTask(task1);
 
-        CRUDTask.UpdatePrioritasTask(task1);
+          CRUDTask.UpdateTanggalSelesaiTask(task1);
 
-        CRUDTask.UpdateStateTask(task1);*/
+          CRUDTask.UpdateJenisTugasTask(task1);
 
-       /* Task testing = CRUDTask.FindTask(account, task1.judul);
+          CRUDTask.UpdatePrioritasTask(task1);
 
+          CRUDTask.UpdateStateTask(task1);*/
+
+        /*Task testing = CRUDTask.FindTask(account, "bala");
+        if (testing.Equals(null))
+        {
+            Console.WriteLine("\nnull");
+        }*/
+        /*Console.WriteLine("======================");
         Console.WriteLine(testing.judul);
         Console.WriteLine(testing.deskripsi);
         Console.WriteLine(testing.tanggalMulai);
@@ -74,9 +82,9 @@ public class Program
         Console.WriteLine(testing.jenisTugas);
         Console.WriteLine(testing.namaPrioritas);*/
 
-       /* CRUDTask.CreateTask(account);
-        
-        TaskValidator validator = new TaskValidator();
+        /*CRUDTask.CreateTask(account);*/
+
+        /*TaskValidator validator = new TaskValidator();
         Task testing = CRUDTask.GetInputTaskData(validator, account);
         account.listTask.Add(testing);
         testing = CRUDTask.GetInputTaskData(validator, account);
@@ -89,8 +97,8 @@ public class Program
 
         Console.WriteLine("         UPDATED");
 
-        CRUDTask.UpdateJudulTask(account, testing);
-
+        CRUDTask.UpdateJudulTask(account, testing);*/
+        /*CRUDTask.CreateTask(account);
         CRUDTask.PrintAllTask(account);*/
     }
 }
