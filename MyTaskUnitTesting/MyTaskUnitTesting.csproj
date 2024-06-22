@@ -121,7 +121,26 @@
     <Compile Include="TestingCRUDTask.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CRUDAccountLibrary\CRUDAccountLibrary.csproj">
+      <Project>{d9ee9088-96c2-4d99-9b66-e46a089173c7}</Project>
+      <Name>CRUDAccountLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CRUDTaskLibrary\CRUDTaskLibrary.csproj">
+      <Project>{cbf018f2-15d1-4e40-bd39-313d323ec2b9}</Project>
+      <Name>CRUDTaskLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyTaskData\MyTaskData.csproj">
+      <Project>{f0500f8a-9f03-49bc-8683-d961594ec8b8}</Project>
+      <Name>MyTaskData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\Tools.csproj">
+      <Project>{2af79e66-82ee-4938-b4ba-0d5eefcbd31d}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

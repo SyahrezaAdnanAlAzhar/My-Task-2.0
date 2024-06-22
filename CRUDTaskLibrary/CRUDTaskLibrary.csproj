@@ -57,6 +57,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CRUDAccountLibrary\CRUDAccountLibrary.csproj">
+      <Project>{d9ee9088-96c2-4d99-9b66-e46a089173c7}</Project>
+      <Name>CRUDAccountLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MyTaskData\MyTaskData.csproj">
       <Project>{f0500f8a-9f03-49bc-8683-d961594ec8b8}</Project>
       <Name>MyTaskData</Name>

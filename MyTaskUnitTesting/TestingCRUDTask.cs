@@ -1,106 +1,82 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using CRUDTaskLibrary;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MyTaskData;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MyTaskUnitTesting
 {
-    internal class TestingCRUDTask
+    [TestClass()]
+    public class TestingCRUDTask
     {
+        [TestMethod]
+        public void TestGetInputTaskData_ValidInput()
+        {
+            var validator = new TaskValidator();
+            var account = new Account(); 
+
+            string[] inputLines = {
+                "Judul Task",
+                "Deskripsi Task",
+                "2024-06-20",
+                "2024-06-22",
+                "1", 
+                "1"  
+            };
+
+            using (var sw = new StringWriter())
+            {
+                using (var sr = new StringReader(string.Join(Environment.NewLine, inputLines)))
+                {
+                    Console.SetOut(sw);
+                    Console.SetIn(sr);
+
+                    // Act
+                    MyTaskData.Task result = CRUDTask.GetInputTaskData(validator, account);
+
+                    // Assert
+                    Assert.IsNotNull(result);
+                    Assert.AreEqual("Judul Task", result.judul);
+                    Assert.AreEqual("Deskripsi Task", result.deskripsi);
+                    Assert.AreEqual(new DateTime(2024, 06, 20), result.tanggalMulai);
+                    Assert.AreEqual(new DateTime(2024, 06, 22), result.tanggalSelesai);
+                    Assert.AreEqual(MyTaskData.Task.JenisTugas.Video, result.jenisTugas);
+                    Assert.AreEqual(MyTaskData.Task.Prioritas.Highest, result.namaPrioritas);
+                }
+            }
+        }
+
+        [TestMethod]
+        public void TestGetInputTaskData_InvalidInput()
+        {
+            var validator = new TaskValidator(); 
+            var account = new Account(); 
+
+            string[] inputLines = {
+                "Judul Task",
+                "", // Deskripsi kosong
+                "2024-06-20",
+                "2024-06-22",
+                "10", // Pilihan Jenis Tugas di luar range
+                "1"   // Pilih Highest
+            };
+
+            using (var sw = new StringWriter())
+            {
+                using (var sr = new StringReader(string.Join(Environment.NewLine, inputLines)))
+                {
+                    Console.SetOut(sw);
+                    Console.SetIn(sr);
+
+                    // Act & Assert
+                    Assert.ThrowsException<FormatException>(() => CRUDTask.GetInputTaskData(validator, account));
+                }
+            }
+        }
     }
-    /*[TestClass()]
-    public class CRUDTaskTests
-    {
-        [TestMethod()]
-        public void updatePrioritasTest_judul()
-        {
-
-            try
-            {
-                CRUDTask.updatePrioritas(null, 5, "Bagas");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Ada Null Judul");
-            }
-        }
-
-        [TestMethod()]
-        public void updatePrioritasTest_username()
-        {
-            try
-            {
-                CRUDTask.updatePrioritas("Tubes", 5, null);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Ada Null Username");
-            }
-        }
-        [TestMethod()]
-        public void updatePrioritasTest_prioritas1()
-        {
-            try
-            {
-                CRUDTask.updatePrioritas("Tubes", 0, "Bagas");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Angka < 0");
-            }
-        }
-        [TestMethod()]
-        public void updatePrioritasTest_prioritas2()
-        {
-            try
-            {
-                CRUDTask.updatePrioritas("Tubes", 6, "Bagas");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Angka < 0");
-            }
-        }
-
-        [TestMethod()]
-        public void updateJenisTugasTest_judul()
-        {
-            try
-            {
-                CRUDTask.updateJenisTugas(null, 3, "Reza");
-            }
-            catch
-            {
-                Console.WriteLine("Judul tidak boleh null");
-            }
-        }
-
-        [TestMethod()]
-        public void updateJenisTugasTest_username()
-        {
-            try
-            {
-                CRUDTask.updateJenisTugas("KPL", 2, null);
-            }
-            catch
-            {
-                Console.WriteLine("Username tidak boleh null");
-            }
-        }
-
-        [TestMethod()]
-        public void updateJenisTugasTest_jenisTugas()
-        {
-            try
-            {
-                CRUDTask.updateJenisTugas("KPL", 20, "Reza");
-            }
-            catch
-            {
-                Console.WriteLine("No urut jenis tugas harus kurang dari 10");
-            }
-        }
-    }*/
+    
 }

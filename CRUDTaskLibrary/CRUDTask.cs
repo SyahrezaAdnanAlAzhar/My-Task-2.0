@@ -9,6 +9,7 @@ using FluentValidation;
 using FluentValidation.Results;
 using ValidationResult = FluentValidation.Results.ValidationResult;
 using Tools;
+using CRUDAccountLibrary;
 using System.Security.Principal;
 
 namespace CRUDTaskLibrary
@@ -53,7 +54,7 @@ namespace CRUDTaskLibrary
                             Console.WriteLine(error.ErrorMessage);
                         }
                     }
-                } while (!validationResult.IsValid && !FindTask(account, newTask.judul).Equals(null));
+                } while (!validationResult.IsValid || FindTask(account, newTask.judul) != null);
 
                 do
                 {
@@ -206,13 +207,14 @@ namespace CRUDTaskLibrary
             TaskValidator validator = new TaskValidator();
             Task newTask = GetInputTaskData(validator, account);
 
-            while (!FindTask(account, newTask.judul).Equals(null))
+            while (FindTask(account, newTask.judul) != null)
             {
                 UpdateJudulTask(account, newTask);
             }
 
             // tambahkan task terbaru menggunakan method generic tools yang append pada listTask di object account
             CollectionTools.Append(account.listTask, newTask);
+            CRUDAccount.ReWriteUpdatedFile(account);
         }
 
         // menampilkan seluruh data task dari suatu account
@@ -358,7 +360,7 @@ namespace CRUDTaskLibrary
         public static List<Task> SortJudulTask(List<Task> listTasks)
         {
             // jadi function ini tidak akan mengupdate data dari object account hanya akan mengembalikan duplikasi listTask yang sudah terurut
-            List<Task> sortedListTask = listTasks;
+            List<Task> sortedListTask = listTasks.ToList();
             CollectionTools.Sorting(sortedListTask, Task => Task.judul);
             return sortedListTask;
         }
@@ -366,7 +368,7 @@ namespace CRUDTaskLibrary
         // function yang akan return suatu list task yang telah terurut berdasarkan Tanggal mulai nya
         public static List<Task> SortTanggalMulaiTask(List<Task> listTasks)
         {
-            List<Task> sortedListTask = listTasks;
+            List<Task> sortedListTask = listTasks.ToList();
             CollectionTools.Sorting(sortedListTask, Task => Task.tanggalMulai);
             return sortedListTask;
         }
@@ -374,7 +376,7 @@ namespace CRUDTaskLibrary
         // function yang akan return suatu list task yang telah terurut berdasarkan Tanggal selesai nya
         public static List<Task> SortTanggalSelesaiTask(List<Task> listTasks)
         {
-            List<Task> sortedListTask = listTasks;
+            List<Task> sortedListTask = listTasks.ToList();
             CollectionTools.Sorting(sortedListTask, Task => Task.tanggalSelesai);
             return sortedListTask;
         }
@@ -382,7 +384,7 @@ namespace CRUDTaskLibrary
         // function yang akan return suatu list task yang telah terurut berdasarkan jenis tugas nya
         public static List<Task> SortJenisTugasTask(List<Task> listTasks)
         {
-            List<Task> sortedListTask = listTasks;
+            List<Task> sortedListTask = listTasks.ToList();
             CollectionTools.Sorting(sortedListTask, Task => Task.jenisTugas);
             return sortedListTask;
         }
@@ -390,7 +392,7 @@ namespace CRUDTaskLibrary
         // function yang akan return suatu list task yang telah terurut berdasarkan prioritas nya
         public static List<Task> SortPrioritasTask(List<Task> listTasks)
         {
-            List<Task> sortedListTask = listTasks;
+            List<Task> sortedListTask = listTasks.ToList();
             CollectionTools.Sorting(sortedListTask, Task => Task.namaPrioritas);
             return sortedListTask;
         }
@@ -398,7 +400,7 @@ namespace CRUDTaskLibrary
         // function yang akan return suatu list task yang telah terurut berdasarkan statse nya
         public static List<Task> SortStateTask(List<Task> listTasks)
         {
-            List<Task> sortedListTask = listTasks;
+            List<Task> sortedListTask = listTasks.ToList();
             CollectionTools.Sorting(sortedListTask, Task => Task.taskState);
             return sortedListTask;
         }
@@ -426,17 +428,15 @@ namespace CRUDTaskLibrary
                         Console.WriteLine(error.ErrorMessage);
                     }
                 }
-                Console.WriteLine(tempTask.judul);
-                bool tes = FindTask(account, tempTask.judul).Equals(null);
-                Console.WriteLine(tes);
 
-            } while (!validationResult.IsValid && !FindTask(account, tempTask.judul).Equals(null));
+            } while (!validationResult.IsValid || !FindTask(account, tempTask.judul).Equals(null));
 
             task.judul = tempTask.judul;
+            CRUDAccount.ReWriteUpdatedFile(account);
         }
 
         // memperbarui attribute deskripsi dari object task
-        public static void UpdateDeskripsiTask(Task task)
+        public static void UpdateDeskripsiTask(Account account, Task task)
         {
             TaskValidator validator = new TaskValidator();
             ValidationResult validationResult;
@@ -459,10 +459,11 @@ namespace CRUDTaskLibrary
             } while (!validationResult.IsValid);
 
             task.deskripsi = tempTask.deskripsi;
+            CRUDAccount.ReWriteUpdatedFile(account);
         }
 
         // memperbarui attribute tanggal mulai dari object task
-        public static void UpdateTanggalMulaiTask(Task task)
+        public static void UpdateTanggalMulaiTask(Account account, Task task)
         {
             TaskValidator validator = new TaskValidator();
             ValidationResult validationResult;
@@ -485,10 +486,11 @@ namespace CRUDTaskLibrary
             } while (!validationResult.IsValid);
 
             task.tanggalMulai = tempTask.tanggalMulai;
+            CRUDAccount.ReWriteUpdatedFile(account);
         }
 
         // memperbarui attribute tanggal selesai dari object task
-        public static void UpdateTanggalSelesaiTask(Task task)
+        public static void UpdateTanggalSelesaiTask(Account account, Task task)
         {
             TaskValidator validator = new TaskValidator();
             ValidationResult validationResult;
@@ -511,10 +513,11 @@ namespace CRUDTaskLibrary
             } while (!validationResult.IsValid);
 
             task.tanggalSelesai= tempTask.tanggalSelesai;
+            CRUDAccount.ReWriteUpdatedFile(account);
         }
 
         // memperbarui attribute JenisTugas dari object task
-        public static void UpdateJenisTugasTask(Task task)
+        public static void UpdateJenisTugasTask(Account account, Task task)
         {
             TaskValidator validator = new TaskValidator();
             ValidationResult validationResult;
@@ -581,10 +584,11 @@ namespace CRUDTaskLibrary
 
             } while (!validationResult.IsValid);
 
+            CRUDAccount.ReWriteUpdatedFile(account);
         }
 
         // memperbarui attribute prioritas dari object task
-        public static void UpdatePrioritasTask(Task task)
+        public static void UpdatePrioritasTask(Account account, Task task)
         {
             TaskValidator validator = new TaskValidator();
             ValidationResult validationResult;
@@ -633,10 +637,13 @@ namespace CRUDTaskLibrary
                 }
 
             } while (!validationResult.IsValid);
+
+            CRUDAccount.ReWriteUpdatedFile(account);
+
         }
 
         // memperbarui attribute state dari object task
-        public static void UpdateStateTask(Task task)
+        public static void UpdateStateTask(Account account, Task task)
         {
             // gunakan UpdateState dari object Task
             Console.WriteLine("Status Task: " + task.taskState);
@@ -664,12 +671,23 @@ namespace CRUDTaskLibrary
                     Console.WriteLine("Harus diantara 1-4");
                     break;
             }
+
+            CRUDAccount.ReWriteUpdatedFile(account);
         }
 
         public static void DeleteTask(Account account, Task task)
         {
             // melakukan penghapusan Task dari listTask attribute account menggunakan method Remove dari generic
-            CollectionTools.Remove(account.listTask, task);
+            // Memeriksa apakah task yang akan dihapus ada di dalam listTask
+            if (account.listTask.Contains(task))
+            {
+                // Menghapus task dari listTask
+                account.listTask.Remove(task);
+            }
+            else
+            {
+                Console.WriteLine("Task tidak ditemukan di dalam daftar tugas.");
+            }
         }
     }
 }
