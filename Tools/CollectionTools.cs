@@ -15,7 +15,7 @@ namespace Tools
         }
 
         // melakukan sorting dari suatu collection berdasarkan nilai attribute dari suatu object yang tersimpan di setiap elementnya
-        public static void Sorting<T, TKey>(IEnumerable<T> collection, Func<T, TKey> keySelector, bool ascending = true)
+        public static void Sorting<T, TKey>(IEnumerable<T> collection, Func<T, TKey> keySelector, bool ascending = true )
         {
             var list = collection.ToList();
             for (int i = 0; i < list.Count - 1; i++)
@@ -39,6 +39,12 @@ namespace Tools
 
                     }
                 }
+            }
+            int index = 0;
+            foreach (var item in list)
+            {
+                (collection as List<T>)[index] = item;
+                index++;
             }
         }
 

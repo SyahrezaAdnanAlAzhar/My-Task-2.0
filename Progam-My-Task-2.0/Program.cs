@@ -5,13 +5,18 @@ using CRUDTaskLibrary;
 using CRUDAccountLibrary;
 using Microsoft.VisualBasic;
 using Tools;
+using Progam_My_Task_2._0;
 
 public class Program
 {
     public static void Main(string[] args)
     {
+        //Buat ngetes Account CRUD
+        //CRUDAccount.SignUpAccount();
+        //CRUDAccount.SignInAccount();
+        Menu.MenuMasuk();
         //Buat ngetes TASK CRUD
-        Account account = new Account();
+        /*Account account = new Account();
         Task task1 = new Task();
         Task task2 = new Task();
         Task task3 = new Task();
@@ -48,26 +53,31 @@ public class Program
         account.listTask.Add(task3);
 
         CRUDTask.PrintAllTask(account);
+        CRUDTask.PrintAllTaskSortedJudul(account);*/
+
+        /*CRUDTask.PrintAllTask(account);
+
+        CRUDTask.UpdateStateTask(task1);
 
         CRUDTask.DeleteTask(account, task2);
 
         CRUDTask.PrintAllTask(account);
 
-        /* CRUDTask.UpdateJudulTask(account, task3);
+        CRUDTask.UpdateJudulTask(account, task3);
 
-         CRUDTask.PrintAllTask(account);*/
+        CRUDTask.PrintAllTask(account);
 
-        /*  CRUDTask.UpdateDeskripsiTask(task1);
+        CRUDTask.UpdateDeskripsiTask(task1);
 
-          CRUDTask.UpdateTanggalMulaiTask(task1);
+        CRUDTask.UpdateTanggalMulaiTask(task1);
 
-          CRUDTask.UpdateTanggalSelesaiTask(task1);
+        CRUDTask.UpdateTanggalSelesaiTask(task1);
 
-          CRUDTask.UpdateJenisTugasTask(task1);
+        CRUDTask.UpdateJenisTugasTask(task1);
 
-          CRUDTask.UpdatePrioritasTask(task1);
+        CRUDTask.UpdatePrioritasTask(task1);
 
-          CRUDTask.UpdateStateTask(task1);*/
+        CRUDTask.UpdateStateTask(task1);*/
 
         /*Task testing = CRUDTask.FindTask(account, "bala");
         if (testing.Equals(null))

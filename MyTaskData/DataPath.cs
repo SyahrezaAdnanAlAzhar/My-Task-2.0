@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 // contoh jsonnya
 //{
 //    "Paths": [
-//        "path1",
+//        "AccountMyTask_reza29.json",
 //        "path2",
 //        "path3"
 //    ]
@@ -17,6 +17,7 @@ using Newtonsoft.Json;
 
 namespace MyTaskData
 {
+    //muncul pas mau create account baru
     public class DataPath
     {
         public List<string> Paths { get; set; }
