@@ -16,5 +16,25 @@ namespace MyTaskGUI
         {
             InitializeComponent();
         }
+
+        private void panelSideBar_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtInputJudul_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateStartInput_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtInputDeskripsi_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
