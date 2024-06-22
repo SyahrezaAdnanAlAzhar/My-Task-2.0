@@ -247,6 +247,127 @@ namespace MyTaskAPI.Controllers
             return Ok($"Account dengan username {username} telah terhapus filenya dan pada data MyTask");
         }
 
+        [HttpGet]
+        [Route("Task/ShowAllTask")]
+        public ActionResult<List<Task>> GetAllTasks()
+        {
+            if (ActivedAccount == null)
+            {
+                return BadRequest("Tidak ada akun yang aktif. Silakan sign in terlebih dahulu.");
+            }
+
+            if (ActivedAccount.listTask == null || !ActivedAccount.listTask.Any())
+            {
+                return NotFound("Tidak ada task yang tersedia.");
+            }
+
+            return Ok(ActivedAccount.listTask);
+        }
+
+        [HttpPost]
+        [Route("Task/Create")]
+        public ActionResult CreateTask([FromBody] Task task)
+        {
+            if (ActivedAccount == null)
+            {
+                return BadRequest("Tidak ada akun yang aktif. Silakan sign in terlebih dahulu.");
+            }
+
+            TaskValidator validator = new TaskValidator();
+            ValidationResult validationResult = validator.Validate(task);
+
+            if (!validationResult.IsValid)
+            {
+                return BadRequest("Data Task yang dimasukkan tidak valid.");
+            }
+
+            ActivedAccount.listTask.Add(task);
+
+            // Update file JSON
+            string jsonPath = $"AccountMyTask_{ActivedAccount.userName}.json";
+            string jsonContent = JsonConvert.SerializeObject(ActivedAccount, Formatting.Indented);
+            System.IO.File.WriteAllText(jsonPath, jsonContent);
+
+            return Ok($"Task dengan judul {task.judul} telah berhasil ditambahkan.");
+        }
+
+        [HttpPut]
+        [Route("Task/Update")]
+        public ActionResult UpdateTask([FromBody] Task updatedTask)
+        {
+            if (ActivedAccount == null)
+            {
+                return BadRequest("Tidak ada akun yang aktif. Silakan sign in terlebih dahulu.");
+            }
+
+            var taskIndex = ActivedAccount.listTask.FindIndex(t => t.judul == updatedTask.judul);
+            if (taskIndex == -1)
+            {
+                return NotFound("Task tidak ditemukan.");
+            }
+
+            ActivedAccount.listTask[taskIndex] = updatedTask;
+
+            // Update file JSON
+            string jsonPath = $"AccountMyTask_{ActivedAccount.userName}.json";
+            string jsonContent = JsonConvert.SerializeObject(ActivedAccount, Formatting.Indented);
+            System.IO.File.WriteAllText(jsonPath, jsonContent);
+
+            return Ok($"Task dengan judul {updatedTask.judul} telah berhasil diupdate.");
+        }
+
+        [HttpDelete]
+        [Route("Task/Delete")]
+        public ActionResult DeleteTask(string judulTask)
+        {
+            if (ActivedAccount == null)
+            {
+                return BadRequest("Tidak ada akun yang aktif. Silakan sign in terlebih dahulu.");
+            }
+
+            var taskToDelete = ActivedAccount.listTask.FirstOrDefault(t => t.judul == judulTask);
+            if (taskToDelete == null)
+            {
+                return NotFound("Task tidak ditemukan.");
+            }
+
+            ActivedAccount.listTask.Remove(taskToDelete);
+
+            // Update file JSON
+            string jsonPath = $"AccountMyTask_{ActivedAccount.userName}.json";
+            string jsonContent = JsonConvert.SerializeObject(ActivedAccount, Formatting.Indented);
+            System.IO.File.WriteAllText(jsonPath, jsonContent);
+
+            return Ok($"Task dengan judul {judulTask} telah berhasil dihapus.");
+        }
+
+        [HttpPut]
+        [Route("Task/UpdateState")]
+        public ActionResult UpdateTaskState(string judulTask, TriggerTaskState trigger)
+        {
+            if (ActivedAccount == null)
+            {
+                return BadRequest("Tidak ada akun yang aktif. Silakan sign in terlebih dahulu.");
+            }
+
+            // Mencari task berdasarkan judul
+            var task = ActivedAccount.listTask.FirstOrDefault(t => t.judul == judulTask);
+            if (task == null)
+            {
+                return NotFound("Task tidak ditemukan.");
+            }
+
+            // Memperbarui state task menggunakan metode UpdateState yang ada di class Task
+            task.UpdateState(trigger);
+
+            // Update file JSON
+            string jsonPath = $"AccountMyTask_{ActivedAccount.userName}.json";
+            string jsonContent = JsonConvert.SerializeObject(ActivedAccount, Formatting.Indented);
+            System.IO.File.WriteAllText(jsonPath, jsonContent);
+
+            return Ok($"State task dengan judul '{judulTask}' telah berhasil diupdate menjadi {task.taskState}.");
+        }
 
     }
+
 }
