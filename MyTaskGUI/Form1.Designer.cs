@@ -50,6 +50,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtInputJudul = new System.Windows.Forms.TextBox();
             this.buttonAddTask = new System.Windows.Forms.Button();
+            this.buttonDeleteAccountMenu = new System.Windows.Forms.Button();
             this.panelSideBar.SuspendLayout();
             this.panelContent.SuspendLayout();
             this.SuspendLayout();
@@ -58,6 +59,7 @@
             // 
             this.panelSideBar.AutoScroll = true;
             this.panelSideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
+            this.panelSideBar.Controls.Add(this.buttonDeleteAccountMenu);
             this.panelSideBar.Controls.Add(this.btnSignOutMenu);
             this.panelSideBar.Controls.Add(this.btnUpProfileMenu);
             this.panelSideBar.Controls.Add(this.btnDelAccountMenu);
@@ -348,6 +350,23 @@
             this.buttonAddTask.Text = "Add Task";
             this.buttonAddTask.UseVisualStyleBackColor = false;
             // 
+            // buttonDeleteAccountMenu
+            // 
+            this.buttonDeleteAccountMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonDeleteAccountMenu.FlatAppearance.BorderSize = 0;
+            this.buttonDeleteAccountMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeleteAccountMenu.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDeleteAccountMenu.ForeColor = System.Drawing.Color.White;
+            this.buttonDeleteAccountMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDeleteAccountMenu.Location = new System.Drawing.Point(0, 296);
+            this.buttonDeleteAccountMenu.Name = "buttonDeleteAccountMenu";
+            this.buttonDeleteAccountMenu.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.buttonDeleteAccountMenu.Size = new System.Drawing.Size(191, 45);
+            this.buttonDeleteAccountMenu.TabIndex = 8;
+            this.buttonDeleteAccountMenu.Text = "Delete Account";
+            this.buttonDeleteAccountMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDeleteAccountMenu.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
@@ -391,6 +410,7 @@
         private System.Windows.Forms.ComboBox comboJenisTugasInput;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboPrioritasInput;
+        private System.Windows.Forms.Button buttonDeleteAccountMenu;
     }
 }
 

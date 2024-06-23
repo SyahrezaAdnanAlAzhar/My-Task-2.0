@@ -1,6 +1,6 @@
 ﻿namespace MyTaskGUI
 {
-    partial class Form3
+    partial class Form7
     {
         /// <summary>
         /// Required designer variable.
@@ -28,37 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panelSideBar = new System.Windows.Forms.Panel();
+            this.buttonDeleteAccountMenu = new System.Windows.Forms.Button();
             this.btnSignOutMenu = new System.Windows.Forms.Button();
             this.btnUpProfileMenu = new System.Windows.Forms.Button();
             this.btnDelAccountMenu = new System.Windows.Forms.Button();
             this.btnViewTaskMenu = new System.Windows.Forms.Button();
             this.btnAddTaskMenu = new System.Windows.Forms.Button();
             this.panelSideAtas = new System.Windows.Forms.Panel();
-            this.buttonDelete = new System.Windows.Forms.Button();
-            this.buttonUpdate = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonDelAcc = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.buttonDeleteAccountMenu = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
             this.panelSideBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(201)))), ((int)(((byte)(216)))));
-            this.panel1.Controls.Add(this.panelSideBar);
-            this.panel1.Controls.Add(this.buttonDelete);
-            this.panel1.Controls.Add(this.buttonUpdate);
-            this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1094, 612);
-            this.panel1.TabIndex = 0;
             // 
             // panelSideBar
             // 
@@ -75,7 +59,24 @@
             this.panelSideBar.Location = new System.Drawing.Point(0, 0);
             this.panelSideBar.Name = "panelSideBar";
             this.panelSideBar.Size = new System.Drawing.Size(191, 612);
-            this.panelSideBar.TabIndex = 22;
+            this.panelSideBar.TabIndex = 25;
+            // 
+            // buttonDeleteAccountMenu
+            // 
+            this.buttonDeleteAccountMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonDeleteAccountMenu.FlatAppearance.BorderSize = 0;
+            this.buttonDeleteAccountMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeleteAccountMenu.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDeleteAccountMenu.ForeColor = System.Drawing.Color.White;
+            this.buttonDeleteAccountMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDeleteAccountMenu.Location = new System.Drawing.Point(0, 296);
+            this.buttonDeleteAccountMenu.Name = "buttonDeleteAccountMenu";
+            this.buttonDeleteAccountMenu.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.buttonDeleteAccountMenu.Size = new System.Drawing.Size(191, 45);
+            this.buttonDeleteAccountMenu.TabIndex = 9;
+            this.buttonDeleteAccountMenu.Text = "Delete Account";
+            this.buttonDeleteAccountMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDeleteAccountMenu.UseVisualStyleBackColor = true;
             // 
             // btnSignOutMenu
             // 
@@ -169,102 +170,84 @@
             this.panelSideAtas.Size = new System.Drawing.Size(191, 71);
             this.panelSideAtas.TabIndex = 0;
             // 
-            // buttonDelete
+            // panel1
             // 
-            this.buttonDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.buttonDelete.FlatAppearance.BorderSize = 0;
-            this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDelete.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDelete.ForeColor = System.Drawing.Color.White;
-            this.buttonDelete.Location = new System.Drawing.Point(894, 145);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(121, 38);
-            this.buttonDelete.TabIndex = 21;
-            this.buttonDelete.Text = "Delete Task";
-            this.buttonDelete.UseVisualStyleBackColor = false;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(201)))), ((int)(((byte)(216)))));
+            this.panel1.Controls.Add(this.buttonDelAcc);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(191, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(903, 612);
+            this.panel1.TabIndex = 26;
             // 
-            // buttonUpdate
+            // buttonDelAcc
             // 
-            this.buttonUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.buttonUpdate.FlatAppearance.BorderSize = 0;
-            this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUpdate.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonUpdate.ForeColor = System.Drawing.Color.White;
-            this.buttonUpdate.Location = new System.Drawing.Point(894, 90);
-            this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(121, 38);
-            this.buttonUpdate.TabIndex = 20;
-            this.buttonUpdate.Text = "Update Task";
-            this.buttonUpdate.UseVisualStyleBackColor = false;
+            this.buttonDelAcc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
+            this.buttonDelAcc.FlatAppearance.BorderSize = 0;
+            this.buttonDelAcc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDelAcc.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDelAcc.ForeColor = System.Drawing.Color.White;
+            this.buttonDelAcc.Location = new System.Drawing.Point(50, 149);
+            this.buttonDelAcc.Name = "buttonDelAcc";
+            this.buttonDelAcc.Size = new System.Drawing.Size(187, 38);
+            this.buttonDelAcc.TabIndex = 35;
+            this.buttonDelAcc.Text = "Delete Account";
+            this.buttonDelAcc.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // label1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(236, 90);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(632, 448);
-            this.dataGridView1.TabIndex = 19;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
+            this.label1.Location = new System.Drawing.Point(46, 94);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(286, 22);
+            this.label1.TabIndex = 34;
+            this.label1.Text = "Menghapus Akun Anda Sekarang";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Montserrat Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.label2.Location = new System.Drawing.Point(231, 26);
+            this.label2.Location = new System.Drawing.Point(45, 28);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(142, 29);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "VIEW TASK";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.label2.Size = new System.Drawing.Size(219, 29);
+            this.label2.TabIndex = 33;
+            this.label2.Text = "DELETE ACCOUNT";
             // 
-            // buttonDeleteAccountMenu
-            // 
-            this.buttonDeleteAccountMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonDeleteAccountMenu.FlatAppearance.BorderSize = 0;
-            this.buttonDeleteAccountMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDeleteAccountMenu.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDeleteAccountMenu.ForeColor = System.Drawing.Color.White;
-            this.buttonDeleteAccountMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDeleteAccountMenu.Location = new System.Drawing.Point(0, 296);
-            this.buttonDeleteAccountMenu.Name = "buttonDeleteAccountMenu";
-            this.buttonDeleteAccountMenu.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonDeleteAccountMenu.Size = new System.Drawing.Size(191, 45);
-            this.buttonDeleteAccountMenu.TabIndex = 9;
-            this.buttonDeleteAccountMenu.Text = "Delete Account";
-            this.buttonDeleteAccountMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDeleteAccountMenu.UseVisualStyleBackColor = true;
-            // 
-            // Form3
+            // Form7
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1094, 612);
             this.Controls.Add(this.panel1);
-            this.Name = "Form3";
-            this.Text = "Form3";
+            this.Controls.Add(this.panelSideBar);
+            this.Name = "Form7";
+            this.Text = "Form7";
+            this.Load += new System.EventHandler(this.Form7_Load);
+            this.panelSideBar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panelSideBar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button buttonUpdate;
-        private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Panel panelSideBar;
+        private System.Windows.Forms.Button buttonDeleteAccountMenu;
         private System.Windows.Forms.Button btnSignOutMenu;
         private System.Windows.Forms.Button btnUpProfileMenu;
         private System.Windows.Forms.Button btnDelAccountMenu;
         private System.Windows.Forms.Button btnViewTaskMenu;
         private System.Windows.Forms.Button btnAddTaskMenu;
         private System.Windows.Forms.Panel panelSideAtas;
-        private System.Windows.Forms.Button buttonDeleteAccountMenu;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button buttonDelAcc;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
