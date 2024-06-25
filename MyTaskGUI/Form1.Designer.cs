@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panelSideBar = new System.Windows.Forms.Panel();
+            this.buttonDeleteAccountMenu = new System.Windows.Forms.Button();
             this.btnSignOutMenu = new System.Windows.Forms.Button();
             this.btnUpProfileMenu = new System.Windows.Forms.Button();
             this.btnDelAccountMenu = new System.Windows.Forms.Button();
@@ -50,7 +51,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtInputJudul = new System.Windows.Forms.TextBox();
             this.buttonAddTask = new System.Windows.Forms.Button();
-            this.buttonDeleteAccountMenu = new System.Windows.Forms.Button();
             this.panelSideBar.SuspendLayout();
             this.panelContent.SuspendLayout();
             this.SuspendLayout();
@@ -73,12 +73,29 @@
             this.panelSideBar.TabIndex = 0;
             this.panelSideBar.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSideBar_Paint);
             // 
+            // buttonDeleteAccountMenu
+            // 
+            this.buttonDeleteAccountMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonDeleteAccountMenu.FlatAppearance.BorderSize = 0;
+            this.buttonDeleteAccountMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeleteAccountMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDeleteAccountMenu.ForeColor = System.Drawing.Color.White;
+            this.buttonDeleteAccountMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDeleteAccountMenu.Location = new System.Drawing.Point(0, 296);
+            this.buttonDeleteAccountMenu.Name = "buttonDeleteAccountMenu";
+            this.buttonDeleteAccountMenu.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.buttonDeleteAccountMenu.Size = new System.Drawing.Size(191, 45);
+            this.buttonDeleteAccountMenu.TabIndex = 8;
+            this.buttonDeleteAccountMenu.Text = "Delete Account";
+            this.buttonDeleteAccountMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDeleteAccountMenu.UseVisualStyleBackColor = true;
+            // 
             // btnSignOutMenu
             // 
             this.btnSignOutMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSignOutMenu.FlatAppearance.BorderSize = 0;
             this.btnSignOutMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSignOutMenu.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSignOutMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSignOutMenu.ForeColor = System.Drawing.Color.White;
             this.btnSignOutMenu.Location = new System.Drawing.Point(0, 251);
             this.btnSignOutMenu.Name = "btnSignOutMenu";
@@ -94,7 +111,7 @@
             this.btnUpProfileMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnUpProfileMenu.FlatAppearance.BorderSize = 0;
             this.btnUpProfileMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpProfileMenu.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpProfileMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpProfileMenu.ForeColor = System.Drawing.Color.White;
             this.btnUpProfileMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUpProfileMenu.Location = new System.Drawing.Point(0, 206);
@@ -111,7 +128,7 @@
             this.btnDelAccountMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnDelAccountMenu.FlatAppearance.BorderSize = 0;
             this.btnDelAccountMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelAccountMenu.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelAccountMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelAccountMenu.ForeColor = System.Drawing.Color.White;
             this.btnDelAccountMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDelAccountMenu.Location = new System.Drawing.Point(0, 161);
@@ -128,7 +145,7 @@
             this.btnViewTaskMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnViewTaskMenu.FlatAppearance.BorderSize = 0;
             this.btnViewTaskMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewTaskMenu.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewTaskMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnViewTaskMenu.ForeColor = System.Drawing.Color.White;
             this.btnViewTaskMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnViewTaskMenu.Location = new System.Drawing.Point(0, 116);
@@ -145,7 +162,7 @@
             this.btnAddTaskMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAddTaskMenu.FlatAppearance.BorderSize = 0;
             this.btnAddTaskMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddTaskMenu.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddTaskMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddTaskMenu.ForeColor = System.Drawing.Color.White;
             this.btnAddTaskMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAddTaskMenu.Location = new System.Drawing.Point(0, 71);
@@ -191,11 +208,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
             this.label7.Location = new System.Drawing.Point(92, 452);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(81, 22);
+            this.label7.Size = new System.Drawing.Size(91, 25);
             this.label7.TabIndex = 13;
             this.label7.Text = "Prioritas";
             // 
@@ -210,17 +227,17 @@
             "Lowest"});
             this.comboPrioritasInput.Location = new System.Drawing.Point(185, 452);
             this.comboPrioritasInput.Name = "comboPrioritasInput";
-            this.comboPrioritasInput.Size = new System.Drawing.Size(289, 26);
+            this.comboPrioritasInput.Size = new System.Drawing.Size(289, 28);
             this.comboPrioritasInput.TabIndex = 12;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
             this.label6.Location = new System.Drawing.Point(73, 409);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(106, 22);
+            this.label6.Size = new System.Drawing.Size(131, 25);
             this.label6.TabIndex = 11;
             this.label6.Text = "Jenis Tugas";
             // 
@@ -239,24 +256,24 @@
             "Forum Diskusi"});
             this.comboJenisTugasInput.Location = new System.Drawing.Point(185, 409);
             this.comboJenisTugasInput.Name = "comboJenisTugasInput";
-            this.comboJenisTugasInput.Size = new System.Drawing.Size(289, 26);
+            this.comboJenisTugasInput.Size = new System.Drawing.Size(289, 28);
             this.comboJenisTugasInput.TabIndex = 10;
             // 
             // dateEndInput
             // 
             this.dateEndInput.Location = new System.Drawing.Point(185, 362);
             this.dateEndInput.Name = "dateEndInput";
-            this.dateEndInput.Size = new System.Drawing.Size(289, 23);
+            this.dateEndInput.Size = new System.Drawing.Size(289, 26);
             this.dateEndInput.TabIndex = 9;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
             this.label5.Location = new System.Drawing.Point(39, 363);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(140, 22);
+            this.label5.Size = new System.Drawing.Size(169, 25);
             this.label5.TabIndex = 8;
             this.label5.Text = "Tanggal Selesai";
             // 
@@ -265,7 +282,7 @@
             this.dateStartInput.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
             this.dateStartInput.Location = new System.Drawing.Point(185, 319);
             this.dateStartInput.Name = "dateStartInput";
-            this.dateStartInput.Size = new System.Drawing.Size(289, 23);
+            this.dateStartInput.Size = new System.Drawing.Size(289, 26);
             this.dateStartInput.TabIndex = 7;
             this.dateStartInput.Value = new System.DateTime(2024, 6, 22, 10, 16, 51, 0);
             this.dateStartInput.ValueChanged += new System.EventHandler(this.dateStartInput_ValueChanged);
@@ -273,29 +290,29 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
             this.label4.Location = new System.Drawing.Point(51, 319);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(128, 22);
+            this.label4.Size = new System.Drawing.Size(149, 25);
             this.label4.TabIndex = 6;
             this.label4.Text = "Tanggal Mulai";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
             this.label3.Location = new System.Drawing.Point(92, 161);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 22);
+            this.label3.Size = new System.Drawing.Size(101, 25);
             this.label3.TabIndex = 5;
             this.label3.Text = "Deskripsi";
             // 
             // txtInputDeskripsi
             // 
             this.txtInputDeskripsi.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtInputDeskripsi.Font = new System.Drawing.Font("Montserrat", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInputDeskripsi.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInputDeskripsi.Location = new System.Drawing.Point(185, 161);
             this.txtInputDeskripsi.Multiline = true;
             this.txtInputDeskripsi.Name = "txtInputDeskripsi";
@@ -307,32 +324,32 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Montserrat Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
             this.label2.Location = new System.Drawing.Point(37, 36);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(192, 29);
+            this.label2.Size = new System.Drawing.Size(232, 31);
             this.label2.TabIndex = 3;
             this.label2.Text = "ADD NEW TASK";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
             this.label1.Location = new System.Drawing.Point(123, 116);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 22);
+            this.label1.Size = new System.Drawing.Size(65, 25);
             this.label1.TabIndex = 2;
             this.label1.Text = "Judul";
             // 
             // txtInputJudul
             // 
             this.txtInputJudul.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtInputJudul.Font = new System.Drawing.Font("Montserrat", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInputJudul.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInputJudul.Location = new System.Drawing.Point(185, 118);
             this.txtInputJudul.Name = "txtInputJudul";
-            this.txtInputJudul.Size = new System.Drawing.Size(398, 19);
+            this.txtInputJudul.Size = new System.Drawing.Size(398, 22);
             this.txtInputJudul.TabIndex = 1;
             this.txtInputJudul.TextChanged += new System.EventHandler(this.txtInputJudul_TextChanged);
             // 
@@ -341,7 +358,7 @@
             this.buttonAddTask.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
             this.buttonAddTask.FlatAppearance.BorderSize = 0;
             this.buttonAddTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAddTask.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddTask.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddTask.ForeColor = System.Drawing.Color.White;
             this.buttonAddTask.Location = new System.Drawing.Point(185, 508);
             this.buttonAddTask.Name = "buttonAddTask";
@@ -349,33 +366,17 @@
             this.buttonAddTask.TabIndex = 0;
             this.buttonAddTask.Text = "Add Task";
             this.buttonAddTask.UseVisualStyleBackColor = false;
-            // 
-            // buttonDeleteAccountMenu
-            // 
-            this.buttonDeleteAccountMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonDeleteAccountMenu.FlatAppearance.BorderSize = 0;
-            this.buttonDeleteAccountMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDeleteAccountMenu.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDeleteAccountMenu.ForeColor = System.Drawing.Color.White;
-            this.buttonDeleteAccountMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDeleteAccountMenu.Location = new System.Drawing.Point(0, 296);
-            this.buttonDeleteAccountMenu.Name = "buttonDeleteAccountMenu";
-            this.buttonDeleteAccountMenu.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonDeleteAccountMenu.Size = new System.Drawing.Size(191, 45);
-            this.buttonDeleteAccountMenu.TabIndex = 8;
-            this.buttonDeleteAccountMenu.Text = "Delete Account";
-            this.buttonDeleteAccountMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDeleteAccountMenu.UseVisualStyleBackColor = true;
+            this.buttonAddTask.Click += new System.EventHandler(this.buttonAddTask_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1094, 612);
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.panelSideBar);
-            this.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = " ";
