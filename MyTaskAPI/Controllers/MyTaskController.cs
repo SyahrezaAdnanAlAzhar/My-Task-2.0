@@ -32,6 +32,13 @@ namespace MyTaskAPI.Controllers
             public string password { get; set; }
         }
 
+        public class UpdateAccountInputModel
+        {
+            public string name { get; set; }
+            public string email { get; set; }
+            public string password { get; set; }
+        }
+
         // Method untuk menyimpan semua object account yang tersimpan pada semua file json account
         private List<Account> LoadAllAccount(string jsonFileName)
         {
@@ -80,6 +87,7 @@ namespace MyTaskAPI.Controllers
                 return BadRequest("Akun dengan username tersebut sudah ada.");
             }
 
+            // Membuat Objek Account baru seusuai dengan SigUpInputModel ditambah penyesuaian dengan default state dan listTask
             var newAccount = new Account
             {
                 userName = input.userName,
@@ -90,6 +98,7 @@ namespace MyTaskAPI.Controllers
                 listTask = new List<Task>() // Empty task list
             };
 
+            // Validasi input
             AccountValidator validator = new AccountValidator();
             var usernameCheck = validator.Validate(newAccount, "Username");
             if (!usernameCheck.IsValid)
@@ -115,9 +124,11 @@ namespace MyTaskAPI.Controllers
                 return BadRequest(passwordCheck.Errors.Select(e => e.ErrorMessage));
             }
 
+            // Menambahkan account baru ke dalam list account
             _listAccount.Add(newAccount);
             SaveAccountToJsonFile(newAccount);
 
+            // Berikan respons sukses apabila berhasil
             return Ok($"Account dengan username {input.userName} telah ditambahkan");
         }
 
@@ -184,28 +195,66 @@ namespace MyTaskAPI.Controllers
             return Ok("Signed out successfully.");
         }
 
+        [HttpPut]
+        [Route("Account/UpdateAccount")]
+        public ActionResult UpdateProfileAccount([FromBody] UpdateAccountInputModel input)
+        {
+            // Pengecekan apakah ada akun yang aktif saat ini
+            if (ActivedAccount == null)
+            {
+                return BadRequest("Tidak ada akun yang aktif saat ini. Silakan sign in terlebih dahulu.");
+            }
+
+            // Membangun path file berdasarkan username dari ActivedAccount
+            string fileName = $"AccountMyTask_{ActivedAccount.userName}.json";
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName);
+
+            // Memperbarui data akun
+            ActivedAccount.name = input.name;
+            ActivedAccount.email = input.email;
+            ActivedAccount.password = input.password;
+
+            // Validasi input
+            AccountValidator validator = new AccountValidator();
+            var nameCheck = validator.Validate(ActivedAccount, "Nama");
+            if (!nameCheck.IsValid)
+            {
+                return BadRequest(nameCheck.Errors.Select(e => e.ErrorMessage));
+            }
+            var emailCheck = validator.Validate(ActivedAccount, "Email");
+            if (!emailCheck.IsValid)
+            {
+                return BadRequest(emailCheck.Errors.Select(e => e.ErrorMessage));
+            }
+            var passwordCheck = validator.Validate(ActivedAccount, "Password");
+            if (!passwordCheck.IsValid)
+            {
+                return BadRequest(passwordCheck.Errors.Select(e => e.ErrorMessage));
+            }
+
+            // Simpan perubahan ke file JSON
+            string updatedContent = JsonConvert.SerializeObject(ActivedAccount, Formatting.Indented);
+            System.IO.File.WriteAllText(filePath, updatedContent);
+
+            return Ok("Akun berhasil diupdate");
+        }
+
         [HttpDelete]
         [Route("Account/DeleteAccount")]
-        public ActionResult DeleteAccount(string password)
+        public ActionResult DeleteAccount()
         {
             // Membangun path file berdasarkan username dari ActivedAccount
             string fileName = $"AccountMyTask_{ActivedAccount.userName}.json";
             string filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName);
 
-            if (ActivedAccount.password == password)
-            {
-                // Menghapus file Account_{username}.json yang berkaitan dengan akun
-                System.IO.File.Delete(filePath);
+           
+            // Menghapus file Account_{username}.json yang berkaitan dengan akun
+            System.IO.File.Delete(filePath);
 
-                // Mengatur ActivedAccount menjadi null setelah berhasil sign out
-                ActivedAccount = null;
+            // Mengatur ActivedAccount menjadi null setelah berhasil sign out
+            ActivedAccount = null;
 
-                return Ok("Akun dan semua task terkait telah berhasil dihapus.");
-            }
-            else
-            {
-                return BadRequest("Password is incorrect.");
-            }
+            return Ok("Akun dan semua task terkait telah berhasil dihapus.");
 
         }
 
