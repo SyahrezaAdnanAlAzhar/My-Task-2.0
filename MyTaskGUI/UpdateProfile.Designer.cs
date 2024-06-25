@@ -1,6 +1,6 @@
 ﻿namespace MyTaskGUI
 {
-    partial class Form4
+    partial class UpdateProfile
     {
         /// <summary>
         /// Required designer variable.

@@ -1,6 +1,6 @@
 ﻿namespace MyTaskGUI
 {
-    partial class Form5
+    partial class ReadTask
     {
         /// <summary>
         /// Required designer variable.
@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonKeluar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.panelSideBar = new System.Windows.Forms.Panel();
             this.btnSignOutMenu = new System.Windows.Forms.Button();
             this.btnUpProfileMenu = new System.Windows.Forms.Button();
@@ -39,59 +36,29 @@
             this.btnViewTaskMenu = new System.Windows.Forms.Button();
             this.btnAddTaskMenu = new System.Windows.Forms.Button();
             this.panelSideAtas = new System.Windows.Forms.Panel();
+            this.buttonDelete = new System.Windows.Forms.Button();
+            this.buttonUpdate = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
             this.buttonDeleteAccountMenu = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelSideBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(201)))), ((int)(((byte)(216)))));
-            this.panel1.Controls.Add(this.buttonKeluar);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.panelSideBar);
+            this.panel1.Controls.Add(this.buttonDelete);
+            this.panel1.Controls.Add(this.buttonUpdate);
+            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1094, 612);
             this.panel1.TabIndex = 0;
-            // 
-            // buttonKeluar
-            // 
-            this.buttonKeluar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.buttonKeluar.FlatAppearance.BorderSize = 0;
-            this.buttonKeluar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonKeluar.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonKeluar.ForeColor = System.Drawing.Color.White;
-            this.buttonKeluar.Location = new System.Drawing.Point(242, 149);
-            this.buttonKeluar.Name = "buttonKeluar";
-            this.buttonKeluar.Size = new System.Drawing.Size(121, 38);
-            this.buttonKeluar.TabIndex = 32;
-            this.buttonKeluar.Text = "Keluar";
-            this.buttonKeluar.UseVisualStyleBackColor = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.label1.Location = new System.Drawing.Point(238, 94);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(287, 22);
-            this.label1.TabIndex = 26;
-            this.label1.Text = "Keluar dari akun yang digunakan";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Montserrat Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.label2.Location = new System.Drawing.Point(237, 28);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(121, 29);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "SIGN OUT";
             // 
             // panelSideBar
             // 
@@ -108,7 +75,7 @@
             this.panelSideBar.Location = new System.Drawing.Point(0, 0);
             this.panelSideBar.Name = "panelSideBar";
             this.panelSideBar.Size = new System.Drawing.Size(191, 612);
-            this.panelSideBar.TabIndex = 24;
+            this.panelSideBar.TabIndex = 22;
             // 
             // btnSignOutMenu
             // 
@@ -202,6 +169,55 @@
             this.panelSideAtas.Size = new System.Drawing.Size(191, 71);
             this.panelSideAtas.TabIndex = 0;
             // 
+            // buttonDelete
+            // 
+            this.buttonDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
+            this.buttonDelete.FlatAppearance.BorderSize = 0;
+            this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDelete.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDelete.ForeColor = System.Drawing.Color.White;
+            this.buttonDelete.Location = new System.Drawing.Point(894, 145);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(121, 38);
+            this.buttonDelete.TabIndex = 21;
+            this.buttonDelete.Text = "Delete Task";
+            this.buttonDelete.UseVisualStyleBackColor = false;
+            // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
+            this.buttonUpdate.FlatAppearance.BorderSize = 0;
+            this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUpdate.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonUpdate.ForeColor = System.Drawing.Color.White;
+            this.buttonUpdate.Location = new System.Drawing.Point(894, 90);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(121, 38);
+            this.buttonUpdate.TabIndex = 20;
+            this.buttonUpdate.Text = "Update Task";
+            this.buttonUpdate.UseVisualStyleBackColor = false;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(236, 90);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(632, 448);
+            this.dataGridView1.TabIndex = 19;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Montserrat Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
+            this.label2.Location = new System.Drawing.Point(231, 26);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(142, 29);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "VIEW TASK";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
             // buttonDeleteAccountMenu
             // 
             this.buttonDeleteAccountMenu.Dock = System.Windows.Forms.DockStyle.Top;
@@ -219,17 +235,18 @@
             this.buttonDeleteAccountMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonDeleteAccountMenu.UseVisualStyleBackColor = true;
             // 
-            // Form5
+            // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1094, 612);
             this.Controls.Add(this.panel1);
-            this.Name = "Form5";
-            this.Text = "Form5";
+            this.Name = "Form3";
+            this.Text = "Form3";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panelSideBar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -237,6 +254,10 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button buttonUpdate;
+        private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Panel panelSideBar;
         private System.Windows.Forms.Button btnSignOutMenu;
         private System.Windows.Forms.Button btnUpProfileMenu;
@@ -244,9 +265,6 @@
         private System.Windows.Forms.Button btnViewTaskMenu;
         private System.Windows.Forms.Button btnAddTaskMenu;
         private System.Windows.Forms.Panel panelSideAtas;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button buttonKeluar;
         private System.Windows.Forms.Button buttonDeleteAccountMenu;
     }
 }

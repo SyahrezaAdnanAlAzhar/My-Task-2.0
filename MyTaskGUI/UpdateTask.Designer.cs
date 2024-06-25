@@ -1,6 +1,6 @@
 ﻿namespace MyTaskGUI
 {
-    partial class Form2
+    partial class UpdateTask
     {
         /// <summary>
         /// Required designer variable.
@@ -75,7 +75,7 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1459, 753);
             this.panel1.TabIndex = 0;
@@ -94,7 +94,7 @@
             this.panelSideBar.Controls.Add(this.panelSideAtas);
             this.panelSideBar.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSideBar.Location = new System.Drawing.Point(0, 0);
-            this.panelSideBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelSideBar.Margin = new System.Windows.Forms.Padding(4);
             this.panelSideBar.Name = "panelSideBar";
             this.panelSideBar.Size = new System.Drawing.Size(255, 753);
             this.panelSideBar.TabIndex = 31;
@@ -108,7 +108,7 @@
             this.buttonDeleteAccountMenu.ForeColor = System.Drawing.Color.White;
             this.buttonDeleteAccountMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonDeleteAccountMenu.Location = new System.Drawing.Point(0, 362);
-            this.buttonDeleteAccountMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonDeleteAccountMenu.Margin = new System.Windows.Forms.Padding(4);
             this.buttonDeleteAccountMenu.Name = "buttonDeleteAccountMenu";
             this.buttonDeleteAccountMenu.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.buttonDeleteAccountMenu.Size = new System.Drawing.Size(255, 55);
@@ -125,7 +125,7 @@
             this.btnSignOutMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSignOutMenu.ForeColor = System.Drawing.Color.White;
             this.btnSignOutMenu.Location = new System.Drawing.Point(0, 307);
-            this.btnSignOutMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSignOutMenu.Margin = new System.Windows.Forms.Padding(4);
             this.btnSignOutMenu.Name = "btnSignOutMenu";
             this.btnSignOutMenu.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.btnSignOutMenu.Size = new System.Drawing.Size(255, 55);
@@ -143,7 +143,7 @@
             this.btnUpProfileMenu.ForeColor = System.Drawing.Color.White;
             this.btnUpProfileMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUpProfileMenu.Location = new System.Drawing.Point(0, 252);
-            this.btnUpProfileMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUpProfileMenu.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpProfileMenu.Name = "btnUpProfileMenu";
             this.btnUpProfileMenu.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.btnUpProfileMenu.Size = new System.Drawing.Size(255, 55);
@@ -161,7 +161,7 @@
             this.btnDelAccountMenu.ForeColor = System.Drawing.Color.White;
             this.btnDelAccountMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDelAccountMenu.Location = new System.Drawing.Point(0, 197);
-            this.btnDelAccountMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDelAccountMenu.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelAccountMenu.Name = "btnDelAccountMenu";
             this.btnDelAccountMenu.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.btnDelAccountMenu.Size = new System.Drawing.Size(255, 55);
@@ -179,7 +179,7 @@
             this.btnViewTaskMenu.ForeColor = System.Drawing.Color.White;
             this.btnViewTaskMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnViewTaskMenu.Location = new System.Drawing.Point(0, 142);
-            this.btnViewTaskMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnViewTaskMenu.Margin = new System.Windows.Forms.Padding(4);
             this.btnViewTaskMenu.Name = "btnViewTaskMenu";
             this.btnViewTaskMenu.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.btnViewTaskMenu.Size = new System.Drawing.Size(255, 55);
@@ -197,7 +197,7 @@
             this.btnAddTaskMenu.ForeColor = System.Drawing.Color.White;
             this.btnAddTaskMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAddTaskMenu.Location = new System.Drawing.Point(0, 87);
-            this.btnAddTaskMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddTaskMenu.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddTaskMenu.Name = "btnAddTaskMenu";
             this.btnAddTaskMenu.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
             this.btnAddTaskMenu.Size = new System.Drawing.Size(255, 55);
@@ -211,7 +211,7 @@
             // 
             this.panelSideAtas.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSideAtas.Location = new System.Drawing.Point(0, 0);
-            this.panelSideAtas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelSideAtas.Margin = new System.Windows.Forms.Padding(4);
             this.panelSideAtas.Name = "panelSideAtas";
             this.panelSideAtas.Size = new System.Drawing.Size(255, 87);
             this.panelSideAtas.TabIndex = 0;
@@ -238,7 +238,7 @@
             "Low",
             "Lowest"});
             this.comboPrioritasInput.Location = new System.Drawing.Point(529, 528);
-            this.comboPrioritasInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboPrioritasInput.Margin = new System.Windows.Forms.Padding(4);
             this.comboPrioritasInput.Name = "comboPrioritasInput";
             this.comboPrioritasInput.Size = new System.Drawing.Size(384, 24);
             this.comboPrioritasInput.TabIndex = 29;
@@ -269,7 +269,7 @@
             "Quiz",
             "Forum Diskusi"});
             this.comboJenisTugasInput.Location = new System.Drawing.Point(529, 475);
-            this.comboJenisTugasInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboJenisTugasInput.Margin = new System.Windows.Forms.Padding(4);
             this.comboJenisTugasInput.Name = "comboJenisTugasInput";
             this.comboJenisTugasInput.Size = new System.Drawing.Size(384, 24);
             this.comboJenisTugasInput.TabIndex = 27;
@@ -277,7 +277,7 @@
             // dateEndInput
             // 
             this.dateEndInput.Location = new System.Drawing.Point(529, 417);
-            this.dateEndInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateEndInput.Margin = new System.Windows.Forms.Padding(4);
             this.dateEndInput.Name = "dateEndInput";
             this.dateEndInput.Size = new System.Drawing.Size(384, 22);
             this.dateEndInput.TabIndex = 26;
@@ -298,7 +298,7 @@
             // 
             this.dateStartInput.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
             this.dateStartInput.Location = new System.Drawing.Point(529, 364);
-            this.dateStartInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateStartInput.Margin = new System.Windows.Forms.Padding(4);
             this.dateStartInput.Name = "dateStartInput";
             this.dateStartInput.Size = new System.Drawing.Size(384, 22);
             this.dateStartInput.TabIndex = 24;
@@ -333,7 +333,7 @@
             this.txtInputDeskripsi.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtInputDeskripsi.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInputDeskripsi.Location = new System.Drawing.Point(529, 170);
-            this.txtInputDeskripsi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtInputDeskripsi.Margin = new System.Windows.Forms.Padding(4);
             this.txtInputDeskripsi.Multiline = true;
             this.txtInputDeskripsi.Name = "txtInputDeskripsi";
             this.txtInputDeskripsi.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -357,7 +357,7 @@
             this.txtInputJudul.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtInputJudul.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInputJudul.Location = new System.Drawing.Point(529, 117);
-            this.txtInputJudul.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtInputJudul.Margin = new System.Windows.Forms.Padding(4);
             this.txtInputJudul.Name = "txtInputJudul";
             this.txtInputJudul.Size = new System.Drawing.Size(531, 22);
             this.txtInputJudul.TabIndex = 19;
@@ -370,12 +370,13 @@
             this.buttonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
             this.buttonSave.Location = new System.Drawing.Point(529, 597);
-            this.buttonSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(161, 47);
             this.buttonSave.TabIndex = 18;
             this.buttonSave.Text = "SAVE";
             this.buttonSave.UseVisualStyleBackColor = false;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // label2
             // 
@@ -389,14 +390,14 @@
             this.label2.TabIndex = 17;
             this.label2.Text = "UPDATE TASK";
             // 
-            // Form2
+            // UpdateTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1459, 753);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "Form2";
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "UpdateTask";
             this.Text = "Form2";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

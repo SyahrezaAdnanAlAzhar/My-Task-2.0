@@ -1,6 +1,6 @@
 ﻿namespace MyTaskGUI
 {
-    partial class Form6
+    partial class SignIn
     {
         /// <summary>
         /// Required designer variable.

@@ -15,10 +15,10 @@ using System.Net.Http;
 
 namespace MyTaskGUI
 {
-    public partial class Form1 : Form
+    public partial class CreateTask : Form
     {
         private static readonly HttpClient _client = new HttpClient();
-        public Form1()
+        public CreateTask()
         {
             InitializeComponent();
         }
@@ -123,7 +123,7 @@ namespace MyTaskGUI
                     if (response.IsSuccessStatusCode)
                     {
                         MessageBox.Show("Sign Up berhasil!");
-                        Form6 form6 = new Form6();
+                        SignIn form6 = new SignIn();
                         form6.Show();
                         this.Hide();
                     }

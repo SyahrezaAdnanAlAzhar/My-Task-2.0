@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace MyTaskGUI
 {
-    public partial class Form4 : Form
+    public partial class DeleteAccount : Form
     {
-        public Form4()
+        public DeleteAccount()
         {
             InitializeComponent();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Form7_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

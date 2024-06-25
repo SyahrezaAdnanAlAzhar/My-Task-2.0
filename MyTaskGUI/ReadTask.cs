@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,22 +8,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static MyTaskGUI.Program;
 
 namespace MyTaskGUI
 {
-    public partial class Form2 : Form
+    public partial class ReadTask : Form
     {
-        public Form2()
+        public ReadTask()
         {
             InitializeComponent();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnAddTaskMenu_Click(object sender, EventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
