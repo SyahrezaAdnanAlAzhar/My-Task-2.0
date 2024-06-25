@@ -39,7 +39,6 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\Progam-My-Task-2.0\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -76,8 +75,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountOperation.cs" />
+    <Compile Include="CreateAccountOperation.cs" />
     <Compile Include="CRUDAccount.cs" />
+    <Compile Include="DeleteAccountOperation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UpdateAccountNameOperation.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyTaskData\MyTaskData.csproj">

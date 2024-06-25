@@ -125,9 +125,8 @@ namespace CRUDAccountLibrary
             AccountValidator validator = new AccountValidator();
             Account newAccount = GetInputAccountData(validator);
 
-            string filePath = $"AccountMyTask_{newAccount.userName}.json";
-            string json = JsonConvert.SerializeObject(newAccount, Formatting.Indented);
-            File.WriteAllText(filePath, json);
+            AccountOperation operation = new CreateAccountOperation(newAccount);
+            operation.Execute();
             Console.WriteLine("Berhasil Melakukan Sign Up!");
         }
 
@@ -232,8 +231,8 @@ namespace CRUDAccountLibrary
 
             } while (!result.IsValid);
 
-            account.name = newName;
-            ReWriteUpdatedFile(account);
+            AccountOperation operation = new UpdateAccountNameOperation(account, newName);
+            operation.Execute();
             Console.WriteLine("Nama berhasil diupdate.");
         }
 
@@ -316,22 +315,9 @@ namespace CRUDAccountLibrary
         // Procedure untuk melakukan delete suatu account dan akan menghapus file json nya
         public static void DeleteAccount(Account account)
         {
-            string password;
-            do
-            {
-                Console.Write("Password: ");
-                password = Console.ReadLine();
-                if (password != account.password)
-                {
-                    Console.WriteLine("Invalid password.");
-                }
-
-            } while (password != account.password);
-
-            string filePath = $"AccountMyTask_{account.userName}.json";
-            File.Delete(filePath);
+            AccountOperation operation = new DeleteAccountOperation(account);
+            operation.Execute();
             Console.WriteLine("Account berhasil dihapus.");
-            
         }
 
         // melakukan penulisan ulang di suatu file json pada object yang menjadi parameter input
