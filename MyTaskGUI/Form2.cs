@@ -21,5 +21,10 @@ namespace MyTaskGUI
         {
 
         }
+
+        private void btnAddTaskMenu_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
