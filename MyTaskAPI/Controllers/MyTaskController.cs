@@ -209,34 +209,6 @@ namespace MyTaskAPI.Controllers
 
         }
 
-        /*[HttpGet]
-        [Route("Task/ShowAllTask")]
-        public ActionResult<List<Task>> GetAllTasks()
-        {
-            if (ActivedAccount == null || ActivedAccount.accountState != AccountState.SignedIn)
-            {
-                return BadRequest("Tidak ada akun yang aktif saat ini. Silakan sign in terlebih dahulu.");
-            }
-
-            // Membaca file Task_{username}.json
-            string taskPath = $"Task_{ActivedAccount.userName}.json";
-            if (!System.IO.File.Exists(taskPath))
-            {
-                return NotFound("File task tidak ditemukan.");
-            }
-
-            try
-            {
-                var tasksJson = System.IO.File.ReadAllText(taskPath);
-                var tasks = JsonConvert.DeserializeObject<List<Task>>(tasksJson);
-                return Ok(tasks ?? new List<Task>());
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Terjadi kesalahan saat membaca file task: {ex.Message}");
-            }
-        }*/
-
         [HttpGet]
         [Route("Task/ShowAllTask")]
         public ActionResult<List<Task>> GetAllTasks()
@@ -248,45 +220,6 @@ namespace MyTaskAPI.Controllers
 
             return Ok(ActivedAccount.listTask);
         }
-
-        /*[HttpPost]
-        [Route("Task/Create")]
-        public ActionResult CreateTask([FromBody] Task task)
-        {
-            if (ActivedAccount == null || ActivedAccount.accountState != AccountState.SignedIn)
-            {
-                return BadRequest("Tidak ada akun yang aktif saat ini. Silakan sign in terlebih dahulu.");
-            }
-
-            // Membaca file Task_{username}.json
-            string taskPath = $"Task_{ActivedAccount.userName}.json";
-            List<Task> tasks;
-            if (System.IO.File.Exists(taskPath))
-            {
-                var tasksJson = System.IO.File.ReadAllText(taskPath);
-                tasks = JsonConvert.DeserializeObject<List<Task>>(tasksJson) ?? new List<Task>();
-            }
-            else
-            {
-                tasks = new List<Task>();
-            }
-
-            // Menambahkan task baru ke dalam daftar
-            tasks.Add(task);
-
-            // Menulis kembali daftar task ke dalam file Task_{username}.json
-            try
-            {
-                var updatedTasksJson = JsonConvert.SerializeObject(tasks, Formatting.Indented);
-                System.IO.File.WriteAllText(taskPath, updatedTasksJson);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Terjadi kesalahan saat menyimpan task: {ex.Message}");
-            }
-
-            return Ok($"Task dengan judul '{task.judul}' telah berhasil ditambahkan.");
-        }*/
 
         [HttpPost]
         [Route("Task/Create")]
@@ -310,48 +243,6 @@ namespace MyTaskAPI.Controllers
 
             return Ok($"Task dengan judul '{task.judul}' telah berhasil ditambahkan.");
         }
-
-        /*[HttpPut]
-        [Route("Task/Update")]
-        public ActionResult UpdateTask([FromBody] Task updatedTask)
-        {
-            if (ActivedAccount == null || ActivedAccount.accountState != AccountState.SignedIn)
-            {
-                return BadRequest("Tidak ada akun yang aktif saat ini. Silakan sign in terlebih dahulu.");
-            }
-
-            string taskPath = $"Task_{ActivedAccount.userName}.json";
-            if (!System.IO.File.Exists(taskPath))
-            {
-                return NotFound("File task tidak ditemukan.");
-            }
-
-            try
-            {
-                var tasksJson = System.IO.File.ReadAllText(taskPath);
-                var tasks = JsonConvert.DeserializeObject<List<Task>>(tasksJson) ?? new List<Task>();
-
-                // Mencari task yang akan diperbarui
-                var taskIndex = tasks.FindIndex(t => t.judul == updatedTask.judul);
-                if (taskIndex == -1)
-                {
-                    return NotFound($"Task dengan judul '{updatedTask.judul}' tidak ditemukan.");
-                }
-
-                // Memperbarui task
-                tasks[taskIndex] = updatedTask;
-
-                // Menulis kembali daftar task yang telah diperbarui ke file
-                var updatedTasksJson = JsonConvert.SerializeObject(tasks, Formatting.Indented);
-                System.IO.File.WriteAllText(taskPath, updatedTasksJson);
-
-                return Ok($"Task dengan judul '{updatedTask.judul}' telah berhasil diperbarui.");
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Terjadi kesalahan saat memperbarui task: {ex.Message}");
-            }
-        }*/
 
         [HttpPut]
         [Route("Task/Update")]
@@ -382,47 +273,6 @@ namespace MyTaskAPI.Controllers
             return Ok($"Task dengan judul '{updatedTask.judul}' telah berhasil diperbarui.");
         }
 
-        /*[HttpDelete]
-        [Route("Task/Delete")]
-        public ActionResult DeleteTask(string judulTask)
-        {
-            if (ActivedAccount == null || ActivedAccount.accountState != AccountState.SignedIn)
-            {
-                return BadRequest("Tidak ada akun yang aktif saat ini. Silakan sign in terlebih dahulu.");
-            }
-
-            string taskPath = $"Task_{ActivedAccount.userName}.json";
-            if (!System.IO.File.Exists(taskPath))
-            {
-                return NotFound("File task tidak ditemukan.");
-            }
-
-            try
-            {
-                var tasksJson = System.IO.File.ReadAllText(taskPath);
-                var tasks = JsonConvert.DeserializeObject<List<Task>>(tasksJson) ?? new List<Task>();
-
-                // Mencari dan menghapus task berdasarkan judul
-                var taskToRemove = tasks.FirstOrDefault(t => t.judul == judulTask);
-                if (taskToRemove == null)
-                {
-                    return NotFound($"Task dengan judul '{judulTask}' tidak ditemukan.");
-                }
-
-                tasks.Remove(taskToRemove);
-
-                // Menulis kembali daftar task yang telah diperbarui ke file
-                var updatedTasksJson = JsonConvert.SerializeObject(tasks, Formatting.Indented);
-                System.IO.File.WriteAllText(taskPath, updatedTasksJson);
-
-                return Ok($"Task dengan judul '{judulTask}' telah berhasil dihapus.");
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Terjadi kesalahan saat menghapus task: {ex.Message}");
-            }
-        }*/
-
         [HttpDelete]
         [Route("Task/Delete")]
         public ActionResult DeleteTask(string judulTask)
@@ -442,48 +292,6 @@ namespace MyTaskAPI.Controllers
 
             return Ok($"Task dengan judul '{judulTask}' telah berhasil dihapus.");
         }
-
-        /*[HttpPut]
-        [Route("Task/MarkAsDone")]
-        public ActionResult UpdateTaskStateToDone(string judulTask)
-        {
-            if (ActivedAccount == null || ActivedAccount.accountState != AccountState.SignedIn)
-            {
-                return BadRequest("Tidak ada akun yang aktif saat ini. Silakan sign in terlebih dahulu.");
-            }
-
-            string taskPath = $"Task_{ActivedAccount.userName}.json";
-            if (!System.IO.File.Exists(taskPath))
-            {
-                return NotFound("File task tidak ditemukan.");
-            }
-
-            try
-            {
-                var tasksJson = System.IO.File.ReadAllText(taskPath);
-                var tasks = JsonConvert.DeserializeObject<List<MyTaskData.Task>>(tasksJson) ?? new List<MyTaskData.Task>();
-
-                // Mencari task yang akan diubah statenya
-                var task = tasks.FirstOrDefault(t => t.judul == judulTask);
-                if (task == null)
-                {
-                    return NotFound($"Task dengan judul '{judulTask}' tidak ditemukan.");
-                }
-
-                // Menggunakan metode UpdateState untuk mengubah state task menjadi Done
-                task.UpdateState(TriggerTaskState.Menyelesaikan);
-
-                // Menulis kembali daftar task yang telah diperbarui ke file
-                var updatedTasksJson = JsonConvert.SerializeObject(tasks, Formatting.Indented);
-                System.IO.File.WriteAllText(taskPath, updatedTasksJson);
-
-                return Ok($"Task dengan judul '{judulTask}' telah ditandai sebagai selesai.");
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Terjadi kesalahan saat mengubah state task: {ex.Message}");
-            }
-        }*/
 
         [HttpPut]
         [Route("Task/MarkAsDone")]
