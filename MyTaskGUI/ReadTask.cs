@@ -102,7 +102,7 @@ namespace MyTaskGUI
             }
             else
             {
-                MessageBox.Show("Pilih sebuah judul task untuk dihapus.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Pilih sebuah judul task untuk dilihat informasinya.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

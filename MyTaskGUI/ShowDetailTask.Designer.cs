@@ -39,13 +39,13 @@
             this.buttonBack = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.labelDeskripsi = new System.Windows.Forms.Label();
-            this.labelTanggalMulai = new System.Windows.Forms.Label();
-            this.labelTanggalSelesai = new System.Windows.Forms.Label();
-            this.labelJenisTugas = new System.Windows.Forms.Label();
-            this.labelPrioritas = new System.Windows.Forms.Label();
             this.labelStatus = new System.Windows.Forms.Label();
+            this.labelPrioritas = new System.Windows.Forms.Label();
+            this.labelJenisTugas = new System.Windows.Forms.Label();
+            this.labelTanggalSelesai = new System.Windows.Forms.Label();
+            this.labelTanggalMulai = new System.Windows.Forms.Label();
+            this.labelDeskripsi = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -168,9 +168,9 @@
             this.label2.Location = new System.Drawing.Point(324, 48);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(214, 31);
+            this.label2.Size = new System.Drawing.Size(233, 31);
             this.label2.TabIndex = 17;
-            this.label2.Text = "UPDATE TASK";
+            this.label2.Text = "Task Information";
             // 
             // panel1
             // 
@@ -199,65 +199,17 @@
             this.panel1.Size = new System.Drawing.Size(1236, 703);
             this.panel1.TabIndex = 1;
             // 
-            // label5
+            // labelStatus
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.label5.Location = new System.Drawing.Point(335, 418);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(169, 25);
-            this.label5.TabIndex = 25;
-            this.label5.Text = "Tanggal Selesai";
-            // 
-            // labelDeskripsi
-            // 
-            this.labelDeskripsi.AutoSize = true;
-            this.labelDeskripsi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDeskripsi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.labelDeskripsi.Location = new System.Drawing.Point(524, 170);
-            this.labelDeskripsi.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelDeskripsi.Name = "labelDeskripsi";
-            this.labelDeskripsi.Size = new System.Drawing.Size(92, 25);
-            this.labelDeskripsi.TabIndex = 35;
-            this.labelDeskripsi.Text = "Deskripsi";
-            // 
-            // labelTanggalMulai
-            // 
-            this.labelTanggalMulai.AutoSize = true;
-            this.labelTanggalMulai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTanggalMulai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.labelTanggalMulai.Location = new System.Drawing.Point(529, 364);
-            this.labelTanggalMulai.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelTanggalMulai.Name = "labelTanggalMulai";
-            this.labelTanggalMulai.Size = new System.Drawing.Size(135, 25);
-            this.labelTanggalMulai.TabIndex = 36;
-            this.labelTanggalMulai.Text = "Tanggal mulai";
-            // 
-            // labelTanggalSelesai
-            // 
-            this.labelTanggalSelesai.AutoSize = true;
-            this.labelTanggalSelesai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTanggalSelesai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.labelTanggalSelesai.Location = new System.Drawing.Point(529, 418);
-            this.labelTanggalSelesai.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelTanggalSelesai.Name = "labelTanggalSelesai";
-            this.labelTanggalSelesai.Size = new System.Drawing.Size(154, 25);
-            this.labelTanggalSelesai.TabIndex = 37;
-            this.labelTanggalSelesai.Text = "Tanggal Selesai";
-            // 
-            // labelJenisTugas
-            // 
-            this.labelJenisTugas.AutoSize = true;
-            this.labelJenisTugas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelJenisTugas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.labelJenisTugas.Location = new System.Drawing.Point(529, 475);
-            this.labelJenisTugas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelJenisTugas.Name = "labelJenisTugas";
-            this.labelJenisTugas.Size = new System.Drawing.Size(120, 25);
-            this.labelJenisTugas.TabIndex = 38;
-            this.labelJenisTugas.Text = "Jenis Tugas";
+            this.labelStatus.AutoSize = true;
+            this.labelStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
+            this.labelStatus.Location = new System.Drawing.Point(529, 574);
+            this.labelStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelStatus.Name = "labelStatus";
+            this.labelStatus.Size = new System.Drawing.Size(68, 25);
+            this.labelStatus.TabIndex = 40;
+            this.labelStatus.Text = "Status";
             // 
             // labelPrioritas
             // 
@@ -271,17 +223,65 @@
             this.labelPrioritas.TabIndex = 39;
             this.labelPrioritas.Text = "Prioritas";
             // 
-            // labelStatus
+            // labelJenisTugas
             // 
-            this.labelStatus.AutoSize = true;
-            this.labelStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.labelStatus.Location = new System.Drawing.Point(529, 574);
-            this.labelStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelStatus.Name = "labelStatus";
-            this.labelStatus.Size = new System.Drawing.Size(68, 25);
-            this.labelStatus.TabIndex = 40;
-            this.labelStatus.Text = "Status";
+            this.labelJenisTugas.AutoSize = true;
+            this.labelJenisTugas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelJenisTugas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
+            this.labelJenisTugas.Location = new System.Drawing.Point(529, 475);
+            this.labelJenisTugas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelJenisTugas.Name = "labelJenisTugas";
+            this.labelJenisTugas.Size = new System.Drawing.Size(120, 25);
+            this.labelJenisTugas.TabIndex = 38;
+            this.labelJenisTugas.Text = "Jenis Tugas";
+            // 
+            // labelTanggalSelesai
+            // 
+            this.labelTanggalSelesai.AutoSize = true;
+            this.labelTanggalSelesai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTanggalSelesai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
+            this.labelTanggalSelesai.Location = new System.Drawing.Point(529, 418);
+            this.labelTanggalSelesai.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTanggalSelesai.Name = "labelTanggalSelesai";
+            this.labelTanggalSelesai.Size = new System.Drawing.Size(154, 25);
+            this.labelTanggalSelesai.TabIndex = 37;
+            this.labelTanggalSelesai.Text = "Tanggal Selesai";
+            // 
+            // labelTanggalMulai
+            // 
+            this.labelTanggalMulai.AutoSize = true;
+            this.labelTanggalMulai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTanggalMulai.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
+            this.labelTanggalMulai.Location = new System.Drawing.Point(529, 364);
+            this.labelTanggalMulai.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTanggalMulai.Name = "labelTanggalMulai";
+            this.labelTanggalMulai.Size = new System.Drawing.Size(135, 25);
+            this.labelTanggalMulai.TabIndex = 36;
+            this.labelTanggalMulai.Text = "Tanggal mulai";
+            // 
+            // labelDeskripsi
+            // 
+            this.labelDeskripsi.AutoSize = true;
+            this.labelDeskripsi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDeskripsi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
+            this.labelDeskripsi.Location = new System.Drawing.Point(524, 170);
+            this.labelDeskripsi.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelDeskripsi.Name = "labelDeskripsi";
+            this.labelDeskripsi.Size = new System.Drawing.Size(92, 25);
+            this.labelDeskripsi.TabIndex = 35;
+            this.labelDeskripsi.Text = "Deskripsi";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
+            this.label5.Location = new System.Drawing.Point(335, 418);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(169, 25);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "Tanggal Selesai";
             // 
             // ShowDetailTask
             // 
