@@ -1,6 +1,6 @@
 ﻿namespace MyTaskGUI
 {
-    partial class RegisterUI
+    partial class SignUp
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterUI));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignUp));
             this.panel1 = new System.Windows.Forms.Panel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,11 +38,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.inputUsername = new System.Windows.Forms.TextBox();
-            this.inputName = new System.Windows.Forms.TextBox();
-            this.inputEmail = new System.Windows.Forms.TextBox();
-            this.inputPassword = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.textBoxUsername = new System.Windows.Forms.TextBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.buttonSignUp = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -143,45 +143,46 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "Password";
             // 
-            // inputUsername
+            // textBoxUsername
             // 
-            this.inputUsername.Location = new System.Drawing.Point(962, 216);
-            this.inputUsername.Name = "inputUsername";
-            this.inputUsername.Size = new System.Drawing.Size(274, 22);
-            this.inputUsername.TabIndex = 6;
+            this.textBoxUsername.Location = new System.Drawing.Point(962, 216);
+            this.textBoxUsername.Name = "textBoxUsername";
+            this.textBoxUsername.Size = new System.Drawing.Size(274, 22);
+            this.textBoxUsername.TabIndex = 6;
             // 
-            // inputName
+            // textBoxName
             // 
-            this.inputName.Location = new System.Drawing.Point(962, 277);
-            this.inputName.Name = "inputName";
-            this.inputName.Size = new System.Drawing.Size(274, 22);
-            this.inputName.TabIndex = 7;
+            this.textBoxName.Location = new System.Drawing.Point(962, 277);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(274, 22);
+            this.textBoxName.TabIndex = 7;
             // 
-            // inputEmail
+            // textBoxEmail
             // 
-            this.inputEmail.Location = new System.Drawing.Point(962, 345);
-            this.inputEmail.Name = "inputEmail";
-            this.inputEmail.Size = new System.Drawing.Size(274, 22);
-            this.inputEmail.TabIndex = 8;
+            this.textBoxEmail.Location = new System.Drawing.Point(962, 345);
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(274, 22);
+            this.textBoxEmail.TabIndex = 8;
+            this.textBoxEmail.TextChanged += new System.EventHandler(this.inputEmail_TextChanged);
             // 
-            // inputPassword
+            // textBoxPassword
             // 
-            this.inputPassword.Location = new System.Drawing.Point(962, 403);
-            this.inputPassword.Name = "inputPassword";
-            this.inputPassword.Size = new System.Drawing.Size(274, 22);
-            this.inputPassword.TabIndex = 9;
-            this.inputPassword.TextChanged += new System.EventHandler(this.inputPassword_TextChanged);
+            this.textBoxPassword.Location = new System.Drawing.Point(962, 403);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(274, 22);
+            this.textBoxPassword.TabIndex = 9;
+            this.textBoxPassword.TextChanged += new System.EventHandler(this.inputPassword_TextChanged);
             // 
-            // button1
+            // buttonSignUp
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(972, 533);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(169, 59);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Sign Up";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold);
+            this.buttonSignUp.Location = new System.Drawing.Point(972, 533);
+            this.buttonSignUp.Name = "buttonSignUp";
+            this.buttonSignUp.Size = new System.Drawing.Size(169, 59);
+            this.buttonSignUp.TabIndex = 10;
+            this.buttonSignUp.Text = "Sign Up";
+            this.buttonSignUp.UseVisualStyleBackColor = true;
+            this.buttonSignUp.Click += new System.EventHandler(this.button1_Click);
             // 
             // checkBox1
             // 
@@ -194,17 +195,17 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // RegisterUI
+            // SignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1459, 753);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.inputPassword);
-            this.Controls.Add(this.inputEmail);
-            this.Controls.Add(this.inputName);
-            this.Controls.Add(this.inputUsername);
+            this.Controls.Add(this.buttonSignUp);
+            this.Controls.Add(this.textBoxPassword);
+            this.Controls.Add(this.textBoxEmail);
+            this.Controls.Add(this.textBoxName);
+            this.Controls.Add(this.textBoxUsername);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -212,7 +213,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "RegisterUI";
+            this.Name = "SignUp";
             this.Text = "My Task : Register";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -233,11 +234,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox inputUsername;
-        private System.Windows.Forms.TextBox inputName;
-        private System.Windows.Forms.TextBox inputEmail;
-        private System.Windows.Forms.TextBox inputPassword;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBoxUsername;
+        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.TextBox textBoxEmail;
+        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.Button buttonSignUp;
         private System.Windows.Forms.CheckBox checkBox1;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace MyTaskGUI
 {
-    partial class Form4
+    partial class DeleteAccount
     {
         /// <summary>
         /// Required designer variable.
@@ -28,129 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonSave = new System.Windows.Forms.Button();
-            this.txtInputPass = new System.Windows.Forms.TextBox();
-            this.txtInputEmail = new System.Windows.Forms.TextBox();
-            this.txtInputNama = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.panelSideBar = new System.Windows.Forms.Panel();
+            this.buttonDeleteAccountMenu = new System.Windows.Forms.Button();
             this.btnSignOutMenu = new System.Windows.Forms.Button();
             this.btnUpProfileMenu = new System.Windows.Forms.Button();
             this.btnDelAccountMenu = new System.Windows.Forms.Button();
             this.btnViewTaskMenu = new System.Windows.Forms.Button();
             this.btnAddTaskMenu = new System.Windows.Forms.Button();
             this.panelSideAtas = new System.Windows.Forms.Panel();
-            this.buttonDeleteAccountMenu = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonDelAcc = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panelSideBar.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(201)))), ((int)(((byte)(216)))));
-            this.panel1.Controls.Add(this.buttonSave);
-            this.panel1.Controls.Add(this.txtInputPass);
-            this.panel1.Controls.Add(this.txtInputEmail);
-            this.panel1.Controls.Add(this.txtInputNama);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.panelSideBar);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1094, 612);
-            this.panel1.TabIndex = 0;
-            // 
-            // buttonSave
-            // 
-            this.buttonSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.buttonSave.FlatAppearance.BorderSize = 0;
-            this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSave.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(337, 258);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(121, 38);
-            this.buttonSave.TabIndex = 31;
-            this.buttonSave.Text = "Save";
-            this.buttonSave.UseVisualStyleBackColor = false;
-            // 
-            // txtInputPass
-            // 
-            this.txtInputPass.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtInputPass.Font = new System.Drawing.Font("Montserrat", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInputPass.Location = new System.Drawing.Point(335, 196);
-            this.txtInputPass.Name = "txtInputPass";
-            this.txtInputPass.Size = new System.Drawing.Size(398, 19);
-            this.txtInputPass.TabIndex = 30;
-            // 
-            // txtInputEmail
-            // 
-            this.txtInputEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtInputEmail.Font = new System.Drawing.Font("Montserrat", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInputEmail.Location = new System.Drawing.Point(335, 151);
-            this.txtInputEmail.Name = "txtInputEmail";
-            this.txtInputEmail.Size = new System.Drawing.Size(398, 19);
-            this.txtInputEmail.TabIndex = 29;
-            // 
-            // txtInputNama
-            // 
-            this.txtInputNama.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtInputNama.Font = new System.Drawing.Font("Montserrat", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInputNama.Location = new System.Drawing.Point(337, 108);
-            this.txtInputNama.Name = "txtInputNama";
-            this.txtInputNama.Size = new System.Drawing.Size(398, 19);
-            this.txtInputNama.TabIndex = 28;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.label4.Location = new System.Drawing.Point(240, 193);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 22);
-            this.label4.TabIndex = 27;
-            this.label4.Text = "Password";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.label3.Location = new System.Drawing.Point(271, 148);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 22);
-            this.label3.TabIndex = 26;
-            this.label3.Text = "Email";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.label1.Location = new System.Drawing.Point(271, 105);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 22);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "Nama";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Montserrat Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.label2.Location = new System.Drawing.Point(231, 32);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(210, 29);
-            this.label2.TabIndex = 24;
-            this.label2.Text = "UPDATE PROFILE";
             // 
             // panelSideBar
             // 
@@ -167,7 +59,24 @@
             this.panelSideBar.Location = new System.Drawing.Point(0, 0);
             this.panelSideBar.Name = "panelSideBar";
             this.panelSideBar.Size = new System.Drawing.Size(191, 612);
-            this.panelSideBar.TabIndex = 23;
+            this.panelSideBar.TabIndex = 25;
+            // 
+            // buttonDeleteAccountMenu
+            // 
+            this.buttonDeleteAccountMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonDeleteAccountMenu.FlatAppearance.BorderSize = 0;
+            this.buttonDeleteAccountMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeleteAccountMenu.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDeleteAccountMenu.ForeColor = System.Drawing.Color.White;
+            this.buttonDeleteAccountMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDeleteAccountMenu.Location = new System.Drawing.Point(0, 296);
+            this.buttonDeleteAccountMenu.Name = "buttonDeleteAccountMenu";
+            this.buttonDeleteAccountMenu.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.buttonDeleteAccountMenu.Size = new System.Drawing.Size(191, 45);
+            this.buttonDeleteAccountMenu.TabIndex = 9;
+            this.buttonDeleteAccountMenu.Text = "Delete Account";
+            this.buttonDeleteAccountMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDeleteAccountMenu.UseVisualStyleBackColor = true;
             // 
             // btnSignOutMenu
             // 
@@ -261,56 +170,84 @@
             this.panelSideAtas.Size = new System.Drawing.Size(191, 71);
             this.panelSideAtas.TabIndex = 0;
             // 
-            // buttonDeleteAccountMenu
+            // panel1
             // 
-            this.buttonDeleteAccountMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonDeleteAccountMenu.FlatAppearance.BorderSize = 0;
-            this.buttonDeleteAccountMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDeleteAccountMenu.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDeleteAccountMenu.ForeColor = System.Drawing.Color.White;
-            this.buttonDeleteAccountMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDeleteAccountMenu.Location = new System.Drawing.Point(0, 296);
-            this.buttonDeleteAccountMenu.Name = "buttonDeleteAccountMenu";
-            this.buttonDeleteAccountMenu.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonDeleteAccountMenu.Size = new System.Drawing.Size(191, 45);
-            this.buttonDeleteAccountMenu.TabIndex = 9;
-            this.buttonDeleteAccountMenu.Text = "Delete Account";
-            this.buttonDeleteAccountMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDeleteAccountMenu.UseVisualStyleBackColor = true;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(201)))), ((int)(((byte)(216)))));
+            this.panel1.Controls.Add(this.buttonDelAcc);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(191, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(903, 612);
+            this.panel1.TabIndex = 26;
             // 
-            // Form4
+            // buttonDelAcc
+            // 
+            this.buttonDelAcc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
+            this.buttonDelAcc.FlatAppearance.BorderSize = 0;
+            this.buttonDelAcc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDelAcc.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDelAcc.ForeColor = System.Drawing.Color.White;
+            this.buttonDelAcc.Location = new System.Drawing.Point(50, 149);
+            this.buttonDelAcc.Name = "buttonDelAcc";
+            this.buttonDelAcc.Size = new System.Drawing.Size(187, 38);
+            this.buttonDelAcc.TabIndex = 35;
+            this.buttonDelAcc.Text = "Delete Account";
+            this.buttonDelAcc.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
+            this.label1.Location = new System.Drawing.Point(46, 94);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(286, 22);
+            this.label1.TabIndex = 34;
+            this.label1.Text = "Menghapus Akun Anda Sekarang";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Montserrat Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
+            this.label2.Location = new System.Drawing.Point(45, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(219, 29);
+            this.label2.TabIndex = 33;
+            this.label2.Text = "DELETE ACCOUNT";
+            // 
+            // Form7
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1094, 612);
             this.Controls.Add(this.panel1);
-            this.Name = "Form4";
-            this.Text = "Form4";
+            this.Controls.Add(this.panelSideBar);
+            this.Name = "Form7";
+            this.Text = "Form7";
+            this.Load += new System.EventHandler(this.Form7_Load);
+            this.panelSideBar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panelSideBar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panelSideBar;
+        private System.Windows.Forms.Button buttonDeleteAccountMenu;
         private System.Windows.Forms.Button btnSignOutMenu;
         private System.Windows.Forms.Button btnUpProfileMenu;
         private System.Windows.Forms.Button btnDelAccountMenu;
         private System.Windows.Forms.Button btnViewTaskMenu;
         private System.Windows.Forms.Button btnAddTaskMenu;
         private System.Windows.Forms.Panel panelSideAtas;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button buttonDelAcc;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtInputPass;
-        private System.Windows.Forms.TextBox txtInputEmail;
-        private System.Windows.Forms.TextBox txtInputNama;
-        private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.Button buttonDeleteAccountMenu;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -8,360 +8,613 @@ using FluentValidation.Results;
 using Task = MyTaskData.Task;
 using Account = MyTaskData.Account;
 using System.Security.Principal;
+using MySql.Data.MySqlClient;
 
 namespace MyTaskAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
     public class MyTaskController : ControllerBase
     {
-        private List<Account> _listAccount = new List<Account>();
-        public static Account ActivedAccount;
-
-        public class SignUpInputModel
+        private readonly Database _database;
+        public MyTaskController()
         {
-            public string userName { get; set; }
-            public string name { get; set; }
-            public string email { get; set; }
-            public string password { get; set; }
+            Database database = new Database("127.0.0.1", "mytask", "root");
+            _database = database;
         }
 
-        public class SignInInputModel
+        // Method 1: SignUpAccount
+        [HttpPost("SignUpAccount")]
+        public IActionResult SignUpAccount([FromBody] Account account)
         {
-            public string userName { get; set; }
-            public string password { get; set; }
+            MySqlConnection connection = _database.GetConnection();
+            _database.OpenConnection(connection);
+
+            try
+            {
+                // Validasi menggunakan validator account
+                var validator = new AccountValidator();
+                var validationResult = validator.Validate(account);
+
+                if (!validationResult.IsValid)
+                {
+                    return BadRequest("Invalid account data");
+                }
+
+                // Insert data ke dalam tabel account
+                string query = @"INSERT INTO account (username, name, email, password, accountstate)
+                                 VALUES (@Username, @Name, @Email, @Password, 'SignedOut')";
+
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Username", account.userName);
+                command.Parameters.AddWithValue("@Name", account.name);
+                command.Parameters.AddWithValue("@Email", account.email);
+                command.Parameters.AddWithValue("@Password", account.password);
+
+                int rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    return Ok("Account created successfully");
+                }
+                else
+                {
+                    return BadRequest("Failed to create account");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+            finally
+            {
+                _database.CloseConnection(connection);
+            }
         }
 
-        public class UpdateAccountInputModel
+        // Method 2: SignInAccount
+        [HttpPut("SignInAccount")]
+        public IActionResult SignInAccount(string username, string password)
         {
-            public string name { get; set; }
-            public string email { get; set; }
-            public string password { get; set; }
+            MySqlConnection connection = _database.GetConnection();
+            _database.OpenConnection(connection);
+
+            try
+            {
+                // Cek apakah username ada di tabel account
+                string query = "SELECT COUNT(*) FROM account WHERE username = @Username";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Username", username);
+
+                int count = Convert.ToInt32(command.ExecuteScalar());
+
+                if (count == 0)
+                {
+                    return BadRequest("Username not found");
+                }
+
+                // Validasi password
+                query = "SELECT password FROM account WHERE username = @Username";
+                command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Username", username);
+
+                string storedPassword = command.ExecuteScalar().ToString();
+
+                if (storedPassword != password)
+                {
+                    return BadRequest("Incorrect password");
+                }
+
+                // Set semua accountstate menjadi 'SignedOut'
+                query = "UPDATE account SET accountstate = 'SignedOut'";
+                command = new MySqlCommand(query, connection);
+                command.ExecuteNonQuery();
+
+                // Set accountstate menjadi 'SignedIn' untuk username yang diberikan
+                query = "UPDATE account SET accountstate = 'SignedIn' WHERE username = @Username";
+                command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Username", username);
+                command.ExecuteNonQuery();
+
+                return Ok("Sign in successful");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+            finally
+            {
+                _database.CloseConnection(connection);
+            }
         }
 
-        // Method untuk menyimpan semua object account yang tersimpan pada semua file json account
-        private List<Account> LoadAllAccount(string jsonFileName)
+        // Method 3: SignOutAccount
+        [HttpPost("SignOutAccount")]
+        public IActionResult SignOutAccount()
+        {
+            MySqlConnection connection = _database.GetConnection();
+            _database.OpenConnection(connection);
+
+            try
+            {
+                // Set semua accountstate menjadi 'SignedOut'
+                string query = "UPDATE account SET accountstate = 'SignedOut'";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.ExecuteNonQuery();
+
+                return Ok("Sign out successful");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+            finally
+            {
+                _database.CloseConnection(connection);
+            }
+        }
+
+        // Method 4: GetActiveAccount
+        private Account GetActiveAccount()
+        {
+            MySqlConnection connection = _database.GetConnection();
+            _database.OpenConnection(connection);
+
+            try
+            {
+                string query = "SELECT * FROM account WHERE accountstate = 'SignedIn'";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                MySqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    Account activeAccount = new Account
+                    {
+                        userName = reader["username"].ToString(),
+                        name = reader["name"].ToString(),
+                        email = reader["email"].ToString(),
+                        password = reader["password"].ToString(),
+                        accountState = (AccountState)Enum.Parse(typeof(AccountState), reader["accountstate"].ToString())
+                    };
+
+                    return activeAccount;
+                }
+                else
+                {
+                    return null; // Jika tidak ditemukan akun yang 'SignedIn'
+                }
+            }
+            finally
+            {
+                _database.CloseConnection(connection);
+            }
+        }
+
+        // Method 5: UpdateAccount
+        [HttpPut("UpdateAccount")]
+        public IActionResult UpdateAccount([FromBody] Account account)
+        {
+            MySqlConnection connection = _database.GetConnection();
+            _database.OpenConnection(connection);
+
+            try
+            {
+                // Cek apakah ada account yang sedang 'SignedIn'
+                Account activeAccount = GetActiveAccount();
+
+                if (activeAccount == null)
+                {
+                    return NotFound("No active account found");
+                }
+
+                // Update account yang 'SignedIn' dengan data baru
+                string query = @"UPDATE account
+                                 SET name = @Name, email = @Email, password = @Password
+                                 WHERE accountstate = 'SignedIn'";
+
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Name", account.name);
+                command.Parameters.AddWithValue("@Email", account.email);
+                command.Parameters.AddWithValue("@Password", account.password);
+
+                int rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    return Ok("Account updated successfully");
+                }
+                else
+                {
+                    return BadRequest("Failed to update account");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+            finally
+            {
+                _database.CloseConnection(connection);
+            }
+        }
+
+
+        // Method 6: DeleteAccount
+        [HttpDelete("DeleteAccount")]
+        public IActionResult DeleteAccount(string password)
+        {
+            MySqlConnection connection = _database.GetConnection();
+            _database.OpenConnection(connection);
+
+            try
+            {
+                // Cek apakah ada account yang sedang 'SignedIn'
+                string query = "SELECT COUNT(*) FROM account WHERE accountstate = 'SignedIn'";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                int count = Convert.ToInt32(command.ExecuteScalar());
+
+                if (count == 0)
+                {
+                    return BadRequest("No active account found");
+                }
+
+                // Cek apakah password sesuai dengan account yang 'SignedIn'
+                query = "SELECT password FROM account WHERE accountstate = 'SignedIn'";
+                command = new MySqlCommand(query, connection);
+                string storedPassword = command.ExecuteScalar().ToString();
+
+                if (storedPassword != password)
+                {
+                    return BadRequest("Incorrect password");
+                }
+
+                // Hapus task terkait dengan username yang 'SignedIn'
+                query = @"DELETE task FROM task
+                          INNER JOIN account ON task.username = account.username
+                          WHERE account.accountstate = 'SignedIn'";
+
+                command = new MySqlCommand(query, connection);
+                command.ExecuteNonQuery();
+
+                // Hapus row account yang 'SignedIn'
+                query = "DELETE FROM account WHERE accountstate = 'SignedIn'";
+                command = new MySqlCommand(query, connection);
+                command.ExecuteNonQuery();
+
+                return Ok("Account deleted successfully");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+            finally
+            {
+                _database.CloseConnection(connection);
+            }
+        }
+
+        // Method 7: GetAllTask()
+        [HttpGet("GetAllTask")]
+        public IActionResult GetAllTask()
         {
             try
             {
-                string data = System.IO.File.ReadAllText(jsonFileName);
-                return JsonConvert.DeserializeObject<List<Account>>(data) ?? new List<Account>();
+                // Mendapatkan akun yang sedang aktif ('SignedIn')
+                Account activeAccount = GetActiveAccount();
+
+                if (activeAccount == null)
+                {
+                    return NotFound("No active account found."); // Atau bisa juga BadRequest
+                }
+
+                MySqlConnection connection = _database.GetConnection();
+                _database.OpenConnection(connection);
+
+                string query = "SELECT * FROM task WHERE username = @username";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@username", activeAccount.userName);
+
+                MySqlDataReader reader = command.ExecuteReader();
+                List<Task> tasks = new List<Task>();
+
+                while (reader.Read())
+                {
+                    Task task = new Task
+                    {
+                        judul = reader["judul"].ToString(),
+                        deskripsi = reader["deskripsi"].ToString(),
+                        taskState = (TaskState)Enum.Parse(typeof(TaskState), reader["taskstate"].ToString()),
+                    };
+
+                    tasks.Add(task);
+                }
+
+                _database.CloseConnection(connection);
+
+                if (tasks.Count == 0)
+                {
+                    return NotFound("No tasks found for active account.");
+                }
+
+                return Ok(tasks);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.Message);
-                return new List<Account>();
+                return BadRequest($"Error: {ex.Message}");
             }
         }
 
-        // Method untuk menemukan dan menyimpan account yang sedang aktif
-        private Account LoadActivedAccount(List<Account> listAccount)
+        // Method 8: CreateTask()
+        [HttpPost("CreateTask")]
+        public IActionResult CreateTask([FromBody] Task task)
         {
-            return listAccount.FirstOrDefault(a => a.accountState == AccountState.SignedIn);
+            try
+            {
+                // Step 1: Mendapatkan akun yang sedang aktif ('SignedIn')
+                Account activeAccount = GetActiveAccount();
+
+                // Step 2: Validasi apakah ada akun yang aktif
+                if (activeAccount == null)
+                {
+                    return BadRequest("No active account found.");
+                }
+
+                // Step 3: Validasi input menggunakan validator TaskValidator
+                var validator = new TaskValidator();
+                var validationResult = validator.Validate(task, "Default"); // Menggunakan ruleSet "Default"
+
+                // Step 4: Jika validasi tidak berhasil, kembalikan BadRequest dengan pesan error
+                if (!validationResult.IsValid)
+                {
+                    string errors = string.Join(", ", validationResult.Errors.Select(e => e.ErrorMessage));
+                    return BadRequest($"Invalid task data: {errors}");
+                }
+
+                // Step 5: Buka koneksi ke database
+                MySqlConnection connection = _database.GetConnection();
+                _database.OpenConnection(connection);
+
+                // Step 6: Query untuk insert task ke dalam tabel task
+                string query = "INSERT INTO task (judul, deskripsi, tanggalmulai, tanggalselesai, " +
+                                "jenistugas, namaprioritas, taskstate, username) " +
+                                "VALUES (@judul, @deskripsi, @tanggalmulai, @tanggalselesai, " +
+                                "@jenistugas, @namaprioritas, @taskstate, @username)";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@judul", task.judul);
+                command.Parameters.AddWithValue("@deskripsi", task.deskripsi);
+                command.Parameters.AddWithValue("@tanggalmulai", task.tanggalMulai);
+                command.Parameters.AddWithValue("@tanggalselesai", task.tanggalSelesai);
+                command.Parameters.AddWithValue("@jenistugas", task.jenisTugas);
+                command.Parameters.AddWithValue("namaprioritas", task.namaPrioritas);
+                command.Parameters.AddWithValue("@taskstate", task.taskState.ToString());
+                command.Parameters.AddWithValue("@username", activeAccount.userName);
+
+                // Step 7: Execute query untuk insert task
+                int rowsAffected = command.ExecuteNonQuery();
+
+                // Step 8: Tutup koneksi ke database
+                _database.CloseConnection(connection);
+
+                // Step 9: Jika rowsAffected <= 0, berarti gagal insert task
+                if (rowsAffected <= 0)
+                {
+                    return BadRequest("Failed to create task.");
+                }
+
+                // Step 10: Jika berhasil, kembalikan respon OK dengan pesan sukses
+                return Ok("Task created successfully.");
+            }
+            catch (Exception ex)
+            {
+                // Step 11: Tangani exception jika terjadi error selama proses
+                return BadRequest($"Error: {ex.Message}");
+            }
         }
 
-        private void SaveAccountToJsonFile(Account account)
+        // Method 9: UpdateTask(Task task)
+        [HttpPut("UpdateTask")]
+        public IActionResult UpdateTask([FromBody] Task task)
         {
-            // Menentukan path file berdasarkan username
-            string fileName = $"AccountMyTask_{account.userName}.json";
-            string filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName);
+            try
+            {
+                // Mendapatkan akun yang sedang aktif ('SignedIn')
+                Account activeAccount = GetActiveAccount();
 
-            // Mengonversi objek account ke dalam format JSON
-            string jsonData = JsonConvert.SerializeObject(account, Formatting.Indented);
+                if (activeAccount == null)
+                {
+                    return BadRequest("No active account found.");
+                }
 
-            // Menyimpan data JSON ke dalam file
-            System.IO.File.WriteAllText(filePath, jsonData);
+                MySqlConnection connection = _database.GetConnection();
+                _database.OpenConnection(connection);
+
+                // Memeriksa apakah task dengan judul tersebut ada dan milik user yang 'SignedIn'
+                string query = "SELECT COUNT(*) FROM task WHERE judul = @judul AND username = @username";
+                MySqlCommand checkCommand = new MySqlCommand(query, connection);
+                checkCommand.Parameters.AddWithValue("@judul", task.judul);
+                checkCommand.Parameters.AddWithValue("@username", activeAccount.userName);
+
+                long existingTaskCount = (long)checkCommand.ExecuteScalar();
+
+                if (existingTaskCount <= 0)
+                {
+                    _database.CloseConnection(connection);
+                    return NotFound("Task not found or does not belong to active account.");
+                }
+
+                // Melakukan update task
+                string updateQuery = "UPDATE task SET deskripsi = @deskripsi, taskstate = @taskstate " +
+                                     "WHERE judul = @judul AND username = @username";
+                MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection);
+                updateCommand.Parameters.AddWithValue("@deskripsi", task.deskripsi);
+                updateCommand.Parameters.AddWithValue("@taskstate", task.taskState.ToString());
+                updateCommand.Parameters.AddWithValue("@judul", task.judul);
+                updateCommand.Parameters.AddWithValue("@username", activeAccount.userName);
+
+                int rowsAffected = updateCommand.ExecuteNonQuery();
+
+                _database.CloseConnection(connection);
+
+                if (rowsAffected <= 0)
+                {
+                    return BadRequest("Failed to update task.");
+                }
+
+                return Ok("Task updated successfully.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error: {ex.Message}");
+            }
         }
 
-        [HttpPost]
-        [Route("Account/SignUp")]
-        public ActionResult SignUpAccount([FromBody] SignUpInputModel input)
+        // Method 10: DeleteTask(string judul)
+        [HttpDelete("DeleteTask")]
+        public IActionResult DeleteTask(string judul)
         {
-            // Membangun path file berdasarkan username
-            string fileName = $"AccountMyTask_{input.userName}.json";
-            string filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName);
-
-            // Periksa apakah file untuk username tersebut sudah ada
-            if (System.IO.File.Exists(filePath))
+            try
             {
-                return BadRequest("Akun dengan username tersebut sudah ada.");
+                // Mendapatkan akun yang sedang aktif ('SignedIn')
+                Account activeAccount = GetActiveAccount();
+
+                if (activeAccount == null)
+                {
+                    return BadRequest("No active account found.");
+                }
+
+                MySqlConnection connection = _database.GetConnection();
+                _database.OpenConnection(connection);
+
+                // Memeriksa apakah task dengan judul tersebut ada dan milik user yang 'SignedIn'
+                string query = "SELECT COUNT(*) FROM task WHERE judul = @judul AND username = @username";
+                MySqlCommand checkCommand = new MySqlCommand(query, connection);
+                checkCommand.Parameters.AddWithValue("@judul", judul);
+                checkCommand.Parameters.AddWithValue("@username", activeAccount.userName);
+
+                long existingTaskCount = (long)checkCommand.ExecuteScalar();
+
+                if (existingTaskCount <= 0)
+                {
+                    _database.CloseConnection(connection);
+                    return NotFound("Task not found or does not belong to active account.");
+                }
+
+                // Melakukan penghapusan task
+                string deleteQuery = "DELETE FROM task WHERE judul = @judul AND username = @username";
+                MySqlCommand deleteCommand = new MySqlCommand(deleteQuery, connection);
+                deleteCommand.Parameters.AddWithValue("@judul", judul);
+                deleteCommand.Parameters.AddWithValue("@username", activeAccount.userName);
+
+                int rowsAffected = deleteCommand.ExecuteNonQuery();
+
+                _database.CloseConnection(connection);
+
+                if (rowsAffected <= 0)
+                {
+                    return BadRequest("Failed to delete task.");
+                }
+
+                return Ok("Task deleted successfully.");
             }
-
-            // Membuat Objek Account baru seusuai dengan SigUpInputModel ditambah penyesuaian dengan default state dan listTask
-            var newAccount = new Account
+            catch (Exception ex)
             {
-                userName = input.userName,
-                name = input.name,
-                password = input.password,
-                email = input.email,
-                accountState = AccountState.SignedOut, // Default state
-                listTask = new List<Task>() // Empty task list
-            };
-
-            // Validasi input
-            AccountValidator validator = new AccountValidator();
-            var usernameCheck = validator.Validate(newAccount, "Username");
-            if (!usernameCheck.IsValid)
-            {
-                return BadRequest(usernameCheck.Errors.Select(e => e.ErrorMessage));
+                return BadRequest($"Error: {ex.Message}");
             }
-
-            var nameCheck = validator.Validate(newAccount, "Nama");
-            if (!nameCheck.IsValid)
-            {
-                return BadRequest(nameCheck.Errors.Select(e => e.ErrorMessage));
-            }
-
-            var emailCheck = validator.Validate(newAccount, "Email");
-            if (!emailCheck.IsValid)
-            {
-                return BadRequest(emailCheck.Errors.Select(e => e.ErrorMessage));
-            }
-
-            var passwordCheck = validator.Validate(newAccount, "Password");
-            if (!passwordCheck.IsValid)
-            {
-                return BadRequest(passwordCheck.Errors.Select(e => e.ErrorMessage));
-            }
-
-            // Menambahkan account baru ke dalam list account
-            _listAccount.Add(newAccount);
-            SaveAccountToJsonFile(newAccount);
-
-            // Berikan respons sukses apabila berhasil
-            return Ok($"Account dengan username {input.userName} telah ditambahkan");
         }
 
-        [HttpPut]
-        [Route("Account/SignIn")]
-        public ActionResult SignInAccount([FromBody] SignInInputModel input)
+        // Method 11: GetAllJudulTask()
+        [HttpGet("GetAllJudulTask")]
+        public IActionResult GetAllJudulTask()
         {
-
-            // Membangun path file berdasarkan username
-            string fileName = $"AccountMyTask_{input.userName}.json";
-            string filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName);
-
-            // Periksa apakah file untuk username tersebut sudah ada
-            if (!System.IO.File.Exists(filePath))
+            try
             {
-                return BadRequest("Akun tidak ditemukan, silahkan registrasi");
+                // Mendapatkan akun yang sedang aktif ('SignedIn')
+                Account activeAccount = GetActiveAccount();
+
+                if (activeAccount == null)
+                {
+                    return NotFound("No active account found.");
+                }
+
+                MySqlConnection connection = _database.GetConnection();
+                _database.OpenConnection(connection);
+
+                string query = "SELECT judul FROM task WHERE username = @username";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@username", activeAccount.userName);
+
+                MySqlDataReader reader = command.ExecuteReader();
+                List<string> judulTasks = new List<string>();
+
+                while (reader.Read())
+                {
+                    string judul = reader["judul"].ToString();
+                    judulTasks.Add(judul);
+                }
+
+                _database.CloseConnection(connection);
+
+                if (judulTasks.Count == 0)
+                {
+                    return NotFound("No tasks found for active account.");
+                }
+
+                return Ok(judulTasks);
             }
-
-            // Jika file ada, baca konten file dan deserialisasi menjadi objek Account
-            string fileContent = System.IO.File.ReadAllText(filePath);
-            Account account = JsonConvert.DeserializeObject<Account>(fileContent);
-
-            // Memeriksa password
-            if (account.password != input.password)
+            catch (Exception ex)
             {
-                return BadRequest("Password is incorrect.");
+                return BadRequest($"Error: {ex.Message}");
             }
-
-            // Jika password benar, ubah accountState menjadi 1
-            account.accountState = AccountState.SignedIn;
-            ActivedAccount = account;
-
-            // Simpan perubahan ke file JSON
-            string updatedContent = JsonConvert.SerializeObject(account, Formatting.Indented);
-            System.IO.File.WriteAllText(filePath, updatedContent);
-
-            return Ok($"Account dengan username {input.userName} telah berhasil sign in");
         }
 
-        [HttpPut]
-        [Route("Account/SignOut")]
-        public ActionResult SignOutAccount()
+        // Method 12: GetATask(string judul)
+        [HttpGet("GetATask/{judul}")]
+        public IActionResult GetATask(string judul)
         {
-            if (ActivedAccount == null)
+            try
             {
-                return BadRequest("Tidak ada akun yang aktif saat ini.");
+                // Mendapatkan akun yang sedang aktif ('SignedIn')
+                Account activeAccount = GetActiveAccount();
+
+                if (activeAccount == null)
+                {
+                    return NotFound("No active account found.");
+                }
+
+                MySqlConnection connection = _database.GetConnection();
+                _database.OpenConnection(connection);
+
+                // Memeriksa apakah task dengan judul tersebut ada dan milik user yang 'SignedIn'
+                string query = "SELECT * FROM task WHERE judul = @judul AND username = @username";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@judul", judul);
+                command.Parameters.AddWithValue("@username", activeAccount.userName);
+
+                MySqlDataReader reader = command.ExecuteReader();
+
+                if (!reader.Read())
+                {
+                    _database.CloseConnection(connection);
+                    return NotFound("Task not found or does not belong to active account.");
+                }
+
+                Task task = new Task
+                {
+                    judul = reader["judul"].ToString(),
+                    deskripsi = reader["deskripsi"].ToString(),
+                    taskState = (TaskState)Enum.Parse(typeof(TaskState), reader["taskState"].ToString()),
+                };
+
+                _database.CloseConnection(connection);
+
+                return Ok(task);
             }
-
-            // Membangun path file berdasarkan username dari ActivedAccount
-            string fileName = $"AccountMyTask_{ActivedAccount.userName}.json";
-            string filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName);
-
-            // Mengatur accountState menjadi SignedOut
-            ActivedAccount.accountState = AccountState.SignedOut;
-
-            // Simpan perubahan ke file JSON
-            string updatedContent = JsonConvert.SerializeObject(ActivedAccount, Formatting.Indented);
-            System.IO.File.WriteAllText(filePath, updatedContent);
-
-            // Mengatur ActivedAccount menjadi null setelah berhasil sign out
-            ActivedAccount = null;
-
-            // Berikan respons sukses
-            return Ok("Signed out successfully.");
+            catch (Exception ex)
+            {
+                return BadRequest($"Error: {ex.Message}");
+            }
         }
 
-        [HttpPut]
-        [Route("Account/UpdateAccount")]
-        public ActionResult UpdateProfileAccount([FromBody] UpdateAccountInputModel input)
-        {
-            // Pengecekan apakah ada akun yang aktif saat ini
-            if (ActivedAccount == null)
-            {
-                return BadRequest("Tidak ada akun yang aktif saat ini. Silakan sign in terlebih dahulu.");
-            }
-
-            // Membangun path file berdasarkan username dari ActivedAccount
-            string fileName = $"AccountMyTask_{ActivedAccount.userName}.json";
-            string filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName);
-
-            // Memperbarui data akun
-            ActivedAccount.name = input.name;
-            ActivedAccount.email = input.email;
-            ActivedAccount.password = input.password;
-
-            // Validasi input
-            AccountValidator validator = new AccountValidator();
-            var nameCheck = validator.Validate(ActivedAccount, "Nama");
-            if (!nameCheck.IsValid)
-            {
-                return BadRequest(nameCheck.Errors.Select(e => e.ErrorMessage));
-            }
-            var emailCheck = validator.Validate(ActivedAccount, "Email");
-            if (!emailCheck.IsValid)
-            {
-                return BadRequest(emailCheck.Errors.Select(e => e.ErrorMessage));
-            }
-            var passwordCheck = validator.Validate(ActivedAccount, "Password");
-            if (!passwordCheck.IsValid)
-            {
-                return BadRequest(passwordCheck.Errors.Select(e => e.ErrorMessage));
-            }
-
-            // Simpan perubahan ke file JSON
-            string updatedContent = JsonConvert.SerializeObject(ActivedAccount, Formatting.Indented);
-            System.IO.File.WriteAllText(filePath, updatedContent);
-
-            return Ok("Akun berhasil diupdate");
-        }
-
-        [HttpDelete]
-        [Route("Account/DeleteAccount")]
-        public ActionResult DeleteAccount()
-        {
-            // Membangun path file berdasarkan username dari ActivedAccount
-            string fileName = $"AccountMyTask_{ActivedAccount.userName}.json";
-            string filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName);
-
-           
-            // Menghapus file Account_{username}.json yang berkaitan dengan akun
-            System.IO.File.Delete(filePath);
-
-            // Mengatur ActivedAccount menjadi null setelah berhasil sign out
-            ActivedAccount = null;
-
-            return Ok("Akun dan semua task terkait telah berhasil dihapus.");
-
-        }
-
-        [HttpGet]
-        [Route("Task/ShowAllTask")]
-        public ActionResult<List<Task>> GetAllTasks()
-        {
-            if (ActivedAccount == null || ActivedAccount.accountState != AccountState.SignedIn)
-            {
-                return BadRequest("Tidak ada akun yang aktif saat ini. Silakan sign in terlebih dahulu.");
-            }
-
-            return Ok(ActivedAccount.listTask);
-        }
-
-        [HttpPost]
-        [Route("Task/Create")]
-        public ActionResult CreateTask([FromBody] Task task)
-        {
-            if (ActivedAccount == null || ActivedAccount.accountState != AccountState.SignedIn)
-            {
-                return BadRequest("Tidak ada akun yang aktif saat ini. Silakan sign in terlebih dahulu.");
-            }
-
-            TaskValidator taskValidator = new TaskValidator();
-            ValidationResult results = taskValidator.Validate(task);
-
-            if (!results.IsValid)
-            {
-                return BadRequest(results.Errors.Select(e => e.ErrorMessage));
-            }
-
-            task.taskState = TaskState.ToDo; // Default state
-            ActivedAccount.listTask.Add(task);
-
-            return Ok($"Task dengan judul '{task.judul}' telah berhasil ditambahkan.");
-        }
-
-        [HttpPut]
-        [Route("Task/Update")]
-        public ActionResult UpdateTask([FromBody] Task updatedTask)
-        {
-            if (ActivedAccount == null || ActivedAccount.accountState != AccountState.SignedIn)
-            {
-                return BadRequest("Tidak ada akun yang aktif saat ini. Silakan sign in terlebih dahulu.");
-            }
-
-            var task = ActivedAccount.listTask.FirstOrDefault(t => t.judul == updatedTask.judul);
-            if (task == null)
-            {
-                return NotFound($"Task dengan judul '{updatedTask.judul}' tidak ditemukan.");
-            }
-
-            TaskValidator taskValidator = new TaskValidator();
-            ValidationResult results = taskValidator.Validate(task);
-
-            if (!results.IsValid)
-            {
-                return BadRequest(results.Errors.Select(e => e.ErrorMessage));
-            }
-
-            ActivedAccount.listTask.Remove(task);
-            ActivedAccount.listTask.Add(updatedTask);
-
-            return Ok($"Task dengan judul '{updatedTask.judul}' telah berhasil diperbarui.");
-        }
-
-        [HttpDelete]
-        [Route("Task/Delete")]
-        public ActionResult DeleteTask(string judulTask)
-        {
-            if (ActivedAccount == null || ActivedAccount.accountState != AccountState.SignedIn)
-            {
-                return BadRequest("Tidak ada akun yang aktif saat ini. Silakan sign in terlebih dahulu.");
-            }
-
-            var task = ActivedAccount.listTask.FirstOrDefault(t => t.judul == judulTask);
-            if (task == null)
-            {
-                return NotFound($"Task dengan judul '{judulTask}' tidak ditemukan.");
-            }
-
-            ActivedAccount.listTask.Remove(task);
-
-            return Ok($"Task dengan judul '{judulTask}' telah berhasil dihapus.");
-        }
-
-        [HttpPut]
-        [Route("Task/MarkAsDone")]
-        public ActionResult MarkTaskAsDone(string judulTask)
-        {
-            if (ActivedAccount == null || ActivedAccount.accountState != AccountState.SignedIn)
-            {
-                return BadRequest("Tidak ada akun yang aktif saat ini. Silakan sign in terlebih dahulu.");
-            }
-
-            var task = ActivedAccount.listTask.FirstOrDefault(t => t.judul == judulTask);
-            if (task == null)
-            {
-                return NotFound($"Task dengan judul '{judulTask}' tidak ditemukan.");
-            }
-
-            task.taskState = TaskState.Done;
-
-            return Ok($"Task dengan judul '{judulTask}' telah ditandai sebagai selesai.");
-        }
-
+        // end
     }
 
 }

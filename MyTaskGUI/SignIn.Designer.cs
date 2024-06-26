@@ -1,6 +1,6 @@
 ﻿namespace MyTaskGUI
 {
-    partial class Form6
+    partial class SignIn
     {
         /// <summary>
         /// Required designer variable.
@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnSignUp = new System.Windows.Forms.Button();
-            this.btnSignIn = new System.Windows.Forms.Button();
-            this.inputPassword = new System.Windows.Forms.TextBox();
+            this.buttonSignUp = new System.Windows.Forms.Button();
+            this.buttonSignIn = new System.Windows.Forms.Button();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.inputUsername = new System.Windows.Forms.TextBox();
+            this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -42,11 +42,11 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(201)))), ((int)(((byte)(216)))));
-            this.panel1.Controls.Add(this.btnSignUp);
-            this.panel1.Controls.Add(this.btnSignIn);
-            this.panel1.Controls.Add(this.inputPassword);
+            this.panel1.Controls.Add(this.buttonSignUp);
+            this.panel1.Controls.Add(this.buttonSignIn);
+            this.panel1.Controls.Add(this.textBoxPassword);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.inputUsername);
+            this.panel1.Controls.Add(this.textBoxUsername);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -56,46 +56,46 @@
             this.panel1.Size = new System.Drawing.Size(1459, 753);
             this.panel1.TabIndex = 0;
             // 
-            // btnSignUp
+            // buttonSignUp
             // 
-            this.btnSignUp.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSignUp.ForeColor = System.Drawing.Color.Black;
-            this.btnSignUp.Location = new System.Drawing.Point(549, 416);
-            this.btnSignUp.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSignUp.Name = "btnSignUp";
-            this.btnSignUp.Size = new System.Drawing.Size(161, 47);
-            this.btnSignUp.TabIndex = 34;
-            this.btnSignUp.Text = "Sign Up";
-            this.btnSignUp.UseVisualStyleBackColor = false;
-            this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
+            this.buttonSignUp.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonSignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSignUp.ForeColor = System.Drawing.Color.Black;
+            this.buttonSignUp.Location = new System.Drawing.Point(549, 416);
+            this.buttonSignUp.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonSignUp.Name = "buttonSignUp";
+            this.buttonSignUp.Size = new System.Drawing.Size(161, 47);
+            this.buttonSignUp.TabIndex = 34;
+            this.buttonSignUp.Text = "Sign Up";
+            this.buttonSignUp.UseVisualStyleBackColor = false;
+            this.buttonSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
             // 
-            // btnSignIn
+            // buttonSignIn
             // 
-            this.btnSignIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.btnSignIn.FlatAppearance.BorderSize = 0;
-            this.btnSignIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSignIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSignIn.ForeColor = System.Drawing.Color.White;
-            this.btnSignIn.Location = new System.Drawing.Point(753, 416);
-            this.btnSignIn.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSignIn.Name = "btnSignIn";
-            this.btnSignIn.Size = new System.Drawing.Size(161, 47);
-            this.btnSignIn.TabIndex = 33;
-            this.btnSignIn.Text = "Sign In";
-            this.btnSignIn.UseVisualStyleBackColor = false;
-            this.btnSignIn.Click += new System.EventHandler(this.btnSignIn_Click);
+            this.buttonSignIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
+            this.buttonSignIn.FlatAppearance.BorderSize = 0;
+            this.buttonSignIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSignIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSignIn.ForeColor = System.Drawing.Color.White;
+            this.buttonSignIn.Location = new System.Drawing.Point(753, 416);
+            this.buttonSignIn.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonSignIn.Name = "buttonSignIn";
+            this.buttonSignIn.Size = new System.Drawing.Size(161, 47);
+            this.buttonSignIn.TabIndex = 33;
+            this.buttonSignIn.Text = "Sign In";
+            this.buttonSignIn.UseVisualStyleBackColor = false;
+            this.buttonSignIn.Click += new System.EventHandler(this.btnSignIn_Click);
             // 
-            // inputPassword
+            // textBoxPassword
             // 
-            this.inputPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.inputPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inputPassword.Location = new System.Drawing.Point(549, 332);
-            this.inputPassword.Margin = new System.Windows.Forms.Padding(4);
-            this.inputPassword.Name = "inputPassword";
-            this.inputPassword.Size = new System.Drawing.Size(415, 22);
-            this.inputPassword.TabIndex = 31;
+            this.textBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPassword.Location = new System.Drawing.Point(549, 332);
+            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(415, 22);
+            this.textBoxPassword.TabIndex = 31;
             // 
             // label3
             // 
@@ -109,15 +109,15 @@
             this.label3.TabIndex = 30;
             this.label3.Text = "Password";
             // 
-            // inputUsername
+            // textBoxUsername
             // 
-            this.inputUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.inputUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inputUsername.Location = new System.Drawing.Point(549, 282);
-            this.inputUsername.Margin = new System.Windows.Forms.Padding(4);
-            this.inputUsername.Name = "inputUsername";
-            this.inputUsername.Size = new System.Drawing.Size(415, 22);
-            this.inputUsername.TabIndex = 29;
+            this.textBoxUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxUsername.Location = new System.Drawing.Point(549, 282);
+            this.textBoxUsername.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxUsername.Name = "textBoxUsername";
+            this.textBoxUsername.Size = new System.Drawing.Size(415, 22);
+            this.textBoxUsername.TabIndex = 29;
             // 
             // label1
             // 
@@ -143,14 +143,14 @@
             this.label2.TabIndex = 26;
             this.label2.Text = "SIGN IN";
             // 
-            // Form6
+            // SignIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1459, 753);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Form6";
+            this.Name = "SignIn";
             this.Text = "Form6";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -163,10 +163,10 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox inputUsername;
-        private System.Windows.Forms.TextBox inputPassword;
+        private System.Windows.Forms.TextBox textBoxUsername;
+        private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnSignUp;
-        private System.Windows.Forms.Button btnSignIn;
+        private System.Windows.Forms.Button buttonSignUp;
+        private System.Windows.Forms.Button buttonSignIn;
     }
 }

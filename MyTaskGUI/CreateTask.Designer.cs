@@ -1,6 +1,6 @@
 ﻿namespace MyTaskGUI
 {
-    partial class Form1
+    partial class CreateTask
     {
         /// <summary>
         /// Required designer variable.
@@ -46,11 +46,13 @@
             this.dateStartInput = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtInputDeskripsi = new System.Windows.Forms.TextBox();
+            this.textBoxDeskripsi = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtInputJudul = new System.Windows.Forms.TextBox();
+            this.textBoxJudul = new System.Windows.Forms.TextBox();
             this.buttonAddTask = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.comboBoxStatus = new System.Windows.Forms.ComboBox();
             this.panelSideBar.SuspendLayout();
             this.panelContent.SuspendLayout();
             this.SuspendLayout();
@@ -185,6 +187,8 @@
             // panelContent
             // 
             this.panelContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(201)))), ((int)(((byte)(216)))));
+            this.panelContent.Controls.Add(this.comboBoxStatus);
+            this.panelContent.Controls.Add(this.label8);
             this.panelContent.Controls.Add(this.label7);
             this.panelContent.Controls.Add(this.comboPrioritasInput);
             this.panelContent.Controls.Add(this.label6);
@@ -194,10 +198,10 @@
             this.panelContent.Controls.Add(this.dateStartInput);
             this.panelContent.Controls.Add(this.label4);
             this.panelContent.Controls.Add(this.label3);
-            this.panelContent.Controls.Add(this.txtInputDeskripsi);
+            this.panelContent.Controls.Add(this.textBoxDeskripsi);
             this.panelContent.Controls.Add(this.label2);
             this.panelContent.Controls.Add(this.label1);
-            this.panelContent.Controls.Add(this.txtInputJudul);
+            this.panelContent.Controls.Add(this.textBoxJudul);
             this.panelContent.Controls.Add(this.buttonAddTask);
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContent.Location = new System.Drawing.Point(191, 0);
@@ -210,7 +214,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.label7.Location = new System.Drawing.Point(92, 452);
+            this.label7.Location = new System.Drawing.Point(81, 451);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(91, 25);
             this.label7.TabIndex = 13;
@@ -235,7 +239,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.label6.Location = new System.Drawing.Point(73, 409);
+            this.label6.Location = new System.Drawing.Point(41, 408);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(131, 25);
             this.label6.TabIndex = 11;
@@ -245,15 +249,15 @@
             // 
             this.comboJenisTugasInput.FormattingEnabled = true;
             this.comboJenisTugasInput.Items.AddRange(new object[] {
-            "Video ",
+            "Video",
             "Laporan",
             "Project",
             "Desain",
             "Proposal",
-            "Slide Presentasi",
+            "SlidePresentasi",
             "Observasi",
             "Quiz",
-            "Forum Diskusi"});
+            "ForumDiskusi"});
             this.comboJenisTugasInput.Location = new System.Drawing.Point(185, 409);
             this.comboJenisTugasInput.Name = "comboJenisTugasInput";
             this.comboJenisTugasInput.Size = new System.Drawing.Size(289, 28);
@@ -271,7 +275,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.label5.Location = new System.Drawing.Point(39, 363);
+            this.label5.Location = new System.Drawing.Point(3, 363);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(169, 25);
             this.label5.TabIndex = 8;
@@ -292,7 +296,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.label4.Location = new System.Drawing.Point(51, 319);
+            this.label4.Location = new System.Drawing.Point(23, 316);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(149, 25);
             this.label4.TabIndex = 6;
@@ -303,23 +307,23 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.label3.Location = new System.Drawing.Point(92, 161);
+            this.label3.Location = new System.Drawing.Point(71, 161);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(101, 25);
             this.label3.TabIndex = 5;
             this.label3.Text = "Deskripsi";
             // 
-            // txtInputDeskripsi
+            // textBoxDeskripsi
             // 
-            this.txtInputDeskripsi.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtInputDeskripsi.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInputDeskripsi.Location = new System.Drawing.Point(185, 161);
-            this.txtInputDeskripsi.Multiline = true;
-            this.txtInputDeskripsi.Name = "txtInputDeskripsi";
-            this.txtInputDeskripsi.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtInputDeskripsi.Size = new System.Drawing.Size(398, 135);
-            this.txtInputDeskripsi.TabIndex = 4;
-            this.txtInputDeskripsi.TextChanged += new System.EventHandler(this.txtInputDeskripsi_TextChanged);
+            this.textBoxDeskripsi.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxDeskripsi.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxDeskripsi.Location = new System.Drawing.Point(185, 161);
+            this.textBoxDeskripsi.Multiline = true;
+            this.textBoxDeskripsi.Name = "textBoxDeskripsi";
+            this.textBoxDeskripsi.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxDeskripsi.Size = new System.Drawing.Size(398, 135);
+            this.textBoxDeskripsi.TabIndex = 4;
+            this.textBoxDeskripsi.TextChanged += new System.EventHandler(this.txtInputDeskripsi_TextChanged);
             // 
             // label2
             // 
@@ -337,21 +341,21 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.label1.Location = new System.Drawing.Point(123, 116);
+            this.label1.Location = new System.Drawing.Point(107, 115);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 25);
             this.label1.TabIndex = 2;
             this.label1.Text = "Judul";
             // 
-            // txtInputJudul
+            // textBoxJudul
             // 
-            this.txtInputJudul.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtInputJudul.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInputJudul.Location = new System.Drawing.Point(185, 118);
-            this.txtInputJudul.Name = "txtInputJudul";
-            this.txtInputJudul.Size = new System.Drawing.Size(398, 22);
-            this.txtInputJudul.TabIndex = 1;
-            this.txtInputJudul.TextChanged += new System.EventHandler(this.txtInputJudul_TextChanged);
+            this.textBoxJudul.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxJudul.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxJudul.Location = new System.Drawing.Point(185, 118);
+            this.textBoxJudul.Name = "textBoxJudul";
+            this.textBoxJudul.Size = new System.Drawing.Size(398, 22);
+            this.textBoxJudul.TabIndex = 1;
+            this.textBoxJudul.TextChanged += new System.EventHandler(this.txtInputJudul_TextChanged);
             // 
             // buttonAddTask
             // 
@@ -360,7 +364,7 @@
             this.buttonAddTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddTask.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddTask.ForeColor = System.Drawing.Color.White;
-            this.buttonAddTask.Location = new System.Drawing.Point(185, 508);
+            this.buttonAddTask.Location = new System.Drawing.Point(185, 551);
             this.buttonAddTask.Name = "buttonAddTask";
             this.buttonAddTask.Size = new System.Drawing.Size(121, 38);
             this.buttonAddTask.TabIndex = 0;
@@ -368,7 +372,31 @@
             this.buttonAddTask.UseVisualStyleBackColor = false;
             this.buttonAddTask.Click += new System.EventHandler(this.buttonAddTask_Click);
             // 
-            // Form1
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
+            this.label8.Location = new System.Drawing.Point(98, 495);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(74, 25);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Status";
+            // 
+            // comboBoxStatus
+            // 
+            this.comboBoxStatus.FormattingEnabled = true;
+            this.comboBoxStatus.Items.AddRange(new object[] {
+            "Done",
+            "InProgress",
+            "PostPone",
+            "ToDo"});
+            this.comboBoxStatus.Location = new System.Drawing.Point(185, 495);
+            this.comboBoxStatus.Name = "comboBoxStatus";
+            this.comboBoxStatus.Size = new System.Drawing.Size(289, 28);
+            this.comboBoxStatus.TabIndex = 15;
+            // 
+            // CreateTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -378,7 +406,7 @@
             this.Controls.Add(this.panelSideBar);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Form1";
+            this.Name = "CreateTask";
             this.Text = " ";
             this.panelSideBar.ResumeLayout(false);
             this.panelContent.ResumeLayout(false);
@@ -399,10 +427,10 @@
         private System.Windows.Forms.Panel panelContent;
         private System.Windows.Forms.Button buttonAddTask;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtInputJudul;
+        private System.Windows.Forms.TextBox textBoxJudul;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtInputDeskripsi;
+        private System.Windows.Forms.TextBox textBoxDeskripsi;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dateEndInput;
         private System.Windows.Forms.Label label5;
@@ -412,6 +440,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboPrioritasInput;
         private System.Windows.Forms.Button buttonDeleteAccountMenu;
+        private System.Windows.Forms.ComboBox comboBoxStatus;
+        private System.Windows.Forms.Label label8;
     }
 }
 

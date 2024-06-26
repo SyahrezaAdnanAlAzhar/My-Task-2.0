@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MyTaskGUI
 {
-    public partial class Form2 : Form
+    public partial class UpdateTask : Form
     {
-        public Form2()
+        public UpdateTask()
         {
             InitializeComponent();
         }
@@ -23,6 +23,11 @@ namespace MyTaskGUI
         }
 
         private void btnAddTaskMenu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
         {
 
         }

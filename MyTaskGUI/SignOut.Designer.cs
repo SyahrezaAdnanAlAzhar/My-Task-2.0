@@ -1,6 +1,6 @@
 ﻿namespace MyTaskGUI
 {
-    partial class Form7
+    partial class SignOut
     {
         /// <summary>
         /// Required designer variable.
@@ -28,21 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonKeluar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panelSideBar = new System.Windows.Forms.Panel();
-            this.buttonDeleteAccountMenu = new System.Windows.Forms.Button();
             this.btnSignOutMenu = new System.Windows.Forms.Button();
             this.btnUpProfileMenu = new System.Windows.Forms.Button();
             this.btnDelAccountMenu = new System.Windows.Forms.Button();
             this.btnViewTaskMenu = new System.Windows.Forms.Button();
             this.btnAddTaskMenu = new System.Windows.Forms.Button();
             this.panelSideAtas = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonDelAcc = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panelSideBar.SuspendLayout();
+            this.buttonDeleteAccountMenu = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            this.panelSideBar.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(201)))), ((int)(((byte)(216)))));
+            this.panel1.Controls.Add(this.buttonKeluar);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.panelSideBar);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1094, 612);
+            this.panel1.TabIndex = 0;
+            // 
+            // buttonKeluar
+            // 
+            this.buttonKeluar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
+            this.buttonKeluar.FlatAppearance.BorderSize = 0;
+            this.buttonKeluar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonKeluar.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonKeluar.ForeColor = System.Drawing.Color.White;
+            this.buttonKeluar.Location = new System.Drawing.Point(242, 149);
+            this.buttonKeluar.Name = "buttonKeluar";
+            this.buttonKeluar.Size = new System.Drawing.Size(121, 38);
+            this.buttonKeluar.TabIndex = 32;
+            this.buttonKeluar.Text = "Keluar";
+            this.buttonKeluar.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
+            this.label1.Location = new System.Drawing.Point(238, 94);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(287, 22);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Keluar dari akun yang digunakan";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Montserrat Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
+            this.label2.Location = new System.Drawing.Point(237, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(121, 29);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "SIGN OUT";
             // 
             // panelSideBar
             // 
@@ -59,24 +108,7 @@
             this.panelSideBar.Location = new System.Drawing.Point(0, 0);
             this.panelSideBar.Name = "panelSideBar";
             this.panelSideBar.Size = new System.Drawing.Size(191, 612);
-            this.panelSideBar.TabIndex = 25;
-            // 
-            // buttonDeleteAccountMenu
-            // 
-            this.buttonDeleteAccountMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonDeleteAccountMenu.FlatAppearance.BorderSize = 0;
-            this.buttonDeleteAccountMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDeleteAccountMenu.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDeleteAccountMenu.ForeColor = System.Drawing.Color.White;
-            this.buttonDeleteAccountMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDeleteAccountMenu.Location = new System.Drawing.Point(0, 296);
-            this.buttonDeleteAccountMenu.Name = "buttonDeleteAccountMenu";
-            this.buttonDeleteAccountMenu.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonDeleteAccountMenu.Size = new System.Drawing.Size(191, 45);
-            this.buttonDeleteAccountMenu.TabIndex = 9;
-            this.buttonDeleteAccountMenu.Text = "Delete Account";
-            this.buttonDeleteAccountMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDeleteAccountMenu.UseVisualStyleBackColor = true;
+            this.panelSideBar.TabIndex = 24;
             // 
             // btnSignOutMenu
             // 
@@ -170,84 +202,51 @@
             this.panelSideAtas.Size = new System.Drawing.Size(191, 71);
             this.panelSideAtas.TabIndex = 0;
             // 
-            // panel1
+            // buttonDeleteAccountMenu
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(201)))), ((int)(((byte)(216)))));
-            this.panel1.Controls.Add(this.buttonDelAcc);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(191, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(903, 612);
-            this.panel1.TabIndex = 26;
+            this.buttonDeleteAccountMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonDeleteAccountMenu.FlatAppearance.BorderSize = 0;
+            this.buttonDeleteAccountMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeleteAccountMenu.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDeleteAccountMenu.ForeColor = System.Drawing.Color.White;
+            this.buttonDeleteAccountMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDeleteAccountMenu.Location = new System.Drawing.Point(0, 296);
+            this.buttonDeleteAccountMenu.Name = "buttonDeleteAccountMenu";
+            this.buttonDeleteAccountMenu.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.buttonDeleteAccountMenu.Size = new System.Drawing.Size(191, 45);
+            this.buttonDeleteAccountMenu.TabIndex = 9;
+            this.buttonDeleteAccountMenu.Text = "Delete Account";
+            this.buttonDeleteAccountMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDeleteAccountMenu.UseVisualStyleBackColor = true;
             // 
-            // buttonDelAcc
-            // 
-            this.buttonDelAcc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.buttonDelAcc.FlatAppearance.BorderSize = 0;
-            this.buttonDelAcc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDelAcc.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDelAcc.ForeColor = System.Drawing.Color.White;
-            this.buttonDelAcc.Location = new System.Drawing.Point(50, 149);
-            this.buttonDelAcc.Name = "buttonDelAcc";
-            this.buttonDelAcc.Size = new System.Drawing.Size(187, 38);
-            this.buttonDelAcc.TabIndex = 35;
-            this.buttonDelAcc.Text = "Delete Account";
-            this.buttonDelAcc.UseVisualStyleBackColor = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Montserrat SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.label1.Location = new System.Drawing.Point(46, 94);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(286, 22);
-            this.label1.TabIndex = 34;
-            this.label1.Text = "Menghapus Akun Anda Sekarang";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Montserrat Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.label2.Location = new System.Drawing.Point(45, 28);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(219, 29);
-            this.label2.TabIndex = 33;
-            this.label2.Text = "DELETE ACCOUNT";
-            // 
-            // Form7
+            // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1094, 612);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panelSideBar);
-            this.Name = "Form7";
-            this.Text = "Form7";
-            this.Load += new System.EventHandler(this.Form7_Load);
-            this.panelSideBar.ResumeLayout(false);
+            this.Name = "Form5";
+            this.Text = "Form5";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panelSideBar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panelSideBar;
-        private System.Windows.Forms.Button buttonDeleteAccountMenu;
         private System.Windows.Forms.Button btnSignOutMenu;
         private System.Windows.Forms.Button btnUpProfileMenu;
         private System.Windows.Forms.Button btnDelAccountMenu;
         private System.Windows.Forms.Button btnViewTaskMenu;
         private System.Windows.Forms.Button btnAddTaskMenu;
         private System.Windows.Forms.Panel panelSideAtas;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button buttonDelAcc;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonKeluar;
+        private System.Windows.Forms.Button buttonDeleteAccountMenu;
     }
 }

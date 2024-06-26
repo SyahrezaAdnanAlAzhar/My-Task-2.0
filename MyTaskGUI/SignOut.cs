@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace MyTaskGUI
 {
-    public partial class Form7 : Form
+    public partial class SignOut : Form
     {
-        public Form7()
+        public SignOut()
         {
             InitializeComponent();
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Form7_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
