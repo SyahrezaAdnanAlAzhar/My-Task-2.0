@@ -92,7 +92,18 @@ namespace MyTaskGUI
 
         private void buttonShowDetail_Click(object sender, EventArgs e)
         {
+            if (listBoxJudulTask.SelectedIndex != -1)
+            {
+                string selectedJudul = listBoxJudulTask.SelectedItem.ToString();
 
+                ShowDetailTask showDetailTask = new ShowDetailTask(selectedJudul);
+                this.Hide();
+                showDetailTask.Show();
+            }
+            else
+            {
+                MessageBox.Show("Pilih sebuah judul task untuk dihapus.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void listBoxJudulTask_SelectedIndexChanged(object sender, EventArgs e)

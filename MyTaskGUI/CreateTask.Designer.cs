@@ -37,6 +37,8 @@
             this.btnAddTaskMenu = new System.Windows.Forms.Button();
             this.panelSideAtas = new System.Windows.Forms.Panel();
             this.panelContent = new System.Windows.Forms.Panel();
+            this.comboBoxStatus = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.comboPrioritasInput = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -51,8 +53,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxJudul = new System.Windows.Forms.TextBox();
             this.buttonAddTask = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.comboBoxStatus = new System.Windows.Forms.ComboBox();
             this.panelSideBar.SuspendLayout();
             this.panelContent.SuspendLayout();
             this.SuspendLayout();
@@ -158,6 +158,7 @@
             this.btnViewTaskMenu.Text = "View Task";
             this.btnViewTaskMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnViewTaskMenu.UseVisualStyleBackColor = true;
+            this.btnViewTaskMenu.Click += new System.EventHandler(this.btnViewTaskMenu_Click);
             // 
             // btnAddTaskMenu
             // 
@@ -208,6 +209,30 @@
             this.panelContent.Name = "panelContent";
             this.panelContent.Size = new System.Drawing.Size(903, 612);
             this.panelContent.TabIndex = 1;
+            // 
+            // comboBoxStatus
+            // 
+            this.comboBoxStatus.FormattingEnabled = true;
+            this.comboBoxStatus.Items.AddRange(new object[] {
+            "Done",
+            "InProgress",
+            "PostPone",
+            "ToDo"});
+            this.comboBoxStatus.Location = new System.Drawing.Point(185, 495);
+            this.comboBoxStatus.Name = "comboBoxStatus";
+            this.comboBoxStatus.Size = new System.Drawing.Size(289, 28);
+            this.comboBoxStatus.TabIndex = 15;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
+            this.label8.Location = new System.Drawing.Point(98, 495);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(74, 25);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Status";
             // 
             // label7
             // 
@@ -371,30 +396,6 @@
             this.buttonAddTask.Text = "Add Task";
             this.buttonAddTask.UseVisualStyleBackColor = false;
             this.buttonAddTask.Click += new System.EventHandler(this.buttonAddTask_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.label8.Location = new System.Drawing.Point(98, 495);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(74, 25);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "Status";
-            // 
-            // comboBoxStatus
-            // 
-            this.comboBoxStatus.FormattingEnabled = true;
-            this.comboBoxStatus.Items.AddRange(new object[] {
-            "Done",
-            "InProgress",
-            "PostPone",
-            "ToDo"});
-            this.comboBoxStatus.Location = new System.Drawing.Point(185, 495);
-            this.comboBoxStatus.Name = "comboBoxStatus";
-            this.comboBoxStatus.Size = new System.Drawing.Size(289, 28);
-            this.comboBoxStatus.TabIndex = 15;
             // 
             // CreateTask
             // 
