@@ -38,6 +38,14 @@ namespace MyTaskGUI
 
         private async void SignUpAccountAsync()
         {
+            if (string.IsNullOrWhiteSpace(textBoxUsername.Text) ||
+                string.IsNullOrWhiteSpace(textBoxName.Text) ||
+                string.IsNullOrWhiteSpace(textBoxPassword.Text) ||
+                string.IsNullOrWhiteSpace(textBoxEmail.Text))
+            {
+                MessageBox.Show("Semua field harus diisi.");
+                return;
+            }
             try
             {
                 // Membuat objek Account dari input form
