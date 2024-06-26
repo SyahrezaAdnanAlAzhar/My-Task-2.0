@@ -43,15 +43,8 @@ namespace MyTaskGUI
         {
             try
             {
-                // Buat data yang akan dikirim dalam format key-value pairs
-                var content = new System.Net.Http.FormUrlEncodedContent(new[]
-                {
-                    new KeyValuePair<string, string>("username", username),
-                    new KeyValuePair<string, string>("password", password)
-                });
-
-                // Kirim request POST secara langsung tanpa await
-                var response = _httpClient.PostAsync("SignInAccount", content).Result;
+                // Kirim request PUT secara langsung
+                var response = _httpClient.PutAsync($"SignInAccount?username={username}&password={password}", null).Result;
 
                 // Periksa status response
                 if (response.IsSuccessStatusCode)
@@ -61,7 +54,6 @@ namespace MyTaskGUI
                     // Bersihkan textbox setelah login berhasil
                     textBoxUsername.Text = "";
                     textBoxPassword.Text = "";
-
                 }
                 else
                 {

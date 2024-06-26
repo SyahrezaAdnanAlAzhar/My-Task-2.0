@@ -72,7 +72,7 @@ namespace MyTaskAPI.Controllers
         }
 
         // Method 2: SignInAccount
-        [HttpPost("SignInAccount")]
+        [HttpPut("SignInAccount")]
         public IActionResult SignInAccount(string username, string password)
         {
             MySqlConnection connection = _database.GetConnection();
