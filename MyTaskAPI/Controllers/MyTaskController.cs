@@ -374,11 +374,17 @@ namespace MyTaskAPI.Controllers
                 _database.OpenConnection(connection);
 
                 // Step 6: Query untuk insert task ke dalam tabel task
-                string query = "INSERT INTO task (judul, deskripsi, taskstate, username) " +
-                               "VALUES (@judul, @deskripsi, @taskstate, @username)";
+                string query = "INSERT INTO task (judul, deskripsi, tanggalmulai, tanggalselesai, " +
+                                "jenistugas, namaprioritas, taskstate, username) " +
+                                "VALUES (@judul, @deskripsi, @tanggalmulai, @tanggalselesai, " +
+                                "@jenistugas, @namaprioritas, @taskstate, @username)";
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("@judul", task.judul);
                 command.Parameters.AddWithValue("@deskripsi", task.deskripsi);
+                command.Parameters.AddWithValue("@tanggalmulai", task.tanggalMulai);
+                command.Parameters.AddWithValue("@tanggalselesai", task.tanggalSelesai);
+                command.Parameters.AddWithValue("@jenistugas", task.jenisTugas);
+                command.Parameters.AddWithValue("namaprioritas", task.namaPrioritas);
                 command.Parameters.AddWithValue("@taskstate", task.taskState.ToString());
                 command.Parameters.AddWithValue("@username", activeAccount.userName);
 

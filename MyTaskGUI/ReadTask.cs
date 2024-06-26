@@ -74,5 +74,12 @@ namespace MyTaskGUI
         {
 
         }
+
+        private void btnAddTaskMenu_Click(object sender, EventArgs e)
+        {
+            CreateTask createTask = new CreateTask();
+            this.Hide();
+            createTask.Show();
+        }
     }
 }

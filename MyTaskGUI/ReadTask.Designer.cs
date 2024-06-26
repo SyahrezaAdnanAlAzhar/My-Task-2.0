@@ -186,6 +186,7 @@
             this.btnAddTaskMenu.Text = "Add Task";
             this.btnAddTaskMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAddTaskMenu.UseVisualStyleBackColor = true;
+            this.btnAddTaskMenu.Click += new System.EventHandler(this.btnAddTaskMenu_Click);
             // 
             // panelSideAtas
             // 
