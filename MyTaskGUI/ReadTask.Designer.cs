@@ -227,6 +227,7 @@
             this.buttonUpdateTask.TabIndex = 20;
             this.buttonUpdateTask.Text = "Update Task";
             this.buttonUpdateTask.UseVisualStyleBackColor = false;
+            this.buttonUpdateTask.Click += new System.EventHandler(this.buttonUpdateTask_Click);
             // 
             // label2
             // 

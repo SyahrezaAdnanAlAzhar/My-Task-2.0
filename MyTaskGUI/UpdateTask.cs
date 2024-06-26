@@ -12,7 +12,7 @@ namespace MyTaskGUI
 {
     public partial class UpdateTask : Form
     {
-        public UpdateTask()
+        public UpdateTask(string judul)
         {
             InitializeComponent();
         }
@@ -28,6 +28,14 @@ namespace MyTaskGUI
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
+        {
+
+            ReadTask readTask = new ReadTask();
+            this.Hide();
+            readTask.Show();
+        }
+
+        private void label8_Click(object sender, EventArgs e)
         {
 
         }

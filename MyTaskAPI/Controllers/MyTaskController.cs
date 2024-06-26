@@ -567,7 +567,7 @@ namespace MyTaskAPI.Controllers
         }
 
         // Method 12: GetATask(string judul)
-        [HttpGet("GetATask/{judul}")]
+        [HttpGet("GetATask")]
         public IActionResult GetATask(string judul)
         {
             try

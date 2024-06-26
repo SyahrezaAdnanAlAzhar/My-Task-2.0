@@ -120,5 +120,22 @@ namespace MyTaskGUI
                 MessageBox.Show("Pilih sebuah judul task untuk dihapus.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void buttonUpdateTask_Click(object sender, EventArgs e)
+        {
+            if (listBoxJudulTask.SelectedIndex != -1)
+            {
+                string selectedJudul = listBoxJudulTask.SelectedItem.ToString();
+
+                UpdateTask updateTask = new UpdateTask(selectedJudul);
+                this.Hide();
+                updateTask.Show();
+                
+            }
+            else
+            {
+                MessageBox.Show("Pilih sebuah judul task untuk diupdate.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }
