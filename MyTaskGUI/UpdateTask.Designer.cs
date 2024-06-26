@@ -45,7 +45,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.labelJudul = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxStatus = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +53,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(201)))), ((int)(((byte)(216)))));
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.comboBoxStatus);
             this.panel1.Controls.Add(this.labelJudul);
             this.panel1.Controls.Add(this.panelSideBar);
             this.panel1.Controls.Add(this.label7);
@@ -277,19 +277,19 @@
             this.label8.Text = "Status";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
-            // comboBox1
+            // comboBoxStatus
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBoxStatus.FormattingEnabled = true;
+            this.comboBoxStatus.Items.AddRange(new object[] {
             "Done",
             "InProgress",
             "PostPone",
             "ToDo"});
-            this.comboBox1.Location = new System.Drawing.Point(529, 575);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(384, 24);
-            this.comboBox1.TabIndex = 33;
+            this.comboBoxStatus.Location = new System.Drawing.Point(529, 575);
+            this.comboBoxStatus.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxStatus.Name = "comboBoxStatus";
+            this.comboBoxStatus.Size = new System.Drawing.Size(384, 24);
+            this.comboBoxStatus.TabIndex = 33;
             // 
             // UpdateTask
             // 
@@ -325,6 +325,6 @@
         private System.Windows.Forms.Panel panelSideBar;
         private System.Windows.Forms.Label labelJudul;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxStatus;
     }
 }

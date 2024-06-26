@@ -9,6 +9,7 @@ using Task = MyTaskData.Task;
 using Account = MyTaskData.Account;
 using System.Security.Principal;
 using MySql.Data.MySqlClient;
+using static MyTaskData.Task;
 
 namespace MyTaskAPI.Controllers
 {
@@ -442,10 +443,15 @@ namespace MyTaskAPI.Controllers
                 }
 
                 // Melakukan update task
-                string updateQuery = "UPDATE task SET deskripsi = @deskripsi, taskstate = @taskstate " +
-                                     "WHERE judul = @judul AND username = @username";
+                string updateQuery = "UPDATE task SET deskripsi = @deskripsi, tanggalmulai = @tanggalmulai, " +
+                                    "tanggalselesai = @tanggalselesai, jenistugas = @jenistugas, namaprioritas = @namaprioritas, " +
+                                    "taskstate = @taskstate WHERE judul = @judul AND username = @username";
                 MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection);
                 updateCommand.Parameters.AddWithValue("@deskripsi", task.deskripsi);
+                updateCommand.Parameters.AddWithValue("@tanggalmulai", task.tanggalMulai);
+                updateCommand.Parameters.AddWithValue("@tanggalselesai", task.tanggalSelesai);
+                updateCommand.Parameters.AddWithValue("@jenistugas", task.jenisTugas);
+                updateCommand.Parameters.AddWithValue("@namaprioritas", task.namaPrioritas);
                 updateCommand.Parameters.AddWithValue("@taskstate", task.taskState.ToString());
                 updateCommand.Parameters.AddWithValue("@judul", task.judul);
                 updateCommand.Parameters.AddWithValue("@username", activeAccount.userName);
@@ -567,7 +573,7 @@ namespace MyTaskAPI.Controllers
         }
 
         // Method 12: GetATask(string judul)
-        [HttpGet("GetATask")]
+        [HttpGet("GetATask/{judul}")]
         public IActionResult GetATask(string judul)
         {
             try
@@ -601,7 +607,11 @@ namespace MyTaskAPI.Controllers
                 {
                     judul = reader["judul"].ToString(),
                     deskripsi = reader["deskripsi"].ToString(),
-                    taskState = (TaskState)Enum.Parse(typeof(TaskState), reader["taskState"].ToString()),
+                    tanggalMulai = Convert.ToDateTime(reader["tanggalmulai"]),
+                    tanggalSelesai = Convert.ToDateTime(reader["tanggalselesai"]),
+                    jenisTugas = (JenisTugas)Enum.Parse(typeof(JenisTugas), reader["jenistugas"].ToString()),
+                    namaPrioritas = (Prioritas)Enum.Parse(typeof(Prioritas), reader["namaprioritas"].ToString()),
+                    taskState = (TaskState)Enum.Parse(typeof(TaskState), reader["taskstate"].ToString())
                 };
 
                 _database.CloseConnection(connection);
