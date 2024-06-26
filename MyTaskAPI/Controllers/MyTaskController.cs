@@ -468,7 +468,7 @@ namespace MyTaskAPI.Controllers
         }
 
         // Method 10: DeleteTask(string judul)
-        [HttpDelete("DeleteTask/{judul}")]
+        [HttpDelete("DeleteTask")]
         public IActionResult DeleteTask(string judul)
         {
             try

@@ -211,6 +211,7 @@
             this.buttonDeleteTask.TabIndex = 21;
             this.buttonDeleteTask.Text = "Delete Task";
             this.buttonDeleteTask.UseVisualStyleBackColor = false;
+            this.buttonDeleteTask.Click += new System.EventHandler(this.buttonDeleteTask_Click);
             // 
             // buttonUpdateTask
             // 
@@ -242,13 +243,14 @@
             // 
             // listBoxJudulTask
             // 
+            this.listBoxJudulTask.Font = new System.Drawing.Font("Montserrat SemiBold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxJudulTask.FormattingEnabled = true;
-            this.listBoxJudulTask.ItemHeight = 16;
+            this.listBoxJudulTask.ItemHeight = 37;
             this.listBoxJudulTask.Items.AddRange(new object[] {
             " "});
             this.listBoxJudulTask.Location = new System.Drawing.Point(315, 114);
             this.listBoxJudulTask.Name = "listBoxJudulTask";
-            this.listBoxJudulTask.Size = new System.Drawing.Size(838, 564);
+            this.listBoxJudulTask.Size = new System.Drawing.Size(838, 559);
             this.listBoxJudulTask.TabIndex = 23;
             this.listBoxJudulTask.SelectedIndexChanged += new System.EventHandler(this.listBoxJudulTask_SelectedIndexChanged);
             // 

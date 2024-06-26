@@ -25,6 +25,7 @@ namespace MyTaskGUI
 
         private void LoadJudulTasks()
         {
+            listBoxJudulTask.Items.Clear();
             try
             {
                 // Kirim GET request ke endpoint GetAllJudulTask
@@ -55,6 +56,29 @@ namespace MyTaskGUI
             }
         }
 
+        private void deleteTask(string judul)
+        {
+            try
+            {
+                // Kirim DELETE request ke endpoint DeleteTask
+                var response = _httpClient.DeleteAsync($"DeleteTask?judul={judul}").Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Task berhasil dihapus.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadJudulTasks(); // Refresh list setelah penghapusan
+                }
+                else
+                {
+                    string errorMessage = response.Content.ReadAsStringAsync().ToString();
+                    MessageBox.Show($"Gagal menghapus task: {errorMessage}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -80,6 +104,21 @@ namespace MyTaskGUI
             CreateTask createTask = new CreateTask();
             this.Hide();
             createTask.Show();
+        }
+
+        private void buttonDeleteTask_Click(object sender, EventArgs e)
+        {
+            if (listBoxJudulTask.SelectedIndex != -1)
+            {
+                string selectedJudul = listBoxJudulTask.SelectedItem.ToString();
+
+                // Panggil metode untuk menghapus task dengan judul yang terpilih
+                deleteTask(selectedJudul);
+            }
+            else
+            {
+                MessageBox.Show("Pilih sebuah judul task untuk dihapus.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
