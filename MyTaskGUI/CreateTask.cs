@@ -133,5 +133,12 @@ namespace MyTaskGUI
             dateStartInput.Value = DateTime.Now;
             dateEndInput.Value = DateTime.Now;
         }
+
+        private void btnViewTaskMenu_Click(object sender, EventArgs e)
+        {
+            ReadTask readTask = new ReadTask();
+            this.Hide();
+            readTask.Show();
+        }
     }
 }

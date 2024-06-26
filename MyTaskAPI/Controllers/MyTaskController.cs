@@ -27,23 +27,25 @@ namespace MyTaskAPI.Controllers
         [HttpPost("SignUpAccount")]
         public IActionResult SignUpAccount([FromBody] Account account)
         {
+            // Mengambil koneksi database dari manajer database
             MySqlConnection connection = _database.GetConnection();
             _database.OpenConnection(connection);
 
             try
             {
-                // Validasi menggunakan validator account
+                // Validasi menggunakan validator akun
                 var validator = new AccountValidator();
                 var validationResult = validator.Validate(account);
 
+                // Jika data akun tidak valid, kembalikan response BadRequest
                 if (!validationResult.IsValid)
                 {
                     return BadRequest("Invalid account data");
                 }
 
-                // Insert data ke dalam tabel account
+                // Query untuk memasukkan data ke dalam tabel account
                 string query = @"INSERT INTO account (username, name, email, password, accountstate)
-                                 VALUES (@Username, @Name, @Email, @Password, 'SignedOut')";
+                         VALUES (@Username, @Name, @Email, @Password, 'SignedOut')";
 
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Username", account.userName);
@@ -51,23 +53,28 @@ namespace MyTaskAPI.Controllers
                 command.Parameters.AddWithValue("@Email", account.email);
                 command.Parameters.AddWithValue("@Password", account.password);
 
+                // Eksekusi query untuk melakukan insert data
                 int rowsAffected = command.ExecuteNonQuery();
 
+                // Jika berhasil memasukkan data, kembalikan response OK
                 if (rowsAffected > 0)
                 {
                     return Ok("Account created successfully");
                 }
                 else
                 {
+                    // Jika gagal memasukkan data, kembalikan response BadRequest
                     return BadRequest("Failed to create account");
                 }
             }
             catch (Exception ex)
             {
+                // Tangani exception dan kembalikan response StatusCode 500
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
             finally
             {
+                // Selalu pastikan untuk menutup koneksi database
                 _database.CloseConnection(connection);
             }
         }
