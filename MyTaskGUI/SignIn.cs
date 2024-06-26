@@ -37,6 +37,10 @@ namespace MyTaskGUI
 
             // Panggil metode SignInAccount secara langsung
             SignInAccount(username, password);
+            
+            ReadTask readTask = new ReadTask();
+            readTask.Show();
+            this.Hide();
         }
 
         private void SignInAccount(string username, string password)

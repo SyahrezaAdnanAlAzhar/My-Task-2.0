@@ -30,34 +30,36 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelSideBar = new System.Windows.Forms.Panel();
+            this.buttonDeleteAccountMenu = new System.Windows.Forms.Button();
             this.btnSignOutMenu = new System.Windows.Forms.Button();
             this.btnUpProfileMenu = new System.Windows.Forms.Button();
             this.btnDelAccountMenu = new System.Windows.Forms.Button();
             this.btnViewTaskMenu = new System.Windows.Forms.Button();
             this.btnAddTaskMenu = new System.Windows.Forms.Button();
             this.panelSideAtas = new System.Windows.Forms.Panel();
-            this.buttonDelete = new System.Windows.Forms.Button();
-            this.buttonUpdate = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.buttonDeleteTask = new System.Windows.Forms.Button();
+            this.buttonUpdateTask = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.buttonDeleteAccountMenu = new System.Windows.Forms.Button();
+            this.listBoxJudulTask = new System.Windows.Forms.ListBox();
+            this.buttonShowDetail = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelSideBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(201)))), ((int)(((byte)(216)))));
+            this.panel1.Controls.Add(this.buttonShowDetail);
+            this.panel1.Controls.Add(this.listBoxJudulTask);
             this.panel1.Controls.Add(this.panelSideBar);
-            this.panel1.Controls.Add(this.buttonDelete);
-            this.panel1.Controls.Add(this.buttonUpdate);
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.buttonDeleteTask);
+            this.panel1.Controls.Add(this.buttonUpdateTask);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1094, 612);
+            this.panel1.Size = new System.Drawing.Size(1459, 753);
             this.panel1.TabIndex = 0;
             // 
             // panelSideBar
@@ -73,9 +75,28 @@
             this.panelSideBar.Controls.Add(this.panelSideAtas);
             this.panelSideBar.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSideBar.Location = new System.Drawing.Point(0, 0);
+            this.panelSideBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelSideBar.Name = "panelSideBar";
-            this.panelSideBar.Size = new System.Drawing.Size(191, 612);
+            this.panelSideBar.Size = new System.Drawing.Size(255, 753);
             this.panelSideBar.TabIndex = 22;
+            // 
+            // buttonDeleteAccountMenu
+            // 
+            this.buttonDeleteAccountMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonDeleteAccountMenu.FlatAppearance.BorderSize = 0;
+            this.buttonDeleteAccountMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeleteAccountMenu.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDeleteAccountMenu.ForeColor = System.Drawing.Color.White;
+            this.buttonDeleteAccountMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDeleteAccountMenu.Location = new System.Drawing.Point(0, 362);
+            this.buttonDeleteAccountMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonDeleteAccountMenu.Name = "buttonDeleteAccountMenu";
+            this.buttonDeleteAccountMenu.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.buttonDeleteAccountMenu.Size = new System.Drawing.Size(255, 55);
+            this.buttonDeleteAccountMenu.TabIndex = 9;
+            this.buttonDeleteAccountMenu.Text = "Delete Account";
+            this.buttonDeleteAccountMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDeleteAccountMenu.UseVisualStyleBackColor = true;
             // 
             // btnSignOutMenu
             // 
@@ -84,10 +105,11 @@
             this.btnSignOutMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignOutMenu.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSignOutMenu.ForeColor = System.Drawing.Color.White;
-            this.btnSignOutMenu.Location = new System.Drawing.Point(0, 251);
+            this.btnSignOutMenu.Location = new System.Drawing.Point(0, 307);
+            this.btnSignOutMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSignOutMenu.Name = "btnSignOutMenu";
-            this.btnSignOutMenu.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnSignOutMenu.Size = new System.Drawing.Size(191, 45);
+            this.btnSignOutMenu.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.btnSignOutMenu.Size = new System.Drawing.Size(255, 55);
             this.btnSignOutMenu.TabIndex = 7;
             this.btnSignOutMenu.Text = "Sign Out";
             this.btnSignOutMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -101,10 +123,11 @@
             this.btnUpProfileMenu.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpProfileMenu.ForeColor = System.Drawing.Color.White;
             this.btnUpProfileMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpProfileMenu.Location = new System.Drawing.Point(0, 206);
+            this.btnUpProfileMenu.Location = new System.Drawing.Point(0, 252);
+            this.btnUpProfileMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnUpProfileMenu.Name = "btnUpProfileMenu";
-            this.btnUpProfileMenu.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnUpProfileMenu.Size = new System.Drawing.Size(191, 45);
+            this.btnUpProfileMenu.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.btnUpProfileMenu.Size = new System.Drawing.Size(255, 55);
             this.btnUpProfileMenu.TabIndex = 6;
             this.btnUpProfileMenu.Text = "Update Profile";
             this.btnUpProfileMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -118,10 +141,11 @@
             this.btnDelAccountMenu.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelAccountMenu.ForeColor = System.Drawing.Color.White;
             this.btnDelAccountMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelAccountMenu.Location = new System.Drawing.Point(0, 161);
+            this.btnDelAccountMenu.Location = new System.Drawing.Point(0, 197);
+            this.btnDelAccountMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDelAccountMenu.Name = "btnDelAccountMenu";
-            this.btnDelAccountMenu.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnDelAccountMenu.Size = new System.Drawing.Size(191, 45);
+            this.btnDelAccountMenu.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.btnDelAccountMenu.Size = new System.Drawing.Size(255, 55);
             this.btnDelAccountMenu.TabIndex = 5;
             this.btnDelAccountMenu.Text = "Delete Account";
             this.btnDelAccountMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -135,10 +159,11 @@
             this.btnViewTaskMenu.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnViewTaskMenu.ForeColor = System.Drawing.Color.White;
             this.btnViewTaskMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnViewTaskMenu.Location = new System.Drawing.Point(0, 116);
+            this.btnViewTaskMenu.Location = new System.Drawing.Point(0, 142);
+            this.btnViewTaskMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnViewTaskMenu.Name = "btnViewTaskMenu";
-            this.btnViewTaskMenu.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnViewTaskMenu.Size = new System.Drawing.Size(191, 45);
+            this.btnViewTaskMenu.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.btnViewTaskMenu.Size = new System.Drawing.Size(255, 55);
             this.btnViewTaskMenu.TabIndex = 3;
             this.btnViewTaskMenu.Text = "View Task";
             this.btnViewTaskMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -152,10 +177,11 @@
             this.btnAddTaskMenu.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddTaskMenu.ForeColor = System.Drawing.Color.White;
             this.btnAddTaskMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddTaskMenu.Location = new System.Drawing.Point(0, 71);
+            this.btnAddTaskMenu.Location = new System.Drawing.Point(0, 87);
+            this.btnAddTaskMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAddTaskMenu.Name = "btnAddTaskMenu";
-            this.btnAddTaskMenu.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnAddTaskMenu.Size = new System.Drawing.Size(191, 45);
+            this.btnAddTaskMenu.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.btnAddTaskMenu.Size = new System.Drawing.Size(255, 55);
             this.btnAddTaskMenu.TabIndex = 1;
             this.btnAddTaskMenu.Text = "Add Task";
             this.btnAddTaskMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -165,88 +191,92 @@
             // 
             this.panelSideAtas.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSideAtas.Location = new System.Drawing.Point(0, 0);
+            this.panelSideAtas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelSideAtas.Name = "panelSideAtas";
-            this.panelSideAtas.Size = new System.Drawing.Size(191, 71);
+            this.panelSideAtas.Size = new System.Drawing.Size(255, 87);
             this.panelSideAtas.TabIndex = 0;
             // 
-            // buttonDelete
+            // buttonDeleteTask
             // 
-            this.buttonDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.buttonDelete.FlatAppearance.BorderSize = 0;
-            this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDelete.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDelete.ForeColor = System.Drawing.Color.White;
-            this.buttonDelete.Location = new System.Drawing.Point(894, 145);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(121, 38);
-            this.buttonDelete.TabIndex = 21;
-            this.buttonDelete.Text = "Delete Task";
-            this.buttonDelete.UseVisualStyleBackColor = false;
+            this.buttonDeleteTask.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
+            this.buttonDeleteTask.FlatAppearance.BorderSize = 0;
+            this.buttonDeleteTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeleteTask.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDeleteTask.ForeColor = System.Drawing.Color.White;
+            this.buttonDeleteTask.Location = new System.Drawing.Point(1199, 264);
+            this.buttonDeleteTask.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonDeleteTask.Name = "buttonDeleteTask";
+            this.buttonDeleteTask.Size = new System.Drawing.Size(161, 47);
+            this.buttonDeleteTask.TabIndex = 21;
+            this.buttonDeleteTask.Text = "Delete Task";
+            this.buttonDeleteTask.UseVisualStyleBackColor = false;
             // 
-            // buttonUpdate
+            // buttonUpdateTask
             // 
-            this.buttonUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.buttonUpdate.FlatAppearance.BorderSize = 0;
-            this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUpdate.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonUpdate.ForeColor = System.Drawing.Color.White;
-            this.buttonUpdate.Location = new System.Drawing.Point(894, 90);
-            this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(121, 38);
-            this.buttonUpdate.TabIndex = 20;
-            this.buttonUpdate.Text = "Update Task";
-            this.buttonUpdate.UseVisualStyleBackColor = false;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(236, 90);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(632, 448);
-            this.dataGridView1.TabIndex = 19;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.buttonUpdateTask.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
+            this.buttonUpdateTask.FlatAppearance.BorderSize = 0;
+            this.buttonUpdateTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUpdateTask.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonUpdateTask.ForeColor = System.Drawing.Color.White;
+            this.buttonUpdateTask.Location = new System.Drawing.Point(1199, 188);
+            this.buttonUpdateTask.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonUpdateTask.Name = "buttonUpdateTask";
+            this.buttonUpdateTask.Size = new System.Drawing.Size(161, 47);
+            this.buttonUpdateTask.TabIndex = 20;
+            this.buttonUpdateTask.Text = "Update Task";
+            this.buttonUpdateTask.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Montserrat Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
-            this.label2.Location = new System.Drawing.Point(231, 26);
+            this.label2.Location = new System.Drawing.Point(308, 32);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(142, 29);
+            this.label2.Size = new System.Drawing.Size(184, 37);
             this.label2.TabIndex = 18;
             this.label2.Text = "VIEW TASK";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // buttonDeleteAccountMenu
+            // listBoxJudulTask
             // 
-            this.buttonDeleteAccountMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonDeleteAccountMenu.FlatAppearance.BorderSize = 0;
-            this.buttonDeleteAccountMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDeleteAccountMenu.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDeleteAccountMenu.ForeColor = System.Drawing.Color.White;
-            this.buttonDeleteAccountMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDeleteAccountMenu.Location = new System.Drawing.Point(0, 296);
-            this.buttonDeleteAccountMenu.Name = "buttonDeleteAccountMenu";
-            this.buttonDeleteAccountMenu.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonDeleteAccountMenu.Size = new System.Drawing.Size(191, 45);
-            this.buttonDeleteAccountMenu.TabIndex = 9;
-            this.buttonDeleteAccountMenu.Text = "Delete Account";
-            this.buttonDeleteAccountMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDeleteAccountMenu.UseVisualStyleBackColor = true;
+            this.listBoxJudulTask.FormattingEnabled = true;
+            this.listBoxJudulTask.ItemHeight = 16;
+            this.listBoxJudulTask.Items.AddRange(new object[] {
+            " "});
+            this.listBoxJudulTask.Location = new System.Drawing.Point(315, 114);
+            this.listBoxJudulTask.Name = "listBoxJudulTask";
+            this.listBoxJudulTask.Size = new System.Drawing.Size(838, 564);
+            this.listBoxJudulTask.TabIndex = 23;
             // 
-            // Form3
+            // buttonShowDetail
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.buttonShowDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(68)))), ((int)(((byte)(102)))));
+            this.buttonShowDetail.FlatAppearance.BorderSize = 0;
+            this.buttonShowDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonShowDetail.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonShowDetail.ForeColor = System.Drawing.Color.White;
+            this.buttonShowDetail.Location = new System.Drawing.Point(1199, 114);
+            this.buttonShowDetail.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonShowDetail.Name = "buttonShowDetail";
+            this.buttonShowDetail.Size = new System.Drawing.Size(161, 47);
+            this.buttonShowDetail.TabIndex = 24;
+            this.buttonShowDetail.Text = "Show Detail";
+            this.buttonShowDetail.UseVisualStyleBackColor = false;
+            // 
+            // ReadTask
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1094, 612);
+            this.ClientSize = new System.Drawing.Size(1459, 753);
             this.Controls.Add(this.panel1);
-            this.Name = "Form3";
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "ReadTask";
             this.Text = "Form3";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panelSideBar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -255,9 +285,8 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button buttonUpdate;
-        private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.Button buttonUpdateTask;
+        private System.Windows.Forms.Button buttonDeleteTask;
         private System.Windows.Forms.Panel panelSideBar;
         private System.Windows.Forms.Button btnSignOutMenu;
         private System.Windows.Forms.Button btnUpProfileMenu;
@@ -266,5 +295,7 @@
         private System.Windows.Forms.Button btnAddTaskMenu;
         private System.Windows.Forms.Panel panelSideAtas;
         private System.Windows.Forms.Button buttonDeleteAccountMenu;
+        private System.Windows.Forms.Button buttonShowDetail;
+        private System.Windows.Forms.ListBox listBoxJudulTask;
     }
 }
