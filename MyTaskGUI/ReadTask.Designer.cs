@@ -249,6 +249,7 @@
             this.listBoxJudulTask.Name = "listBoxJudulTask";
             this.listBoxJudulTask.Size = new System.Drawing.Size(838, 564);
             this.listBoxJudulTask.TabIndex = 23;
+            this.listBoxJudulTask.SelectedIndexChanged += new System.EventHandler(this.listBoxJudulTask_SelectedIndexChanged);
             // 
             // buttonShowDetail
             // 
@@ -264,6 +265,7 @@
             this.buttonShowDetail.TabIndex = 24;
             this.buttonShowDetail.Text = "Show Detail";
             this.buttonShowDetail.UseVisualStyleBackColor = false;
+            this.buttonShowDetail.Click += new System.EventHandler(this.buttonShowDetail_Click);
             // 
             // ReadTask
             // 

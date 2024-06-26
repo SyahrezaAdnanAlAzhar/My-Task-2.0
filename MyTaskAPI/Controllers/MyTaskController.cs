@@ -516,8 +516,7 @@ namespace MyTaskAPI.Controllers
         }
 
         // Method 11: GetAllJudulTask()
-        [HttpGet]
-        [Route("GetAllJudulTask")]
+        [HttpGet("GetAllJudulTask")]
         public IActionResult GetAllJudulTask()
         {
             try
